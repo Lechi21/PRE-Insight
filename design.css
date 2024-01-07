@@ -579,12 +579,12 @@ main .recent-orders a{
 
     main table thead tr th:last-child,
     main table thead tr th:first-child{
-        display: none;
+        
     }
 
     main table tbody tr td:last-child,
     main table tbody tr td:first-child{
-        display: none;
+        
     }
 
 }
