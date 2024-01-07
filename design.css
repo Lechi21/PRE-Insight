@@ -576,17 +576,6 @@ main .recent-orders a{
     main .recent-orders table{
         width: 83vw;
     }
-
-    main table thead tr th:last-child,
-    main table thead tr th:first-child{
-        
-    }
-
-    main table tbody tr td:last-child,
-    main table tbody tr td:first-child{
-        
-    }
-
 }
 
 @media screen and (max-width: 768px) {
