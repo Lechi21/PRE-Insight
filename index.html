@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
     <link rel="stylesheet" href="design.css">
     <title>Pre-Insight</title>
 </head>
-
 <body>
     <div class="container">
         <!-- Sidebar Section -->
         <aside>
-            <div class="toggle">
+            <div class="corner">
                 <a href="#">
                     <div class="logo">
                         <img src="images/Lechi Logo.png">
-                        <h2>Pre<b><span class="blueLogo">Insight</span></b></h2>
+                        <h2>Pre<b><span class="blueColor">Insight</span></b></h2>
                     </div>
                 </a>
                 <!-------Hamburger Closing------------>
@@ -27,20 +28,19 @@
             </div>
             
         </aside>
-        <!-- End of Sidebar Section -->
-        <!-- Main Content -->
+
         <main>
-            <br><br>
-            <h1>Pre-Insight Analyses</h1>
+            <br>
+            <h1>Sales Charts</h1>
             <!-- Analyses -->
-            <div class="analyse">
+            <div class="analyses">
                 <div class="sales">
                     <div class="status">
-                        <div class="info">
+                        <div class="about">
                             <h3>Daily Sales</h3>
                             <h1>$00,000</h1>
                         </div>
-                        <div class="progresss">
+                        <div class="semiCircle">
                             <svg>
                                 <circle cx="38" cy="38" r="36"></circle>
                             </svg>
@@ -52,11 +52,11 @@
                 </div>
                 <div class="visits">
                     <div class="status">
-                        <div class="info">
-                            <h3>Weekly Sales</h3>
+                        <div class="about">
+                            <h3>weekly Sales</h3>
                             <h1>$00,000</h1>
                         </div>
-                        <div class="progresss">
+                        <div class="semiCircle">
                             <svg>
                                 <circle cx="38" cy="38" r="36"></circle>
                             </svg>
@@ -68,11 +68,11 @@
                 </div>
                 <div class="searches">
                     <div class="status">
-                        <div class="info">
+                        <div class="about">
                             <h3>Monthly Sales</h3>
                             <h1>$00,000</h1>
                         </div>
-                        <div class="progresss">
+                        <div class="semiCircle">
                             <svg>
                                 <circle cx="38" cy="38" r="36"></circle>
                             </svg>
@@ -83,14 +83,28 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Recent Orders Table -->
-            <div class="recent-orders">
-                <h2>Recent Orders</h2>
-                <table>
+            <br><br>
+            <div class="swipeTab">
+                <button class="tablinks" onclick="openTab(event, 'Tab1')" id="defaultOpen"></button>
+                <button class="tablinks" onclick="openTab(event, 'Tab2')"></button>
+                <button class="tablinks" onclick="openTab(event, 'Tab3')"></button>
+            </div>
+            <div class="swipe-container">
+            <!-- Daily Sales Table -->
+            <div class="salesRecord tabcontent hidden" id="Tab1">
+                <h2>Daily Stock Sales</h2>
+                <p style="margin-bottom: 10px;">Select add to input todays record.</p>
+                <table style="cursor: pointer;">
                     <thead>
                         <tr>
-                            <th>Sale Date</th>
+                            <th>
+                                <a onclick="addItems();" class="icon-link">
+                                    <span class="material-symbols-outlined" style="cursor: pointer;">
+                                        add_circle
+                                        </span>
+                                </a>
+                            </th>
+                            <th data-label="Column 1">Date</th>
                             <th>Starting Amount</th>
                             <th>Closing Amount</th>
                             <th>Status</th>
@@ -99,11 +113,33 @@
                     </thead>
                     <tbody></tbody>
                 </table>
-                <a href="#">Show All</a>
+                <a onclick="showMore();" class="showmore"style="cursor: pointer;">Show All</a>
             </div>
-            <!-- End of Recent Orders -->
+            <!-- End of Daily Sales -->
+            <!-- Predictive Table -->
+            <div style="cursor: pointer;" class="salesRecord tabcontent hidden" id="Tab2">
+                <h2>Predictive Analyses</h2>
+                <p>Select Sales range and Click on the button below to Predict records!!!</p>
+                <br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
+                <a onclick="showMore();" class="showmore" style="cursor: pointer;" >Show All</a>
+            </div>
+            <!-- End of Predictive Table -->
+            <!-- Download Sales Record -->
+            <div style="cursor: pointer;" class="salesRecord tabcontent hidden" id="Tab3">
+                <h2>Download Records</h2>
+                <p>Select range and Click on the button below to download records!!!</p>
+                <br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
+                <a onclick="showMore();" class="showmore" style="cursor: pointer;">Show All</a>
+            </div>
+            <!-- End of Download Sales Record -->
+            </div>
         </main>
-        <!-- End of Main Content -->
 
         <!-- Right Section -->
         <div class="right-section">
@@ -119,11 +155,11 @@
                 </div>
 
                 <div class="profile">
-                    <div class="info">
+                    <div class="about">
                         <p>Hey, <b>Lechi</b></p>
-                        <small class="text-muted">Admin</small>
+                        <small class="admin">Admin</small>
                     </div>
-                    <div class="profile-photo">
+                    <div class="displayPic">
                         <img src="images/blank-person-icon-9.jpg">
                     </div>
                 </div>
@@ -133,42 +169,87 @@
         </div>
     </div>
     <script src="script.js"></script>
-</body>
+<!-- Tab Toggle Section Javascript -->
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    // swipe section for Tabs
+    document.addEventListener('DOMContentLoaded', function () {
+            var swipeContainer = document.querySelector('.swipe-container');
+            var hammertime = new Hammer(swipeContainer);
+
+            hammertime.get('swipe').set({ direction: Hammer.DIRECTION_HORIZONTAL });
+
+            hammertime.on('swiperight', function () {
+                showPreviousTab();
+            });
+
+            hammertime.on('swipeleft', function () {
+                showNextTab();
+            });
+        });
+    function showNextTab() {
+            var swipeContainer = document.querySelector('.swipe-container');
+            var currentTab = document.querySelector('.tablinks.active');
+            var nextTab = currentTab.nextElementSibling;
+
+            if (nextTab) {
+                nextTab.click();
+                scrollTabContainer(swipeContainer, nextTab);
+            }
+        }
+        function showPreviousTab() {
+            var swipeContainer = document.querySelector('.swipe-container');
+            var currentTab = document.querySelector('.tablinks.active');
+            var prevTab = currentTab.previousElementSibling;
+
+            if (prevTab) {
+                prevTab.click();
+                scrollTabContainer(swipeContainer, prevTab);
+            }
+        }
+        function scrollTabContainer(container, tab) {
+            var tabRect = tab.getBoundingClientRect();
+            var containerRect = container.getBoundingClientRect();
+
+            if (tabRect.right > containerRect.right) {
+                container.scrollBy(tabRect.width, 0);
+            } else if (tabRect.left < containerRect.left) {
+                container.scrollBy(-tabRect.width, 0);
+            }
+        }
+</script>
+    <!-- End of Tab Toggle JavaScript -->
 <script>
     const sideMenu = document.querySelector('aside');
     const menuBtn = document.getElementById('menu-btn');
-    const closeBtn = document.getElementById('close-btn');
-
-    const darkMode = document.querySelector('.dark-mode');
-
     menuBtn.addEventListener('click', () => {
         sideMenu.style.display = 'block';
     });
-
+    const closeBtn = document.getElementById('close-btn');
     closeBtn.addEventListener('click', () => {
         sideMenu.style.display = 'none';
     });
 
+    const darkMode = document.querySelector('.dark-mode');
     darkMode.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode-variables');
         darkMode.querySelector('span:nth-child(1)').classList.toggle('active');
         darkMode.querySelector('span:nth-child(2)').classList.toggle('active');
-    })
-
-
-    Orders.forEach(order => {
-        const tr = document.createElement('tr');
-        const trContent = `
-            <td>${order.saleDate}</td>
-            <td>${order.startingAmount}</td>
-            <td>${order.closingAmount}</td>
-            <td class="${order.status === 'Declined' ? 'danger' : order.status === 'Pending' ? 'warning' : 'primary'}">${order.status}</td>
-            <td class="primary">Details</td>
-        `;
-        tr.innerHTML = trContent;
-        document.querySelector('table tbody').appendChild(tr);
     });
 </script>
-<script src="index.js"></script>
-
+</body>
 </html>

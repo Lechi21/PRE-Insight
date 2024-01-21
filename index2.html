@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="design2.css">
+    <title>Sales Form</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="corner">
+                <a href="#">
+                    <div class="logo">
+                        <img src="images/Lechi Logo.png">
+                        <h2>Pre<b><span class="blueColor">Insight</span></b></h2>
+                    </div>
+                </a>
+                <!-------Hamburger Closing------------>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+                <!---Hamburger Ends----->
+            </div>
+        </aside>
+    
+        <div class="input-container">
+            <div class="formHead">
+                <h1>Sales Data</h1>
+            </div>
+            <br><br>
+            <form id="inputForm">
+                <div class="input-place">
+                    <input type="date" id="salesDate" name="salesDate" class="input" required>
+                    <label for="salesDate" class="input-place_date">Sale Date</label>
+                </div>
+                <br><br>
+                <div class="input-place">
+                    <input type="number" id="startingAmount" name="startingAmount" class="input" required placeholder="Enter Starting Amount">
+                    <label for="startingAmount" class="input-place_label">Starting Amount:</label>
+                </div>
+                <br><br>
+                <div class="input-place">
+                    <input type="number" id="closingAmount" name="closingAmount" class="input" required placeholder="Enter Closing Amount">
+                    <label for="closingAmount" class="input-place_label">Closing Amount:</label>
+                </div>
+                <br><br>
+                <div class="input-place">
+                    <input type="number" id="expenses" name="expenses" class="input" required placeholder="Enter Total Expenses">
+                    <label for="expenses" class="input-place_label">Expenses:</label>
+                </div>
+                <br><br>
+                <div class="input-place">
+                    <textarea cols="25" rows="5" placeholder="leave a note" id="txArea" style="border-radius: 5px; resize: vertical; height: 97px;" required="true" maxlength="1000"></textarea>
+                </div>
+                <div class="input-place" style="display: flex;">
+                    <p style="margin-right: 10px;">Save Notes</p>
+                    <input type="radio" name="enableText" id="enableTxt" onclick="saveText()">
+                    <label for="enableTxt" style="margin-right: 5px;">Yes</label>
+                    <input type="radio" name="enableText" id="enableTxt" onclick="saveText()">
+                    <label for="disableTxt">No</label>
+                </div>
+                <br><br>
+                <div class="twoButtons">
+                    <input type="submit" value="Add" onclick="addForm();">
+                    <input type="button" value="Cancel" onclick="cancelForm();">
+                </div>
+            </form>
+            <br>
+        </div>
+        <div class="right-section">
+            <div class="nav">
+                <!-------Hamburger Opening------------>
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <!------Hamburger Ends------>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+
+                <div class="profile">
+                    <div class="about">
+                        <p>Hey, <b>Lechi</b></p>
+                        <small class="admin">Admin</small>
+                    </div>
+                    <div class="displayPic">
+                        <img src="images/blank-person-icon-9.jpg">
+                    </div>
+                </div>
+            </div>
+            <!-- End of Nav -->
+            </div>
+        </div>
+    </div>
+
+
+<script>
+    function saveText() {
+    var Disabled = document.getElementById("txArea").disabled;
+    document.getElementById("txArea").disabled = !Disabled;
+    }
+</script>
+<script>
+        document.getElementById("inputForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Get user input values
+            const salesDate = document.getElementById("salesDate").value;
+            const startingAmount = document.getElementById("startingAmount").value;
+            const closingAmount = document.getElementById("closingAmount").value;
+            const status = document.getElementById("status").value;
+
+            // Create an object with the user input
+            const userInput = {
+                salesDate: salesDate,
+                startingAmount: startingAmount,
+                closingAmount: closingAmount,
+                status: status
+            };
+
+            // Perform actions with the userInput object (e.g., store it, use it in further logic)
+            console.log("User input:", userInput);
+            
+            // Optionally, you can send this data to a server or perform other actions here
+        });
+        const sideMenu = document.querySelector('aside');
+        const menuBtn = document.getElementById('menu-btn');
+        menuBtn.addEventListener('click', () => {
+        sideMenu.style.display = 'block';
+        });
+        const closeBtn = document.getElementById('close-btn');
+        closeBtn.addEventListener('click', () => {
+        sideMenu.style.display = 'none';
+        });
+    </script>
+    <script>
+        const darkMode = document.querySelector('.dark-mode');
+        darkMode.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode-variables');
+            darkMode.querySelector('span:nth-child(1)').classList.corner('active');
+            darkMode.querySelector('span:nth-child(2)').classList.corner('active');
+        });
+    </script>
+</body>
+</html>
