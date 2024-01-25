@@ -81,10 +81,10 @@ h3{
     font-weight: 500;
     font-size: 0.87rem;
 }
-
+/*
 small{
     font-size: 0.76rem;
-}
+} */
 
 p{
     color: var(--color-dark-variant);
@@ -600,6 +600,7 @@ footer{
         margin: 1rem 0 0 0.8rem;
     }
 
+    #Tab2,  #Tab3,
     main .salesRecord table{
         width: 83vw;
     }
@@ -709,6 +710,7 @@ footer{
         width: 100%;
     }
 
+    #Tab2,#Tab3,
     main .salesRecord table{
         width: 100%;
         margin: 0;
@@ -755,6 +757,7 @@ footer{
     .right-section .nav button span{
         font-size: 2rem;
     }
+<<<<<<< HEAD
     .input{
         border: none;
         border-radius: 4px;
@@ -766,3 +769,6 @@ footer{
         width: calc(100% - 1rem);
     }
 }
+=======
+}
+>>>>>>> d821eb7cae220961331d54a0cb448f53027818f5
