@@ -1,3 +1,5 @@
+"use strict";
+
 const Orders = [
     {
         addItem: "",
@@ -34,9 +36,6 @@ Orders.forEach(order => {
     tr.innerHTML = trContent;
     document.querySelector('table tbody').appendChild(tr);
 });
-
-
-
 
 
 $(document).ready(function () {

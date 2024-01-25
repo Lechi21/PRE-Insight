@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
     <link rel="stylesheet" href="design.css">
     <title>Pre-Insight</title>
@@ -14,7 +15,7 @@
         <!-- Sidebar Section -->
         <aside>
             <div class="corner">
-                <a href="#">
+                <a onclick="goHome(); return false">
                     <div class="logo">
                         <img src="images/Lechi Logo.png">
                         <h2>Pre<b><span class="blueColor">Insight</span></b></h2>
@@ -26,11 +27,15 @@
                 </div>
                 <!---Hamburger Ends----->
             </div>
-            
+        <script>
+            function goHome(){
+                window.location.href = "index.html";
+            }
+        </script>
         </aside>
 
         <main>
-            <br>
+            <br><br>
             <h1>Sales Charts</h1>
             <!-- Analyses -->
             <div class="analyses">
@@ -84,21 +89,30 @@
                 </div>
             </div>
             <br><br>
-            <div class="swipeTab">
-                <button class="tablinks" onclick="openTab(event, 'Tab1')" id="defaultOpen"></button>
-                <button class="tablinks" onclick="openTab(event, 'Tab2')"></button>
-                <button class="tablinks" onclick="openTab(event, 'Tab3')"></button>
+            <div class="allSwipe">
+                <div class="swipeTab">
+                    <label class="arrowLeft-Right" for="Tab3" onclick="goLeft()"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></label>
+                </div>
+                <div class="swipeTab">
+                    <button class="tablinks" onclick="openTab(event, 'Tab1')"></button>
+                    <button class="tablinks" name="Tab2" onclick="openTab(event, 'Tab2')" id="defaultOpen"></button>
+                    <button class="tablinks" onclick="openTab(event, 'Tab3')"></button>
+                </div>
+                <div class="swipeTab">
+                    <label class="arrowLeft-Right" for="Tab3" onclick="goRight()"><i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i></label>
+                </div>
             </div>
+            
             <div class="swipe-container">
             <!-- Daily Sales Table -->
-            <div class="salesRecord tabcontent hidden" id="Tab1">
+            <div style="cursor: pointer;" class="salesRecord tabcontent hidden" id="Tab2">
                 <h2>Daily Stock Sales</h2>
                 <p style="margin-bottom: 10px;">Select add to input todays record.</p>
-                <table style="cursor: pointer;">
+                <table>
                     <thead>
                         <tr>
                             <th>
-                                <a onclick="addItems();" class="icon-link">
+                                <a onclick="addItems(); return false" class="icon-link">
                                     <span class="material-symbols-outlined" style="cursor: pointer;">
                                         add_circle
                                         </span>
@@ -115,9 +129,14 @@
                 </table>
                 <a onclick="showMore();" class="showmore"style="cursor: pointer;">Show All</a>
             </div>
+            <script>
+                function addItems(){
+                    window.location.href = 'form.html';
+                }
+            </script>
             <!-- End of Daily Sales -->
             <!-- Predictive Table -->
-            <div style="cursor: pointer;" class="salesRecord tabcontent hidden" id="Tab2">
+            <div style="cursor: pointer;" class="salesRecord tabcontent hidden" id="Tab1">
                 <h2>Predictive Analyses</h2>
                 <p>Select Sales range and Click on the button below to Predict records!!!</p>
                 <br>
@@ -128,14 +147,27 @@
             </div>
             <!-- End of Predictive Table -->
             <!-- Download Sales Record -->
-            <div style="cursor: pointer;" class="salesRecord tabcontent hidden" id="Tab3">
+            <div style="cursor: pointer; height: 50vh;" class="salesRecord tabcontent hidden" id="Tab3">
                 <h2>Download Records</h2>
                 <p>Select range and Click on the button below to download records!!!</p>
                 <br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
-                <a onclick="showMore();" class="showmore" style="cursor: pointer;">Show All</a>
+                <form class="downloadForm" action="GET">
+                    <div class="downloadInput">
+                        <div class="input-place">
+                            <label for="rangeDate1" class="input-place_date">Start Date</label>
+                            <input type="date" id="rangeDate1" name="rangeDate1" class="input" required>
+                        </div>
+                        <div class="input-place">
+                            <label for="rangeDate2" class="input-place_date">End Date</label>
+                            <input type="date" id="rangeDate2" name="rangeDate2" class="input" required>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="twoButtons">
+                        <input type="submit" class="pdf" value="Download PDF" onclick="pdfForm();">
+                        <input type="submit" class="excel" value="Download EXCEL" onclick="excelForm();">
+                    </div>
+                </form>
             </div>
             <!-- End of Download Sales Record -->
             </div>
@@ -168,72 +200,15 @@
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
-<!-- Tab Toggle Section Javascript -->
+    <footer>
+        <div class="foot">
+            <nav class="footer-nav"> © 2024 Copyright: Lechi-Tech</a></nav>
+            <a href="#" class="footer-link"><img src="images/Lechi Logo.png" alt="logoImage"></a>
+        </div>
+    </footer>
 <script>
-    function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-    // Get the element with id="defaultOpen" and click on it
-        document.getElementById("defaultOpen").click();
-    // swipe section for Tabs
-    document.addEventListener('DOMContentLoaded', function () {
-            var swipeContainer = document.querySelector('.swipe-container');
-            var hammertime = new Hammer(swipeContainer);
+    "use strict";
 
-            hammertime.get('swipe').set({ direction: Hammer.DIRECTION_HORIZONTAL });
-
-            hammertime.on('swiperight', function () {
-                showPreviousTab();
-            });
-
-            hammertime.on('swipeleft', function () {
-                showNextTab();
-            });
-        });
-    function showNextTab() {
-            var swipeContainer = document.querySelector('.swipe-container');
-            var currentTab = document.querySelector('.tablinks.active');
-            var nextTab = currentTab.nextElementSibling;
-
-            if (nextTab) {
-                nextTab.click();
-                scrollTabContainer(swipeContainer, nextTab);
-            }
-        }
-        function showPreviousTab() {
-            var swipeContainer = document.querySelector('.swipe-container');
-            var currentTab = document.querySelector('.tablinks.active');
-            var prevTab = currentTab.previousElementSibling;
-
-            if (prevTab) {
-                prevTab.click();
-                scrollTabContainer(swipeContainer, prevTab);
-            }
-        }
-        function scrollTabContainer(container, tab) {
-            var tabRect = tab.getBoundingClientRect();
-            var containerRect = container.getBoundingClientRect();
-
-            if (tabRect.right > containerRect.right) {
-                container.scrollBy(tabRect.width, 0);
-            } else if (tabRect.left < containerRect.left) {
-                container.scrollBy(-tabRect.width, 0);
-            }
-        }
-</script>
-    <!-- End of Tab Toggle JavaScript -->
-<script>
     const sideMenu = document.querySelector('aside');
     const menuBtn = document.getElementById('menu-btn');
     menuBtn.addEventListener('click', () => {
@@ -243,13 +218,9 @@
     closeBtn.addEventListener('click', () => {
         sideMenu.style.display = 'none';
     });
-
-    const darkMode = document.querySelector('.dark-mode');
-    darkMode.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode-variables');
-        darkMode.querySelector('span:nth-child(1)').classList.toggle('active');
-        darkMode.querySelector('span:nth-child(2)').classList.toggle('active');
-    });
 </script>
+<script src="script.js"></script>
+<script src="slide.js"></script>
+<script src="dlMood.js"></script>
 </body>
 </html>
