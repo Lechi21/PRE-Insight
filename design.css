@@ -600,8 +600,7 @@ footer{
         margin: 1rem 0 0 0.8rem;
     }
 
-    #Tab2,  #Tab3,
-    main .salesRecord table{
+    #Tab2, #Tab3, #Tab1{
         width: 83vw;
     }
 
@@ -719,8 +718,7 @@ footer{
         width: 100%;
     }
 
-    #Tab2,#Tab3,
-    main .salesRecord table{
+    #Tab2,#Tab3, #Tab1{
         width: 100%;
         margin: 0;
     }
