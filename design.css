@@ -661,7 +661,16 @@ footer{
         text-align: center;
         z-index: 1;
     }
-
+    .input{
+        border: none;
+        border-radius: 4px;
+        font: inherit;
+        padding: 10px;
+        color: var(--color-dark);
+        background-color: transparent;  
+        outline: 2px solid var(--color-dark);
+        width: calc(100% - 1rem);
+    }
     /* main table thead tr th:hover::after {
         visibility: visible;
     } */
@@ -757,18 +766,4 @@ footer{
     .right-section .nav button span{
         font-size: 2rem;
     }
-<<<<<<< HEAD
-    .input{
-        border: none;
-        border-radius: 4px;
-        font: inherit;
-        padding: 10px;
-        color: var(--color-dark);
-        background-color: transparent;
-        outline: 2px solid var(--color-dark);
-        width: calc(100% - 1rem);
-    }
 }
-=======
-}
->>>>>>> d821eb7cae220961331d54a0cb448f53027818f5
