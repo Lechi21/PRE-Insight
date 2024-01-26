@@ -6,21 +6,21 @@ const Orders = [
         salesDate: '06.01.2024',
         startingAmount: '5700',
         closingAmount: '85700',
-        status: 'Pending'
+        // status: 'Pending'
     },
     {
         addItem: "",
         salesDate: '#',
         startingAmount: '#',
         closingAmount: '#',
-        status: 'Declined'
+        // status: 'Declined'
     },
     {
         addItem: "",
         salesDate: '#',
         startingAmount: '#',
         closingAmount: '#',
-        status: 'Active'
+        // status: 'Active'
     },
 ]
 Orders.forEach(order => {
@@ -30,7 +30,6 @@ Orders.forEach(order => {
         <td>${order.salesDate}</td>
         <td>${order.startingAmount}</td>
         <td>${order.closingAmount}</td>
-        <td class="${order.status === 'Declined' ? 'danger' : order.status === 'Pending' ? 'warning' : 'primary'}">${order.status}</td>
     `;
     tr.innerHTML = trContent;
     document.querySelector('table tbody').appendChild(tr);
