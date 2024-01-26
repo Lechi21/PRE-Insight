@@ -194,9 +194,9 @@ aside .sidebar a{
     justify-content: center;
 }
 .swipeTab button {
-    background-color: var(--color-dark-variant);
+    background-color: var(--color-primary);
     float: left;
-    border: 1px solid black;
+    border: 1px solid inherit;
     border-radius: 100%;
     margin: 3px;
     cursor: pointer;
@@ -207,7 +207,7 @@ aside .sidebar a{
     background-color: var(--color-dark);
 }
 .swipeTab button.active {
-    background-color: var(--color-white);
+    background-color: var(--color-dark);
 }
 .arrowLeft-Right{
     display: flex;

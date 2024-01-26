@@ -15,19 +15,18 @@
     }
     function goLeft() {
         var currentTab = document.querySelector('.tablinks.active');
-        var prevTab = currentTab.previousElementSibling;
-        if (prevTab) {
-            prevTab.click();
-        }
+        var prevTab = currentTab.previousElementSibling || document.querySelector('.tablinks:last-child');
+    
+        prevTab.click();
     }
-
+    
     function goRight() {
         var currentTab = document.querySelector('.tablinks.active');
-        var nextTab = currentTab.nextElementSibling;
-        if (nextTab) {
-            nextTab.click();
-        }
+        var nextTab = currentTab.nextElementSibling || document.querySelector('.tablinks:first-child');
+    
+        nextTab.click();
     }
+                
     // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();
     // swipe section for Tabs
@@ -45,26 +44,23 @@
                 showNextTab();
             });
         });
-    function showNextTab() {
+        function showNextTab() {
             var swipeContainer = document.querySelector('.swipe-container');
             var currentTab = document.querySelector('.tablinks.active');
-            var nextTab = currentTab.nextElementSibling;
-
-            if (nextTab) {
-                nextTab.click();
-                scrollTabContainer(swipeContainer, nextTab);
-            }
+            var nextTab = currentTab.nextElementSibling || document.querySelector('.tablinks:first-child');
+        
+            nextTab.click();
+            scrollTabContainer(swipeContainer, nextTab);
         }
+        
         function showPreviousTab() {
             var swipeContainer = document.querySelector('.swipe-container');
             var currentTab = document.querySelector('.tablinks.active');
-            var prevTab = currentTab.previousElementSibling;
-
-            if (prevTab) {
-                prevTab.click();
-                scrollTabContainer(swipeContainer, prevTab);
-            }
-        }
+            var prevTab = currentTab.previousElementSibling || document.querySelector('.tablinks:last-child');
+        
+            prevTab.click();
+            scrollTabContainer(swipeContainer, prevTab);
+        }        
         function scrollTabContainer(container, tab) {
             var tabRect = tab.getBoundingClientRect();
             var containerRect = container.getBoundingClientRect();
