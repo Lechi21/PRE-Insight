@@ -48,7 +48,7 @@ html{
 
 body{
     width: 100vw;
-    height: 100vh;
+    /* height: 100vh; */
     font-family: 'Poppins', sans-serif;
     font-size: 0.88rem;
     user-select: none;
@@ -122,9 +122,9 @@ b{
     grid-template-columns: 12rem auto 16rem;
 }
 
-aside{
+/* aside{
     height: 100vh;
-}
+} */
 
 aside .corner{
     display: flex;
@@ -607,7 +607,33 @@ footer{
     /* main table thead tr th:last-child{
         display: none;
     } */
-
+    
+    footer{
+        position: relative;
+        bottom: 0;
+        background-color: var(--color-background);
+        left: 0;
+        width: 100%;
+    }
+    .foot{
+        padding: 0 28px;
+        align-items: 
+        center; display: flex; 
+        justify-content: space-between;
+    }
+    .footer-nav{
+        padding: 16px 0;
+    }
+    .footer-link{
+        align-items: center; 
+        display: inline-flex; 
+        height: 30px; 
+        width: 66px;
+    }
+    .footer-link img{
+        max-height: 100%; 
+        max-width: 100%;
+    }
 }
 
 @media screen and (max-width: 768px) {
