@@ -515,7 +515,7 @@ form{
     left: 50%;
     transition: background-color 0.3s ease;
 }
-.downloadForm .excel{
+.downloadForm .csv{
     margin: 8px;
     width: fit-content;
     padding: 0.8rem;
@@ -531,7 +531,7 @@ form{
 .downloadForm .pdf:hover{
     background-color: rgb(197, 23, 23);
 }
-.downloadForm .excel:hover{
+.downloadForm .csv:hover{
     background-color: var(--color-success);
 }
 
@@ -604,13 +604,7 @@ footer{
         width: 83vw;
     }
 
-    main table thead tr th:last-child,
-    main table thead tr th:first-child{
-        display: none;
-    }
-
-    main table tbody tr td:last-child,
-    main table tbody tr td:first-child{
+    main table thead tr th:last-child{
         display: none;
     }
 
@@ -720,7 +714,7 @@ footer{
 
     #Tab2,#Tab3, #Tab1{
         width: 100%;
-        margin: 0;
+        margin: 10px 0 0 0;
     }
     
     .right-section{
