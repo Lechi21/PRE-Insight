@@ -117,7 +117,7 @@
     .container{
         display: grid;
         width: 98%;
-        margin: 0 auto;
+        margin: 0 12px;
         gap: 0.5rem;
         grid-template-columns: 12rem auto 16rem;
     }
@@ -155,7 +155,7 @@
         background-color: var(--color-white);
         box-shadow: var(--box-shadow);
         border-radius: 15px;
-        height: 88vh;
+        height: fit-content;
         position: relative;
         top: 1.5rem;
         transition: all 0.3s ease;
@@ -356,7 +356,6 @@
         margin: 1rem auto;
         color: var(--color-primary);
     }
-
     .right-section{
         margin-top: 1.4rem;
     }
@@ -414,7 +413,7 @@
     main table thead tr th{
         max-width: 70px;
         overflow: hidden !important;
-        white-space: nowrap !important;
+        /* white-space: nowrap !important; */
         text-overflow: ellipsis !important;
         border-radius: 5px;
         background-color: #1B9C85;
@@ -689,7 +688,7 @@
             position: relative;
             max-width: 70px;
             overflow: hidden !important;
-            white-space: nowrap !important;
+            /* white-space: nowrap !important; */
             text-overflow: ellipsis !important;
             background-color: #1B9C85;
             color: #fff;

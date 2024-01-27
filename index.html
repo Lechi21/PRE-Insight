@@ -113,10 +113,10 @@
                     for (var i = 0; i < balanceElements.length; i++) {
                         if (isBalanceHidden) {
                             balanceElements[i].textContent = currencySymbol + originalBalance;
-                            iconElements[i].textContent = "Hide Balance";
+                            iconElements[i].textContent = " Hide Balance";
                         } else {
                             balanceElements[i].textContent = currencySymbol + hiddenBalance;
-                            iconElements[i].textContent = "Show Balance";
+                            iconElements[i].textContent = " Show Balance";
                         }
                     }
                     isBalanceHidden = !isBalanceHidden;
