@@ -608,6 +608,15 @@ footer{
         display: none;
     } */
     
+
+    .twoButtons{
+        width: calc(100% - 1.7rem);
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        margin: 0 0 10px 0;
+    }
+
     footer{
         position: relative;
         bottom: 0;
@@ -685,11 +694,12 @@ footer{
         border-radius: 4px;
         font: inherit;
         padding: 10px;
-        color: var(--color-dark);
+        color: red;
         background-color: transparent;  
         outline: 2px solid var(--color-dark);
         width: calc(100% - 1rem);
     }
+
     /* main table thead tr th:hover::after {
         visibility: visible;
     } */
@@ -783,5 +793,12 @@ footer{
 
     .right-section .nav button span{
         font-size: 2rem;
+    }
+    .twoButtons{
+        width: calc(100% - 1.7rem);
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        margin: 0 0 10px 0;
     }
 }
