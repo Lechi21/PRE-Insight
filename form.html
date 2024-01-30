@@ -16,15 +16,10 @@
             <div class="corner">
                 <a onclick="goHome(); return false">
                     <div class="logo">
-                        <img src="images/Insanjo@.png">
+                        <img src="images/Insanjo Logo.png   ">
                         <!-- <h2>Pre<b><span class="blueColor">Insight</span></b></h2> -->
                     </div>
                 </a>
-                <!-------Hamburger Closing------------>
-                <div class="close" id="close-btn">
-                    <span class="material-icons-sharp">close</span>
-                </div>
-                <!---Hamburger Ends----->
             </div>
             <script>
                 function goHome(){
@@ -77,13 +72,9 @@
             </form>
             <br>
         </div>
+        <!-- Right Section -->
         <div class="right-section">
             <div class="nav">
-                <!-------Hamburger Opening------------>
-                <button id="menu-btn">
-                    <span class="material-icons-sharp">menu</span>
-                </button>
-                <!------Hamburger Ends------>
                 <div class="dark-mode">
                     <span class="material-icons-sharp active">light_mode</span>
                     <span class="material-icons-sharp">dark_mode</span>
@@ -94,14 +85,54 @@
                         <p>Hey, <b>Lechi</b></p>
                         <small class="admin">Admin</small>
                     </div>
-                    <div class="displayPic">
+                    <div class="displayPic usersDetails">
                         <img src="images/blank-person-icon-9.jpg">
                     </div>
                 </div>
             </div>
-            <!-- End of Nav -->
+            <div class="details usersDetails">
+                <div class="user-profile">
+                    <div class="logo">
+                        <img src="images/blank-person-icon-9.jpg">
+                        <h2>Admin</h2>
+                        <p>Admin</p>
+                    </div>
+                </div>
+                <div class="sidebar">
+                    <a href="#">
+                        <span class="material-icons-sharp">person_outline</span>
+                        <h3>Users</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-icons-sharp">insights</span>
+                        <h3>Analytics</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-icons-sharp">settings</span>
+                        <h3>Settings</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-icons-sharp">add</span>
+                        <h3>New Login</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-icons-sharp">logout</span>
+                        <h3>Logout</h3>
+                    </a>
+                </div>
             </div>
+            <!-- End of Nav -->
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+            const displayPic = document.querySelector('.displayPic.usersDetails');
+            const details = document.querySelector('.details');
+
+            displayPic.addEventListener('click', function () {
+                details.classList.toggle('active');
+            });
+        });
+        </script>
     </div>
     <br>
     <footer>

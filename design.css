@@ -149,6 +149,8 @@
         flex-direction: column;
         margin-top: 3.5rem;
         height: 80vh;
+        width: 100%;
+        right: 0;
         border-radius: var(--card-border-radius);
         box-shadow: var(--box-shadow);
         background-color: var(--color-white);
@@ -657,9 +659,10 @@
             display: flex;
             position: absolute;
             flex-direction: column;
-            width: 356px;
+            width: 100%;
             margin-top: -70.5rem;
             height: 100vh;
+            right: 0;
             border-radius: var(--card-border-radius);
             box-shadow: var(--box-shadow);
             background-color: var(--color-white);
@@ -694,7 +697,63 @@
             position: absolute;
             left: 60%;
         }
-
+        .right-section .user-profile{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            padding: var(--card-padding);
+            padding-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .right-section .user-profile img{
+            width: 9rem;
+            height: auto;
+            margin-left: 0;
+            margin-bottom: 0.8rem;
+            border-radius: 50%;
+        }
+        
+        .right-section .user-profile h2{
+            margin-bottom: 0.2rem;
+        }
+        .sidebar{
+            display: flex;
+            flex-direction: column;
+            border-radius: 15px;
+            height: fit-content;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+    
+        .sidebar:hover{
+            box-shadow: none;
+        }
+    
+        .sidebar a{
+            display: flex;
+            align-items: center;
+            color: var(--color-about-dark);
+            height: 3.7rem;
+            gap: 1rem;
+            position: relative;
+            margin-left: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar a span{
+            font-size: 1.6rem;
+            transition: all 0.3s ease;
+        }
+    
+        .sidebar a:hover{
+            color: var(--color-primary);
+        }
+    
+        .sidebar a:hover span{
+            margin-left: 0.6rem;
+        }
         /* .right-section .nav button{
             display: inline-block;
             background-color: transparent;
@@ -819,10 +878,12 @@
             display: flex;
             position: absolute;
             flex-direction: column;
-            width: 356px;
-            margin-top: -70.5rem;
+            width: 100%;
+            top: 0;
+            margin-top: 4.5rem;
             height: 100vh;
-            border-radius: var(--card-border-radius);
+            right: 0;
+            border-radius: inherit;
             box-shadow: var(--box-shadow);
             background-color: var(--color-white);
             opacity: 0;
@@ -870,7 +931,63 @@
             position: absolute;
             left: 1rem;
         }
-
+        .right-section .user-profile{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            padding: var(--card-padding);
+            padding-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .right-section .user-profile img{
+            width: 9rem;
+            height: auto;
+            margin-left: 0;
+            margin-bottom: 0.8rem;
+            border-radius: 50%;
+        }
+        
+        .right-section .user-profile h2{
+            margin-bottom: 0.2rem;
+        }
+        .sidebar{
+            display: flex;
+            flex-direction: column;
+            border-radius: 15px;
+            height: fit-content;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+    
+        .sidebar:hover{
+            box-shadow: none;
+        }
+    
+        .sidebar a{
+            display: flex;
+            align-items: center;
+            color: var(--color-about-dark);
+            height: 3.7rem;
+            gap: 1rem;
+            position: relative;
+            margin-left: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar a span{
+            font-size: 1.6rem;
+            transition: all 0.3s ease;
+        }
+    
+        .sidebar a:hover{
+            color: var(--color-primary);
+        }
+    
+        .sidebar a:hover span{
+            margin-left: 0.6rem;
+        }
         .twoButtons{
             width: calc(100% - 1.7rem);
             border-radius: 5px;

@@ -117,9 +117,9 @@ b{
     grid-template-columns: 12rem auto 16rem;
 }
 
-aside{
+/* aside{
     height: 100vh;
-}
+} */
 
 aside .corner{
     display: flex;
@@ -139,28 +139,58 @@ aside .corner .logo img{
     height: 3rem;
 }
 
-aside .corner .close{
-    padding-right: 1rem;
-    display: none;
-}
-
-aside .sidebar{
+.details{
     display: flex;
     flex-direction: column;
-    background-color: var(--color-white);
+    margin-top: 3.5rem;
+    height: 80vh;
+    width: 100%;
+    right: 0;
+    border-radius: var(--card-border-radius);
     box-shadow: var(--box-shadow);
-    border-radius: 15px;
-    height: 88vh;
-    position: relative;
-    top: 1.5rem;
+    background-color: var(--color-white);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.details.active {
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
+.right-section .user-profile{
+    justify-content: center;
+    text-align: center;
+    padding: var(--card-padding);
+    padding-bottom: 1rem;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-aside .sidebar:hover{
+.right-section .user-profile img{
+    width: 9rem;
+    height: auto;
+    margin-left: 2rem;
+    margin-bottom: 0.8rem;
+    border-radius: 50%;
+}
+
+.right-section .user-profile h2{
+    margin-bottom: 0.2rem;
+}
+.sidebar{
+    flex-direction: column;
+    border-radius: 15px;
+    height: fit-content;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.sidebar:hover{
     box-shadow: none;
 }
 
-aside .sidebar a{
+.sidebar a{
     display: flex;
     align-items: center;
     color: var(--color-about-dark);
@@ -170,6 +200,19 @@ aside .sidebar a{
     margin-left: 2rem;
     transition: all 0.3s ease;
 }
+
+.sidebar a span{
+    font-size: 1.6rem;
+    transition: all 0.3s ease;
+}
+
+.sidebar a:hover{
+    color: var(--color-primary);
+}
+
+.sidebar a:hover span{
+    margin-left: 0.6rem;
+}   
 .formHead{
     display: flex;
     justify-content: center;
@@ -306,10 +349,6 @@ textarea{
     gap: 2rem;
 }
 
-.right-section .nav button{
-    display: none;
-}
-
 .right-section .dark-mode{
     background-color: var(--color-light);
     display: flex;
@@ -441,20 +480,109 @@ footer{
         margin: 0 0 10px 0;
     }
 
-    aside .logo h2,
-    aside .sidebar h3{
-        display: none;
-    }
-
     aside .sidebar a{
         width: 5.6rem;
     }
-
-    aside .sidebar a:last-child{
-        position: relative;
-        margin-top: 1.8rem;
+    .details{
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        width: 100%;
+        margin-top: -70.5rem;
+        height: 100vh;
+        right: 0;
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--box-shadow);
+        background-color: var(--color-white);
+        opacity: 0;
+        transition: opacity 0.2s;
+    }
+    
+    .details.active {
+        opacity: 1;
+        transition: opacity 0.2s;
+    }
+    .right-section{
+        margin: 0 auto 4rem;
     }
 
+    .right-section .nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        align-items: center;
+        background-color: var(--color-white);
+        padding: 0 var(--padding-1);
+        height: 4.6rem;
+        width: 100%;
+        z-index: 2;
+        box-shadow: 0 1rem 1rem var(--color-light);
+        margin: 0;
+    }
+
+    .right-section .nav .dark-mode{
+        width: 4.4rem;
+        position: absolute;
+        left: 60%;
+    }
+    .right-section .user-profile{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        padding: var(--card-padding);
+        padding-bottom: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .right-section .user-profile img{
+        width: 9rem;
+        height: auto;
+        margin-left: 0;
+        margin-bottom: 0.8rem;
+        border-radius: 50%;
+    }
+    
+    .right-section .user-profile h2{
+        margin-bottom: 0.2rem;
+    }
+    .sidebar{
+        display: flex;
+        flex-direction: column;
+        border-radius: 15px;
+        height: fit-content;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar:hover{
+        box-shadow: none;
+    }
+
+    .sidebar a{
+        display: flex;
+        align-items: center;
+        color: var(--color-about-dark);
+        height: 3.7rem;
+        gap: 1rem;
+        position: relative;
+        margin-left: 2rem;
+        transition: all 0.3s ease;
+    }
+    
+    .sidebar a span{
+        font-size: 1.6rem;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar a:hover{
+        color: var(--color-primary);
+    }
+
+    .sidebar a:hover span{
+        margin-left: 0.6rem;
+    }
+}
     @media screen and (max-width: 768px) {
         .container{
             width: 100%;
@@ -507,45 +635,35 @@ footer{
 
         aside{
             position: fixed;
-            background-color: var(--color-white);
-            width: 15rem;
-            z-index: 3;
-            box-shadow: 1rem 3rem 4rem var(--color-light);
-            height: 100vh;
-            left: -100%;
-            display: none;
-            animation: showMenu 0.4s ease forwards;
-        }
-    }
-    
-        @keyframes showMenu {
-        to{
-            left: 0;
-        } 
         }
     
         aside .logo{
             margin-left: 1rem;
         }
     
-        aside .logo h2,
-        aside .sidebar h3{
-            display: inline;
-        }
-    
         aside .sidebar a{
             width: 100%;
             height: 3.4rem;
         }
-    
-        aside .sidebar a:last-child{
+        .details{
+            display: flex;
             position: absolute;
-            bottom: 5rem;
+            flex-direction: column;
+            width: 100%;
+            top: 0;
+            margin-top: 4.5rem;
+            height: 100vh;
+            right: 0;
+            border-radius: inherit;
+            box-shadow: var(--box-shadow);
+            background-color: var(--color-white);
+            opacity: 0;
+            transition: opacity 0.2s;
         }
-    
-        aside .corner .close{
-            display: inline-block;
-            cursor: pointer;
+        
+        .details.active {
+            opacity: 1;
+            transition: opacity 0.2s;
         }
         .right-section{
             width: 94%;
@@ -557,12 +675,12 @@ footer{
             top: 0;
             left: 0;
             align-items: center;
-            background-color: var(--color-white);
+            /* background-color: var(--color-white); */
             padding: 0 var(--padding-1);
             height: 4.6rem;
             width: 100%;
             z-index: 2;
-            box-shadow: 0 1rem 1rem var(--color-light);
+            /* box-shadow: 0 1rem 1rem var(--color-light); */
             margin: 0;
         }
     
@@ -587,5 +705,62 @@ footer{
     
         .right-section .nav button span{
             font-size: 2rem;
+        }
+        .right-section .user-profile{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            padding: var(--card-padding);
+            padding-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .right-section .user-profile img{
+            width: 9rem;
+            height: auto;
+            margin-left: 0;
+            margin-bottom: 0.8rem;
+            border-radius: 50%;
+        }
+        
+        .right-section .user-profile h2{
+            margin-bottom: 0.2rem;
+        }
+        .sidebar{
+            display: flex;
+            flex-direction: column;
+            border-radius: 15px;
+            height: fit-content;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+    
+        .sidebar:hover{
+            box-shadow: none;
+        }
+    
+        .sidebar a{
+            display: flex;
+            align-items: center;
+            color: var(--color-about-dark);
+            height: 3.7rem;
+            gap: 1rem;
+            position: relative;
+            margin-left: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar a span{
+            font-size: 1.6rem;
+            transition: all 0.3s ease;
+        }
+    
+        .sidebar a:hover{
+            color: var(--color-primary);
+        }
+    
+        .sidebar a:hover span{
+            margin-left: 0.6rem;
         }
     }
