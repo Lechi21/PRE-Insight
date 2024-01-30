@@ -68,7 +68,7 @@
     }
 
     h1{
-        font-weight: 500;
+        font-weight: 800;
         font-size: 1.8rem;
     }
 
@@ -140,32 +140,60 @@
     }
 
     aside .corner .logo img{
-        width: 3.5rem;
-        height: 2rem;
+        width: 8.5rem;
+        height: 3rem;
     }
 
-    aside .corner .close{
-        padding-right: 1rem;
-        display: none;
-    }
-
-    aside .sidebar{
+    .details{
         display: flex;
         flex-direction: column;
-        background-color: var(--color-white);
+        margin-top: 3.5rem;
+        height: 80vh;
+        border-radius: var(--card-border-radius);
         box-shadow: var(--box-shadow);
+        background-color: var(--color-white);
+        opacity: 0;
+        transition: opacity 0.2s;
+    }
+    
+    .details.active {
+        opacity: 1;
+        transition: opacity 0.2s;
+    }
+    
+    .right-section .user-profile{
+        justify-content: center;
+        text-align: center;
+        padding: var(--card-padding);
+        padding-bottom: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .right-section .user-profile img{
+        width: 9rem;
+        height: auto;
+        margin-left: 2rem;
+        margin-bottom: 0.8rem;
+        border-radius: 50%;
+    }
+    
+    .right-section .user-profile h2{
+        margin-bottom: 0.2rem;
+    }
+    .sidebar{
+        flex-direction: column;
         border-radius: 15px;
         height: fit-content;
         position: relative;
-        top: 1.5rem;
         transition: all 0.3s ease;
     }
 
-    aside .sidebar:hover{
+    .sidebar:hover{
         box-shadow: none;
     }
 
-    aside .sidebar a{
+    .sidebar a{
         display: flex;
         align-items: center;
         color: var(--color-about-dark);
@@ -174,6 +202,19 @@
         position: relative;
         margin-left: 2rem;
         transition: all 0.3s ease;
+    }
+    
+    .sidebar a span{
+        font-size: 1.6rem;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar a:hover{
+        color: var(--color-primary);
+    }
+
+    .sidebar a:hover span{
+        margin-left: 0.6rem;
     }
 
     /* Tab Swipe section */
@@ -353,7 +394,7 @@
     main .salesRecord .showmore{
         text-align: center;
         display: block;
-        margin: 1rem auto;
+        margin: 2rem auto;
         color: var(--color-primary);
     }
     .right-section{
@@ -408,6 +449,7 @@
         height: 2.8rem;
         border-radius: 50%;
         overflow: hidden;
+        transition: opacity 0.1s ease 0.02s;
     }
 
     main table thead tr th{
@@ -567,6 +609,7 @@
     @media screen and (max-width: 1200px) {
         .container{
             width: 95%;
+            margin: 0 auto;
             grid-template-columns: 3rem auto 23rem;
             padding: 0 var(--padding-1);
         }
@@ -574,21 +617,15 @@
         aside{
             width: 100px;
         }
+        /* aside .logo{
+            position: fixed;
+        } */
         aside .logo h2{
             display: inline;
         }
 
-        aside .sidebar h3{
-            display: none;
-        }
-
         aside .sidebar a{
             width: 5.6rem;
-        }
-
-        aside .sidebar a:last-child{
-            position: relative;
-            margin-top: 1.8rem;
         }
         main{
             margin-top: 3.6rem;
@@ -616,6 +653,24 @@
         /* main table thead tr th:last-child{
             display: none;
         } */
+        .details{
+            display: flex;
+            position: absolute;
+            flex-direction: column;
+            width: 356px;
+            margin-top: -70.5rem;
+            height: 100vh;
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--box-shadow);
+            background-color: var(--color-white);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .details.active {
+            opacity: 1;
+            transition: opacity 0.2s;
+        }
         .right-section{
             margin: 0 auto 4rem;
         }
@@ -625,7 +680,7 @@
             top: 0;
             left: 0;
             align-items: center;
-            /* background-color: var(--color-white); */
+            background-color: var(--color-white);
             padding: 0 var(--padding-1);
             height: 4.6rem;
             width: 100%;
@@ -638,10 +693,6 @@
             width: 4.4rem;
             position: absolute;
             left: 60%;
-        }
-
-        .right-section .profile .about{
-            display: none;
         }
 
         /* .right-section .nav button{
@@ -669,20 +720,13 @@
     @media screen and (max-width: 768px) {
         .container{
             width: 100%;
+            margin: 0 auto;
             grid-template-columns: 1fr;
             padding: 0 var(--padding-1);
         }
 
         aside{
             position: fixed;
-            background-color: var(--color-white);
-            width: 15rem;
-            z-index: 3;
-            box-shadow: 1rem 3rem 4rem var(--color-light);
-            height: 100vh;
-            left: -100%;
-            display: none;
-            animation: showMenu 0.4s ease forwards;
         }
         main table thead tr th {
             position: relative;
@@ -734,12 +778,6 @@
             visibility: visible;
         } */
 
-        @keyframes showMenu {
-        to{
-            left: 0;
-        } 
-        }
-
         aside .logo{
             margin-left: 1rem;
         }
@@ -762,11 +800,6 @@
             bottom: 5rem;
         }
 
-        aside .corner .close{
-            display: inline-block;
-            cursor: pointer;
-        }
-
         main{
             margin-top: 5rem;
             padding: 0 1rem;
@@ -782,7 +815,24 @@
             width: 100%;
             margin: 10px 0 0 0;
         }
+        .details{
+            display: flex;
+            position: absolute;
+            flex-direction: column;
+            width: 356px;
+            margin-top: -70.5rem;
+            height: 100vh;
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--box-shadow);
+            background-color: var(--color-white);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
         
+        .details.active {
+            opacity: 1;
+            transition: opacity 0.2s;
+        }
         .right-section{
             width: 94%;
             margin: 0 auto 4rem;
@@ -821,9 +871,6 @@
             left: 1rem;
         }
 
-        .right-section .nav button span{
-            font-size: 2rem;
-        }
         .twoButtons{
             width: calc(100% - 1.7rem);
             border-radius: 5px;

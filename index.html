@@ -18,15 +18,10 @@
             <div class="corner">
                 <a onclick="goHome(); return false">
                     <div class="logo">
-                        <img src="images/Lechi Logo.png">
-                        <h2>Pre<b><span class="blueColor">Insight</span></b></h2>
+                        <img src="images/Artboard 1 copy 2@3x (1).png">
+                        <h2>In<b><span class="blueColor">sanjo</span></b></h2>
                     </div>
                 </a>
-                <!-------Hamburger Closing------------>
-                <div class="close" id="close-btn">
-                    <span class="material-icons-sharp">close</span>
-                </div>
-                <!---Hamburger Ends----->
             </div>
         <script>
             function goHome(){
@@ -99,7 +94,7 @@
                 var isBalanceHidden = localStorage.getItem('isBalanceHidden') === 'true';
 
                 var balanceText = isBalanceHidden ? hiddenBalance : originalBalance;
-                var iconText = isBalanceHidden ? " Show Balance" : " Hide Balance";
+                var iconText = isBalanceHidden ? " Show Record" : " Hide Record";
 
                 var balanceElements = document.getElementsByClassName("balance");
                 var iconElements = document.getElementsByClassName("bx");
@@ -113,10 +108,10 @@
                     for (var i = 0; i < balanceElements.length; i++) {
                         if (isBalanceHidden) {
                             balanceElements[i].textContent = currencySymbol + originalBalance;
-                            iconElements[i].textContent = " Hide Balance";
+                            iconElements[i].textContent = " Hide Record";
                         } else {
                             balanceElements[i].textContent = currencySymbol + hiddenBalance;
-                            iconElements[i].textContent = " Show Balance";
+                            iconElements[i].textContent = " Show Record";
                         }
                     }
                     isBalanceHidden = !isBalanceHidden;
@@ -173,16 +168,28 @@
             <!-- Predictive Table -->
             <div style="cursor: pointer;" class="salesRecord tabcontent hidden" id="Tab1">
                 <h2>Predictive Analyses</h2>
+                <br>
+                
                 <p>Select Sales range and Click on the button below to Predict records!!!</p>
                 <br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
-                <a onclick="showMore();" class="showmore" style="cursor: pointer;" >Show All</a>
+                <div class="form2" style="display: block; background-color: var(--color-white);
+                box-shadow: var(--box-shadow);
+                border-radius: var(--card-border-radius);">
+                    <div style="display: block;">
+                        <p style="margin-left: 20px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
+                        <p style="margin-left: 20px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
+                        <p style="margin-left: 20px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
+                        <p style="margin-left: 20px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
+                        <p style="margin-left: 20px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
+                        
+                    </div>
+                </div>
+                <a onclick="showMore();" class="showmore"style="cursor: pointer;">Show All</a>
             </div>
+
             <!-- End of Predictive Table -->
             <!-- Download Sales Record -->
-            <div style="cursor: pointer; height: 50vh;" class="salesRecord tabcontent hidden" id="Tab3">
+            <div style="cursor: pointer; margin-bottom: 4rem;" class="salesRecord tabcontent hidden" id="Tab3">
                 <h2>Download Records</h2>
                 <p>Select range and Click on the button below to download records!!!</p>
                 <br>
@@ -211,11 +218,6 @@
         <!-- Right Section -->
         <div class="right-section">
             <div class="nav">
-                <!-------Hamburger Opening------------>
-                <button id="menu-btn">
-                    <span class="material-icons-sharp">menu</span>
-                </button>
-                <!------Hamburger Ends------>
                 <div class="dark-mode">
                     <span class="material-icons-sharp active">light_mode</span>
                     <span class="material-icons-sharp">dark_mode</span>
@@ -226,15 +228,57 @@
                         <p>Hey, <b>Lechi</b></p>
                         <small class="admin">Admin</small>
                     </div>
-                    <div class="displayPic">
+                    <div class="displayPic usersDetails">
                         <img src="images/blank-person-icon-9.jpg">
                     </div>
                 </div>
             </div>
-            <!-- End of Nav -->
+            <div class="details usersDetails">
+                <div class="user-profile">
+                    <div class="logo">
+                        <img src="images/blank-person-icon-9.jpg">
+                        <h2>Admin</h2>
+                        <p>Admin</p>
+                    </div>
+                </div>
+                <div class="sidebar">
+                    <a href="#">
+                        <span class="material-icons-sharp">person_outline</span>
+                        <h3>Users</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-icons-sharp">insights</span>
+                        <h3>Analytics</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-icons-sharp">settings</span>
+                        <h3>Settings</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-icons-sharp">add</span>
+                        <h3>New Login</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-icons-sharp">logout</span>
+                        <h3>Logout</h3>
+                    </a>
+                </div>
             </div>
+            <!-- End of Nav -->
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+            const displayPic = document.querySelector('.displayPic.usersDetails');
+            const details = document.querySelector('.details');
+
+            displayPic.addEventListener('click', function () {
+                details.classList.toggle('active');
+            });
+        });
+        </script>
     </div>
+
+    </script>
     <div class="footer">
         <div class="foot">
             <nav class="footer-nav"> © 2024 Copyright: Lechi-Tech</a></nav>
