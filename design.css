@@ -661,7 +661,7 @@
             flex-direction: column;
             width: 100%;
             margin-top: -70.5rem;
-            height: 80vh;
+            height: 100vh;
             right: 0;
             border-radius: var(--card-border-radius);
             box-shadow: var(--box-shadow);
@@ -837,8 +837,15 @@
             visibility: visible;
         } */
 
-        aside .logo{
-            margin-left: 1rem;
+        aside .corner .logo {
+            display: block;
+            text-align: center; 
+            margin-bottom: 1rem;
+        }
+    
+        aside .corner .logo img {
+            width: auto;
+            height: auto;
         }
 
         aside .logo h2{
@@ -881,7 +888,7 @@
             width: 100%;
             top: 0;
             margin-top: 4.5rem;
-            height:70vh;
+            height:80vh;
             right: 0;
             border-radius: inherit;
             box-shadow: var(--box-shadow);
