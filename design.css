@@ -3,6 +3,7 @@
     :root{
         --color-primary: #6C9BCF;
         --color-blue: #295be4;
+        --color-blues: #295be4;
         --color-success: #1B9C85;
         --color-warning: #F7D060;
         --color-white: #fff;
@@ -25,6 +26,7 @@
     .dark-mode-variables{
         --color-background: #181a1e;
         --background-color: #2d2d2d;
+        --color-blues: #6C9BCF;
         --text-color: #fff;
         --link-color: #4a90e2;
         --color-white: #202528;
@@ -48,7 +50,6 @@
 
     body{
         width: 100vw;
-        /* height: 100vh; */
         font-family: 'Poppins', sans-serif;
         font-size: 0.88rem;
         user-select: none;
@@ -58,15 +59,15 @@
     }
 
     a{
-        color: var(--link-color);
-    }
+        color: var(--color-dark);
+    }    
 
     img{
         display: block;
         width: 100%;
         object-fit: cover;
     }
-
+    
     h1{
         font-weight: 800;
         font-size: 1.8rem;
@@ -81,10 +82,6 @@
         font-weight: 500;
         font-size: 0.87rem;
     }
-    /*
-    small{
-        font-size: 0.76rem;
-    } */
 
     p{
         color: var(--color-dark-variant);
@@ -102,8 +99,8 @@
         color: var(--color-primary);
     }
 
-    .blueColor{
-        color: var(--color-blue);
+    .color2{
+        color: var(--color-blues);
     }
 
     .success{
@@ -119,7 +116,7 @@
         width: 98%;
         margin: 0 12px;
         gap: 0.5rem;
-        grid-template-columns: 12rem auto 16rem;
+        grid-template-columns: 10rem auto 18rem;
     }
 
     /* aside{
@@ -135,25 +132,30 @@
 
     aside .corner .logo{
         display: flex;
-        gap: 0.5rem;
+        position: relative;
         cursor: pointer;
+        align-items: center;
     }
 
     aside .corner .logo img{
-        width: 8.5rem;
+        flex: 1;
+        width: 3.5rem;
         height: 3rem;
+        object-fit: contain;
+        margin-right: -11px;
     }
 
     .details{
         display: flex;
         flex-direction: column;
         margin-top: 3.5rem;
-        height: 80vh;
+        height: auto;
         width: 100%;
         right: 0;
         border-radius: var(--card-border-radius);
         box-shadow: var(--box-shadow);
         background-color: var(--color-white);
+        border: 5px solid var(--color-success);
         opacity: 0;
         transition: opacity 0.2s;
     }
@@ -175,7 +177,7 @@
     .right-section .user-profile img{
         width: 9rem;
         height: auto;
-        margin-left: 2rem;
+        margin-left: 2.3rem;
         margin-bottom: 0.8rem;
         border-radius: 50%;
     }
@@ -198,7 +200,7 @@
     .sidebar a{
         display: flex;
         align-items: center;
-        color: var(--color-about-dark);
+        color: var(--color-dark);
         height: 3.7rem;
         gap: 1rem;
         position: relative;
@@ -212,11 +214,10 @@
     }
 
     .sidebar a:hover{
-        color: var(--color-primary);
+        color: var(--color-success);
     }
-
-    .sidebar a:hover span{
-        margin-left: 0.6rem;
+    .sidebar:last-child {
+        margin-bottom: 20px;
     }
 
     /* Tab Swipe section */
@@ -407,6 +408,10 @@
         display: flex;
         justify-content: end;
         gap: 2rem;
+        align-items: center;
+    }
+    .right-section .right-corner{
+        display: none;
     }
 
     .right-section .nav button{
@@ -444,6 +449,7 @@
         gap: 2rem;
         text-align: right;
         cursor: pointer;
+        align-items: center;
     }
 
     .right-section .nav .profile .displayPic{
@@ -580,7 +586,6 @@
 
     /* footer */
     .footer{
-        /* position: fixed; */
         margin-top: auto;
         bottom: 0;
         background-color: var(--color-background);
@@ -607,6 +612,38 @@
         max-width: 100%;
     }
 
+    /* SETTINGS SECTION STARTS HERE*/
+    .settings2{
+        display: block;
+        margin: 5px auto;
+        padding: var(--card-padding);
+        background-color: var(--color-about-dark);
+        box-shadow: var(--box-shadow);
+        border-radius: var(--card-border-radius);
+    }
+    hr{
+        border: 1px solid var(--color-about-dark);
+    }
+    .settings2 .user-profile{
+        justify-content: center;
+        text-align: center;
+        padding: var(--card-padding);
+        padding-bottom: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .settings2 .user-profile img{
+        width: 9rem;
+        height: auto;
+        margin-left: 2.3rem;
+        margin-bottom: 0.8rem;
+        border-radius: 50%;
+    }
+    
+    .settings2 .user-profile h2{
+        margin-bottom: 0.2rem;
+    }
 
     @media screen and (max-width: 1200px) {
         .container{
@@ -616,18 +653,8 @@
             padding: 0 var(--padding-1);
         }
 
-        aside{
-            width: 100px;
-        }
-        /* aside .logo{
-            position: fixed;
-        } */
-        aside .logo h2{
-            display: inline;
-        }
-
-        aside .sidebar a{
-            width: 5.6rem;
+        aside .corner{
+            display: none;
         }
         main{
             margin-top: 3.6rem;
@@ -656,23 +683,22 @@
             display: none;
         } */
         .details{
-            display: flex;
-            position: absolute;
-            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            margin-top: -70.5rem;
-            height: 100vh;
-            right: 0;
+            display: none;
+            height: auto;
+            margin-top: 4.5rem;
             border-radius: var(--card-border-radius);
             box-shadow: var(--box-shadow);
             background-color: var(--color-white);
+            border: 5px solid var(--color-success);
             opacity: 0;
             transition: opacity 0.2s;
         }
-        
         .details.active {
-            opacity: 1;
-            transition: opacity 0.2s;
+            display: block;
         }
         .right-section{
             margin: 0 auto 4rem;
@@ -690,6 +716,26 @@
             z-index: 2;
             box-shadow: 0 1rem 1rem var(--color-light);
             margin: 0;
+        }
+        .right-section .nav .right-corner{
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+        }
+        .right-section .nav .logo{
+            position: fixed;
+            left: 0;
+            top: 0;
+            margin-top: 0.8rem;
+            margin-left: 0.3rem;
+            display: flex;
+            width: 3.5rem;
+            height: 3rem;
+        }
+        .right-section .nav .logo h2{
+            display: inline;
+            margin-left: -11px;
+            margin-top: 7px;
         }
 
         .right-section .nav .dark-mode{
@@ -748,24 +794,11 @@
         }
     
         .sidebar a:hover{
-            color: var(--color-primary);
+            color: var(--color-success);
         }
-    
-        .sidebar a:hover span{
-            margin-left: 0.6rem;
+        .sidebar:last-child{
+            margin-bottom: 30px;
         }
-        /* .right-section .nav button{
-            display: inline-block;
-            background-color: transparent;
-            cursor: pointer;
-            color: var(--color-dark);
-            position: absolute;
-            left: 1rem;
-        }
-
-        .right-section .nav button span{
-            font-size: 2rem;
-        } */
 
         .twoButtons{
             width: calc(100% - 1.7rem);
@@ -784,9 +817,26 @@
             padding: 0 var(--padding-1);
         }
 
-        aside{
-            position: fixed;
+        aside .corner{
+            display: none;
         }
+
+        main{
+            margin-top: 5rem;
+            padding: 0 1rem;
+        }
+
+        main .salesRecord{
+            position: relative;
+            margin: 1rem 0 0 0;
+            width: 100%;
+        }
+
+        #Tab2,#Tab3, #Tab1{
+            width: 100%;
+            margin: 10px 0 0 0;
+        }
+
         main table thead tr th {
             position: relative;
             max-width: 70px;
@@ -837,70 +887,23 @@
             visibility: visible;
         } */
 
-        aside .corner .logo {
-            display: block;
-            text-align: center; 
-            margin-bottom: 1rem;
-        }
-    
-        aside .corner .logo img {
-            width: auto;
-            height: auto;
-        }
-
-        aside .logo h2{
-            display: inline;
-        }
-
-        aside .sidebar h3{
-            display: inline;
-        }
-
-        aside .sidebar a{
-            width: 100%;
-            height: 3.4rem;
-        }
-
-        aside .sidebar a:last-child{
-            position: absolute;
-            bottom: 5rem;
-        }
-
-        main{
-            margin-top: 5rem;
-            padding: 0 1rem;
-        }
-
-        main .salesRecord{
-            position: relative;
-            margin: 1rem 0 0 0;
-            width: 100%;
-        }
-
-        #Tab2,#Tab3, #Tab1{
-            width: 100%;
-            margin: 10px 0 0 0;
-        }
         .details{
-            display: flex;
             position: absolute;
-            flex-direction: column;
             width: 100%;
             top: 0;
+            height: auto;
             margin-top: 4.5rem;
-            height:80vh;
-            right: 0;
-            border-radius: inherit;
+            border-radius: var(--card-border-radius);
             box-shadow: var(--box-shadow);
             background-color: var(--color-white);
+            border: 5px solid var(--color-success);
             opacity: 0;
             transition: opacity 0.2s;
         }
-        
         .details.active {
-            opacity: 1;
-            transition: opacity 0.2s;
+            display: block;
         }
+
         .right-section{
             width: 94%;
             margin: 0 auto 4rem;
@@ -951,7 +954,7 @@
         .right-section .user-profile img{
             width: 9rem;
             height: auto;
-            margin-left: 0;
+            margin-left: 9px;
             margin-bottom: 0.8rem;
             border-radius: 50%;
         }
@@ -989,12 +992,12 @@
         }
     
         .sidebar a:hover{
-            color: var(--color-primary);
+            color: var(--color-success);
+        }
+        .sidebar:last-child{
+            margin-bottom: 30px;
         }
     
-        .sidebar a:hover span{
-            margin-left: 0.6rem;
-        }
         .twoButtons{
             width: calc(100% - 1.7rem);
             border-radius: 5px;
