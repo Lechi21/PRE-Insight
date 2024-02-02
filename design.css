@@ -616,23 +616,31 @@
     .settings2{
         display: block;
         margin: 5px auto;
-        padding: var(--card-padding);
+        padding: 0.9rem 1.8rem 1.8rem 1.8rem;
         background-color: var(--color-about-dark);
         box-shadow: var(--box-shadow);
-        border-radius: var(--card-border-radius);
+        border-radius: 1rem;
     }
-    hr{
-        border: 1px solid var(--color-about-dark);
+    .settings2 hr{
+        border: 1px solid var(--color-dark);
+    }
+    .proHead{
+        margin-top: 5px;
     }
     .settings2 .user-profile{
         justify-content: center;
         text-align: center;
         padding: var(--card-padding);
+        margin-top: 20px;
         padding-bottom: 1rem;
         cursor: pointer;
         transition: all 0.3s ease;
     }
-    
+    .twoIcon{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom:0.5rem;
+    }
     .settings2 .user-profile img{
         width: 9rem;
         height: auto;
@@ -643,6 +651,45 @@
     
     .settings2 .user-profile h2{
         margin-bottom: 0.2rem;
+    }
+    .profile-input{
+        position: relative;
+        width: 60%;
+    }
+    
+    .profile-input_label{
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(10px, 10px);
+        transition: transform .25s;
+    }
+    
+    .input:focus+.profile-input_label,
+    .input:valid+.profile-input_label{
+        transform: translate(5px, -11px) scale(.9);
+        padding-inline: 5px;
+        color: var(--color-success);
+        background-color: #fff;
+    }
+    .input:is(:focus){
+        outline-color: var(--color-success);
+    }
+    .input:is(:valid){
+        outline-color: var(--color-dark);
+    }
+    input::placeholder{
+        opacity: 0;
+    }
+    input:focus::placeholder{
+        opacity: 1;
+        color: var(--text-color);
+    }
+    .upProfile{
+        padding: 1rem;
+        background-color: var(--color-blue);
+        color: var(--color-background);
+        border-radius: 1rem;
     }
 
     @media screen and (max-width: 1200px) {

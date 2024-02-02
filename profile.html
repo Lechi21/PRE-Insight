@@ -34,57 +34,107 @@
             <h1>Manage Account</h1>
             <br><br>
             <div class="settings">
-                <h2>Profile</h2>
-                <hr>
                 <div class="settings2">
-                    <div class="twoIcon" style="display: flex;  justify-content: space-between;">
-                        <div class="user-profile" style="margin-left: 1rem; padding: 0;">
-                            <div class="logo">
-                                <img src="images/blank-person-icon-9.jpg" style="margin-left: 0;">
-                            </div>
+                    <div class="twoIcon">
+                        <div>
+                            <h2 class="proHead">Profile</h2>    
                         </div>
                         <div class="edit">
                             <span class="material-icons-sharp" style="border: 2px solid var(--text-color); border-radius: 50%; padding: 0.3rem; cursor: pointer;">edit</span>
                         </div>
                     </div>
-                    <div class="additional">
-                        <input type="text" name="name" placeholder="Enter Your name:" id="">
+                    <hr>
+                    <div class="user-profile" style="margin-left: 0; padding: 0;">
+                        <div class="logo">
+                            <img src="images/blank-person-icon-9.jpg" style="margin-left: 0;">
+                        </div>
                     </div>
-                    <div class="additional">
-                        <input type="text" name="businessPosition" placeholder="Enter Your Position" id="">
+                    <br>
+                    <div class="profile-input">
+                        <input type="text" id="username" name="username" class="input" required placeholder="Enter your username">
+                        <label for="username" class="profile-input_label">Username:</label>
                     </div>
+                    <br>
+                    <div class="profile-input">
+                        <input type="text" id="job_title" name="job_title" class="input" required placeholder="Enter your Job Title">
+                        <label for="job_title" class="profile-input_label">Job Title:</label>
+                    </div>
+                    <br><br>
                     <div class="update">
-                        <button class="upProfile">Update Profile</button>
+                        <button class="upProfile">Save Changes</button>
                     </div>
                 </div>
             </div>
             <div class="settings">
-                <h2>Analytics</h2>
-                <hr>
                 <div class="settings2">
-                    <div class="user-profile">
-                        <div class="logo">
-                            <img src="images/blank-person-icon-9.jpg">
+                    <div class="twoIcon">
+                        <div>
+                            <h2 class="proHead">Business Profile</h2>    
+                        </div>
+                        <div class="edit">
+                            <span class="material-icons-sharp" style="border: 2px solid var(--text-color); border-radius: 50%; padding: 0.3rem; cursor: pointer;">edit</span>
                         </div>
                     </div>
+                    <hr>
+                    <br>
+                    <div class="profile-input">
+                        <input type="text" id="businessName" name="businessName" class="input" required placeholder="Enter your Businessname">
+                        <label for="businessName" class="profile-input_label">Business Name:</label>
+                    </div>
+                    <br>
+                    <div class="profile-input">
+                        <input type="text" id="business_address" name="business_address" class="input" required placeholder="Enter your Job Title">
+                        <label for="business_address" class="profile-input_label">Business Address:</label>
+                    </div>
+                    <br>
+                    <div class="profile-input">
+                        <input type="text" id="email" name="email" class="input" required placeholder="Enter your Email">
+                        <label for="email" class="profile-input_label">Email:</label>
+                    </div>
+                    <br>
+                    <div class="profile-input">
+                        <input type="text" id="phone" name="businessName" class="input" required placeholder="Phone Number">
+                        <label for="phone" class="profile-input_label">Phone:</label>
+                    </div>
+                    <br><br>
                     <div class="update">
-                        <button class="upProfile">Update Profile</button>
+                        <button class="upProfile">Save Changes</button>
                     </div>
                 </div>
             </div>
             <div class="settings">
-                <h2>Settings</h2>
-                <hr>
                 <div class="settings2">
-                    <div class="user-profile">
-                        <div class="logo">
-                            <img src="images/blank-person-icon-9.jpg">
-                            <h2>Administrator</h2>
-                            <p>Admin</p>
+                    <div class="twoIcon">
+                        <div>
+                            <h2 class="proHead">Account</h2>    
+                        </div>
+                        <div class="edit">
+                            <span class="material-icons-sharp" style="border: 2px solid var(--text-color); border-radius: 50%; padding: 0.3rem; cursor: pointer;">edit</span>
                         </div>
                     </div>
+                        <hr>
+                        <br>
+                        <br><br>
                     <div class="update">
-                        <button class="upProfile">Update Profile</button>
+                        <button class="upProfile">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+            <div class="settings">
+                <div class="settings2">
+                    <div class="twoIcon">
+                        <div>
+                            <h2 class="proHead">Notifications</h2>    
+                        </div>
+                        <div class="edit">
+                            <span class="material-icons-sharp" style="border: 2px solid var(--text-color); border-radius: 50%; padding: 0.3rem; cursor: pointer;">edit</span>
+                        </div>
+                    </div>
+                        <hr>
+                        <br>
+                        <br><br>
+                    <div class="update">
+                        <button class="upProfile">Save Changes</button>
                     </div>
                 </div>
             </div>
