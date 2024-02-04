@@ -1077,4 +1077,23 @@
             justify-content: center;
             margin: 0 0 10px 0;
         }
+
+        /* SETTINGS SECTION STARTS HERE*/
+        .settings2 .user-profile{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            padding: var(--card-padding);
+            margin-top: 20px;
+            padding-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .profile-input{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            width: 100%;
+        }
     }

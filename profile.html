@@ -57,7 +57,7 @@
                                 <input class="input" type="text" id="item1" value="" readonly>
                             </div>
                             <div class="small-input" style="width: 10%;">
-                                <span class="material-icons-sharp" style="border: 2px solid var(--text-color); border-radius: 50%; padding: 0.3rem; cursor: pointer;" onclick="toggleEdit('item1')">edit</span>
+                                <span class="material-icons-sharp" style="padding: 0.3rem; cursor: pointer;" onclick="toggleEdit('item1')">edit</span>
                         </div>
                         </div>
                         <br>
@@ -69,7 +69,7 @@
                                 <input class="input" type="text" id="item2" value="" readonly>
                             </div>
                             <div class="small-input" style="width: 10%;">
-                                    <span class="material-icons-sharp" style="border: 2px solid var(--text-color); border-radius: 50%; padding: 0.3rem; cursor: pointer;" onclick="toggleEdit('item2')">edit</span>
+                                    <span class="material-icons-sharp" style="padding: 0.3rem; cursor: pointer;" onclick="toggleEdit('item2')">edit</span>
                             </div>
                         </div>
                         <script>
@@ -108,7 +108,7 @@
                         </div>
                         <br>
                         <div class="profile-input">
-                            <input type="" id="phone" name="businessName" class="input" required placeholder="Phone Number">
+                            <input type="number" id="phone" name="businessName" class="input" required placeholder="0800 000 0000">
                             <label for="phone" class="profile-input_label">Phone:</label>
                         </div>
                         <br><br>
@@ -128,6 +128,13 @@
                         </div>
                             <hr>
                             <br>
+                            <div class="profile-input">
+                                <span>Timezone</span>
+                            </div>
+                            <br>
+                            <div class="profile-input">
+                                <span>Currency</span>
+                            </div>
                             <br><br>
                         <div class="update">
                             <button class="upProfile">Save Changes</button>
@@ -145,6 +152,17 @@
                         </div>
                             <hr>
                             <br>
+                            <div class="profile-input">
+                                <span>Timezone</span>
+                                <div class="dark-mode">
+                                    <span class="material-icons-sharp active">toggle_on</span>
+                                    <span class="material-icons-sharp">toggle_off</span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="profile-input">
+                                <span>Currency</span>
+                            </div>
                             <br><br>
                         <div class="update">
                             <button class="upProfile">Save Changes</button>
