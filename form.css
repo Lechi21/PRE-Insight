@@ -172,17 +172,56 @@ aside .corner .logo img{
     transition: all 0.3s ease;
 }
 
-.right-section .user-profile img{
-    width: 9rem;
-    height: auto;
-    margin-left: 2rem;
-    margin-bottom: 0.8rem;
+.profile_image{
+    display: flex;
+    height: 170px;
+    width: 170px;
+    position: relative;
+    border: 5px solid #fff;
     border-radius: 50%;
+    background: url(images/blank-person-icon-9.jpg);
+    margin-left: 10px;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+.image_file{
+    position: absolute;
+    bottom: 0;
+    outline: none;
+    color: transparent;
+    width: 100%;
+    padding: 20px 120px;
+    box-sizing: border-box;
+    cursor: pointer;
+    left: -63px;
+    transform: 0.5s;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+}
+.image_file::-webkit-file-upload-button{
+    visibility: hidden;
+}
+.image_file::before{
+    content: '\f030';
+    font-family: fontAwesome;
+    font-size: 30px;
+    margin-left: 8px;
+    color: #fff;
+    display: inline-block;
+    -webkit-user-select: none;
+}
+.image_file::after{
+    content: 'update';
+    margin-left: 5px;
+    color: #fff;
+    top: 47px;
+    position: absolute;
+    display: block;
+}
+.image_file:hover{
+    opacity: 1;
 }
 
-.right-section .user-profile h2{
-    margin-bottom: 0.2rem;
-}
 .sidebar{
     flex-direction: column;
     border-radius: 15px;
@@ -561,21 +600,12 @@ footer{
         text-align: center;
         padding: var(--card-padding);
         padding-bottom: 1rem;
+        flex-direction: column;
+        align-items: center;
         cursor: pointer;
         transition: all 0.3s ease;
     }
-    
-    .right-section .user-profile img{
-        width: 9rem;
-        height: auto;
-        margin-left: 0;
-        margin-bottom: 0.8rem;
-        border-radius: 50%;
-    }
-    
-    .right-section .user-profile h2{
-        margin-bottom: 0.2rem;
-    }
+
     .sidebar{
         display: flex;
         flex-direction: column;
@@ -727,21 +757,12 @@ footer{
             text-align: center;
             padding: var(--card-padding);
             padding-bottom: 1rem;
+            flex-direction: column;
+            align-items: center;
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
-        .right-section .user-profile img{
-            width: 9rem;
-            height: auto;
-            margin-left: 8px;
-            margin-bottom: 0.8rem;
-            border-radius: 50%;
-        }
-        
-        .right-section .user-profile h2{
-            margin-bottom: 0.2rem;
-        }
+
         .sidebar{
             display: flex;
             flex-direction: column;
