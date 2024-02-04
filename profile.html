@@ -41,9 +41,6 @@
                             <div>
                                 <h2 class="proHead">Profile</h2>    
                             </div>
-                            <div class="edit">
-                                <span class="material-icons-sharp" style="border: 2px solid var(--text-color); border-radius: 50%; padding: 0.3rem; cursor: pointer;">edit</span>
-                            </div>
                         </div>
                         <hr>
                         <div class="user-profile" style="margin-left: 0; padding: 0;">
@@ -51,20 +48,37 @@
                                 <input type="file" class="image_file">
                             </div>
                         </div>
-                        <br>
-                        <div class="profile-input">
-                            <input type="text" id="username" name="username" class="input" required placeholder="Enter your username">
-                            <label for="username" class="profile-input_label">Username:</label>
-                        </div>
-                        <br>
-                        <div class="profile-input">
-                            <input type="text" id="job_title" name="job_title" class="input" required placeholder="Enter your Job Title">
-                            <label for="job_title" class="profile-input_label">Job Title:</label>
-                        </div>
                         <br><br>
-                        <div class="update">
-                            <button class="upProfile">Save Changes</button>
+                        <div class="profile-input">
+                            <div class="small-input" style="width: 30%;">
+                                <span>Username: </span>
+                            </div>
+                            <div class="small-input" style="width: 60%;">
+                                <input class="input" type="text" id="item1" value="" readonly>
+                            </div>
+                            <div class="small-input" style="width: 10%;">
+                                <span class="material-icons-sharp" style="border: 2px solid var(--text-color); border-radius: 50%; padding: 0.3rem; cursor: pointer;" onclick="toggleEdit('item1')">edit</span>
                         </div>
+                        </div>
+                        <br>
+                        <div class="profile-input">
+                            <div class="small-input" style="width: 30%;">
+                                <span>Job Description: </span>
+                            </div>
+                            <div class="small-input" style="width: 60%;">
+                                <input class="input" type="text" id="item2" value="" readonly>
+                            </div>
+                            <div class="small-input" style="width: 10%;">
+                                    <span class="material-icons-sharp" style="border: 2px solid var(--text-color); border-radius: 50%; padding: 0.3rem; cursor: pointer;" onclick="toggleEdit('item2')">edit</span>
+                            </div>
+                        </div>
+                        <script>
+                            function toggleEdit(elementId){
+                                const inputElement = document.getElementById(elementId);
+                                inputElement.readOnly = !inputElement.readOnly;
+                            }
+                        </script>
+                        <br><br>
                     </form>
                 </div>
             </div>
@@ -74,9 +88,6 @@
                         <div class="twoIcon">
                             <div>
                                 <h2 class="proHead">Business Profile</h2>    
-                            </div>
-                            <div class="edit">
-                                <span class="material-icons-sharp" style="border: 2px solid var(--text-color); border-radius: 50%; padding: 0.3rem; cursor: pointer;">edit</span>
                             </div>
                         </div>
                         <hr>
@@ -92,12 +103,12 @@
                         </div>
                         <br>
                         <div class="profile-input">
-                            <input type="text" id="email" name="email" class="input" required placeholder="Enter your Email">
+                            <input type="email" id="email" name="email" class="input" required placeholder="Enter your Email">
                             <label for="email" class="profile-input_label">Email:</label>
                         </div>
                         <br>
                         <div class="profile-input">
-                            <input type="text" id="phone" name="businessName" class="input" required placeholder="Phone Number">
+                            <input type="" id="phone" name="businessName" class="input" required placeholder="Phone Number">
                             <label for="phone" class="profile-input_label">Phone:</label>
                         </div>
                         <br><br>
@@ -113,9 +124,6 @@
                         <div class="twoIcon">
                             <div>
                                 <h2 class="proHead">Account</h2>    
-                            </div>
-                            <div class="edit">
-                                <span class="material-icons-sharp" style="border: 2px solid var(--text-color); border-radius: 50%; padding: 0.3rem; cursor: pointer;">edit</span>
                             </div>
                         </div>
                             <hr>
@@ -133,9 +141,6 @@
                         <div class="twoIcon">
                             <div>
                                 <h2 class="proHead">Notifications</h2>    
-                            </div>
-                            <div class="edit">
-                                <span class="material-icons-sharp" style="border: 2px solid var(--text-color); border-radius: 50%; padding: 0.3rem; cursor: pointer;">edit</span>
                             </div>
                         </div>
                             <hr>

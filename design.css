@@ -681,8 +681,11 @@
     }
     
     .profile-input{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         position: relative;
-        width: 60%;
+        width: 100%;
     }
     
     .profile-input_label{
