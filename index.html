@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
     <link rel="stylesheet" href="design.css">
+    <link rel="icon" href="images/favicon.png" type="image/png">
     <title>Insanjo</title>
 </head>
 <body>
     <div class="container">
         <!-- Sidebar Section -->
-        <aside>
+        <div class="left-side">
             <div class="corner">
                 <a onclick="goHome(); return false">
                     <div class="logo">
@@ -27,9 +28,9 @@
                 window.location.href = "index.html";
             }
         </script>
-        </aside>
+        </div>
 
-        <main>
+        <div class="center">
             <br><br>
             <h1>Sales Charts</h1>
             <!-- Analyses -->
@@ -87,7 +88,7 @@
                 </div>
             </div>
             <script>
-                var currencySymbol = "$"; // You can change this to your desired currency symbol
+                var currencySymbol = "$";
                 var originalBalance = "00,000";
                 var hiddenBalance = "*****";
                 var isBalanceHidden = localStorage.getItem('isBalanceHidden') === 'true';
@@ -214,10 +215,10 @@
             </div>
             <!-- End of Download Sales Record -->
             </div>
-        </main>
+        </div>
 
         <!-- Right Section -->
-        <div class="right-section">
+        <div class="right-side">
             <div class="nav">
                 <div class="right-corner">
                     <a onclick="goHome(); return false">
@@ -246,7 +247,7 @@
             <div class="details usersDetails">
                 <div class="user-profile">
                     <div class="profile_image" style="margin-left: 10px;">
-                        <input type="file" class="image_file">
+                        <input type="file" class="image_file" id="uploadInput" onchange="updateImage()">
                     </div>
                     <div class="profile_names" style="margin-top: 10px;">
                         <h2>Administrator</h2>
@@ -263,7 +264,7 @@
                         <span class="material-icons-sharp">business</span>
                         <h3>Business Profile</h3>
                     </a>
-                    <a href="#" onclick="openProfile(); return false">
+                    <a href="#account" onclick="openProfile();">
                         <span class="material-icons-sharp">manage_accounts</span>
                         <h3>Account</h3>
                     </a>
@@ -282,6 +283,22 @@
                         function goHome(){
                             window.location.href = "index.html";
                         }
+
+                        // JAVASCRIPT FOR PROFILE PHOTO
+                        function updateImage() {
+                                var input = document.getElementById('uploadInput');
+                                var profileImage = document.querySelector('.profile_image');
+
+                                if (input.files && input.files[0]) {
+                                    var reader = new FileReader();
+
+                                    reader.onload = function (e) {
+                                        profileImage.style.backgroundImage = 'url(' + e.target.result + ')';
+                                    };
+
+                                    reader.readAsDataURL(input.files[0]);
+                                }
+                            }
                     </script>
                 </div>
             </div>
@@ -311,7 +328,7 @@
     <script>
         "use strict";
 
-        const sideMenu = document.querySelector('aside');
+        const sideMenu = document.querySelector('left-side');
         const menuBtn = document.getElementById('menu-btn');
         menuBtn.addEventListener('click', () => {
             sideMenu.style.display = 'block';
@@ -324,6 +341,7 @@
     <script src="script.js"></script>
     <script src="slide.js"></script>
     <script src="dlMood.js"></script>
+    <script src="currency.js"></script>
     </div>
     <div class="footer">
         <div class="foot">
