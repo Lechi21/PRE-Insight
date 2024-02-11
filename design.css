@@ -116,7 +116,7 @@
         width: 98%;
         margin: 0 12px;
         gap: 0.5rem;
-        grid-template-columns: 10rem auto 18rem;
+        grid-template-columns: 10rem auto 20rem;
     }
 
     /* .left-side{
@@ -433,6 +433,13 @@
         color: white;
         border-radius: var(--border-radius-1);
     }
+    .right-side .inventory{
+        color: var(--color-blues);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+    }
 
     .right-side .nav .profile{
         display: flex;
@@ -608,7 +615,7 @@
         width: 98%;
         margin: 0 12px;
         gap: 0.5rem;
-        grid-template-columns: 10rem auto 18rem;
+        grid-template-columns: 10rem auto 20rem;
     }
 
     .settings2{
@@ -720,6 +727,7 @@
         outline: none;
         background: transparent;
         font-size: 16px;
+        color: var(--text-color);
     }
     .field-input:focus{
         border-bottom: 1px solid var(--color-blues);
@@ -1122,9 +1130,19 @@
         }
 
         .right-side .nav .dark-mode{
-            width: 4.4rem;
+            width: 3rem;
             position: absolute;
-            left: 60%;
+            left: 55%;
+        }
+        .right-side .nav .inventory{
+            display: flex;
+            justify-content: center;
+            left: 75%;
+            position: absolute;
+            align-items: center;
+            align-content: center;
+            flex-wrap: wrap;
+            top: 31%;
         }
 
         .right-side .profile .about{
