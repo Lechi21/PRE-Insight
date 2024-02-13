@@ -447,8 +447,6 @@
         text-align: right;
         cursor: pointer;
         align-items: center;
-        position: relative;
-        left: -13px;
     }
 
     .right-side .nav .profile .displayPic{
@@ -1244,17 +1242,6 @@
             grid-template-columns: 1fr;
             padding: 0 var(--padding-1);
         }
-        .settings{
-            display: block;
-            width: 90%;
-            margin: 0 auto;
-            /* padding: 2rem;
-            background-color: var(--color-white);
-            box-shadow: var(--box-shadow);
-            border-radius: var(--card-border-radius);
-            margin-top: 5rem; */
-        }
-
         .settings2 .user-profile{
             display: flex;
             justify-content: center;
