@@ -12,6 +12,9 @@
     <title>Insanjo</title>
 </head>
 <body>
+    <noscript>
+        <p>This website requires JavaScript. Please enable JavaScript in your browser.</p>
+    </noscript>
     <div class="container">
         <!-- Sidebar Section -->
         <div class="left-side">
@@ -170,23 +173,24 @@
             <!-- Predictive Table -->
             <div style="cursor: pointer;" class="salesRecord tabcontent hidden" id="Tab1">
                 <h2>Predictive Analyses</h2>
-                <br>
-                
-                <p>Select Sales range and Click on the button below to Predict records!!!</p>
-                <br>
+                <p>Select Trend Dates to Analyse and Generate Report.</p>
                 <div class="form2" style="display: block; background-color: var(--color-white);
                 box-shadow: var(--box-shadow);
                 border-radius: var(--card-border-radius);">
-                    <div style="display: block;">
-                        <p style="margin-left: 20px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
-                        <p style="margin-left: 20px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
-                        <p style="margin-left: 20px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
-                        <p style="margin-left: 20px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
-                        <p style="margin-left: 20px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus pariatur quo modi, nobis tempore ipsa vero dolorem necessitatibus, quidem molestias culpa optio laboriosam autem cupiditate, molestiae eligendi eos libero ratione.</p>
-                        
+                    <div class="downloadInput">
+                        <div class="input-place">
+                            <label for="rangeDate1" class="input-place_date">Start Date</label>
+                            <input type="date" id="rangeDate1" name="rangeDate1" class="input" required>
+                        </div>
+                        <div class="input-place">
+                            <label for="rangeDate2" class="input-place_date">End Date</label>
+                            <input type="date" id="rangeDate2" name="rangeDate2" class="input" required>
+                        </div>
+                    </div>
+                    <div class="oneButton">
+                        <input type="submit" class="calculate" value="Calculate" onclick="calculate();">
                     </div>
                 </div>
-                <a onclick="showMore();" class="showmore"style="cursor: pointer;">Show All</a>
             </div>
 
             <!-- End of Predictive Table -->
@@ -248,7 +252,7 @@
             
             <div class="details usersDetails">
                 <div class="user-profile">
-                    <div class="profile_image" style="margin-left: 10px;">
+                    <div class="profile_image photo">
                         <input type="file" class="image_file" id="uploadInput" onchange="updateImage()">
                     </div>
                     <div class="profile_names" style="margin-top: 10px;">

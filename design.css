@@ -542,12 +542,24 @@
     }
 
     /* Download Buttons icon */
-    .twoButtons{
+    .twoButtons, .oneButton{
         width: calc(100% - 1.7rem);
         border-radius: 5px;
         display: flex;
         justify-content: flex-start;
         margin: 0 0 10px 0;
+    }
+    .form2 .calculate{
+        margin: 8px 8px 8px 14px;
+        width: fit-content;
+        padding: 0.8rem;
+        background-color: var(--color-blues);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        left: 50%;
+        transition: background-color 0.3s ease;
     }
     .downloadForm .pdf{
         margin: 8px;
@@ -657,6 +669,9 @@
         margin-left: 10px;
         background-size: 100% 100%;
         overflow: hidden;
+    }
+    .photo{
+        margin-left: 27px;
     }
     .image_file{
         position: absolute;
@@ -823,7 +838,7 @@
         left: -28px;
         bottom: 3px;
     }
-    #currencySelect{
+    #currencySelect, #timezoneSelect{
         background-color: var(--color-blues);
         border-radius: 5px;
         height: 15px;
@@ -1212,7 +1227,7 @@
             margin-bottom: 30px;
         }
     
-        .twoButtons{
+        .twoButtons, .oneButton{
             width: calc(100% - 1.7rem);
             border-radius: 5px;
             display: flex;
@@ -1261,5 +1276,8 @@
         }
         .xy-input{
             width: 87%;
+        }
+        .editable-field {
+            width: 80%;
         }
     }
