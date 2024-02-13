@@ -1242,6 +1242,15 @@
             grid-template-columns: 1fr;
             padding: 0 var(--padding-1);
         }
+        .settings2 {
+            width: auto;
+            display: block;
+            margin: 5px auto;
+            padding: var(--card-padding);
+            background-color: var(--color-white);
+            box-shadow: var(--box-shadow);
+            border-radius: 1rem;
+        }
         .settings2 .user-profile{
             display: flex;
             justify-content: center;
