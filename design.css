@@ -1260,6 +1260,7 @@
             margin: 0 auto;
             grid-template-columns: 1fr;
             padding: 0 var(--padding-1);
+            overflow: hidden;
         }
         .settings2 {
             width: auto;
