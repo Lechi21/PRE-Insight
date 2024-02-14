@@ -542,25 +542,14 @@
     }
 
     /* Download Buttons icon */
-    .twoButtons, .oneButton{
+    .twoButtons{
         width: calc(100% - 1.7rem);
         border-radius: 5px;
         display: flex;
         justify-content: flex-start;
         margin: 0 0 10px 0;
     }
-    .form2 .calculate{
-        margin: 8px 8px 8px 14px;
-        width: fit-content;
-        padding: 0.8rem;
-        background-color: var(--color-blues);
-        color: #fff;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        left: 50%;
-        transition: background-color 0.3s ease;
-    }
+    
     .downloadForm .pdf{
         margin: 8px;
         width: fit-content;
@@ -592,7 +581,37 @@
     .downloadForm .csv:hover{
         background-color: var(--color-success);
     }
-
+    /* Predictive Analysis */
+    .form2{
+        display: block; background-color: var(--color-white);
+        box-shadow: var(--box-shadow);
+        border-radius: var(--card-border-radius);
+    }
+    .oneButton{
+        width: calc(100% - 1.7rem);
+        border-radius: 5px;
+        display: flex;
+        justify-content: flex-start;
+        margin: 0 0 20px 0;
+    }
+    .oneWeek{
+        margin: 8px 8px 20px 20px;
+        width: fit-content;
+        padding: 0.8rem;
+        background-color: var(--color-blues);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        left: 50%;
+        transition: background-color 0.3s ease;
+    }
+    .oneWeek:hover{
+        background-color: var(--color-dark-variant);
+    }
+    .predicting{
+        margin-left: 20px;
+    }
     /* footer */
     .footer{
         margin-top: auto;
@@ -1242,7 +1261,7 @@
             grid-template-columns: 1fr;
             padding: 0 var(--padding-1);
         }
-        .settings2 {
+        /* .settings2 {
             width: auto;
             display: block;
             margin: 5px auto;
@@ -1260,13 +1279,13 @@
             padding-bottom: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
-        }
+        } */
         .profile-input{
             display: flex;
-            /* justify-content: space-between; */
+            justify-content: space-between;
             align-items: center;
             position: relative;
-            /* width: 100%; */
+            width: 100%;
         }
         .image_file{
             position: absolute;
