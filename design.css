@@ -1256,12 +1256,12 @@
 
         /* SETTINGS SECTION STARTS HERE*/
         .profile-container{
-            width: 100%;
+            width: auto;
             margin: 0 auto;
             grid-template-columns: 1fr;
             padding: 0 var(--padding-1);
         }
-        /* .settings2 {
+        .settings2 {
             width: auto;
             display: block;
             margin: 5px auto;
@@ -1279,7 +1279,7 @@
             padding-bottom: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
-        } */
+        }
         .profile-input{
             display: flex;
             justify-content: space-between;
