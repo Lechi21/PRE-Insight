@@ -32,7 +32,7 @@ Orders.forEach(order => {
         <td>${order.closingAmount}</td>
     `;
     tr.innerHTML = trContent;
-    document.querySelector('table tbody').appendChild(tr);
+    document.querySelector('table tbod').appendChild(tr);
 });
 
 

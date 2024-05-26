@@ -24,11 +24,11 @@
                     </div>
                 </a>
             </div>
-        <script>
-            function goHome(){
-                window.location.href = "index.html";
-            }
-        </script>
+            <script>
+                function goHome(){
+                    window.location.href = "index.html";
+                }
+            </script>
         </div>
 
         <div class="center">
@@ -54,10 +54,10 @@
                             <div class="editable-field" id="nameField1">
                                 <span class="material-icons-sharp" style="margin-right: 10px;">account_circle</span>
                                 <div class="field-content">
-                                    <input type="text" class="field-input" placeholder="Create a username:" disabled/>
+                                    <input type="text" class="field-input" required="true" maxlength="20" placeholder="Create a username:" disabled/>
                                 </div>
-                                <span class="material-icons-sharp edit-icon" style="padding: 0.3rem; cursor: pointer;" onclick="toggleEditMode('nameField1')">edit</span>
-                                <span class="material-icons-sharp save-icon" style="padding: 0.3rem; cursor: pointer;" onclick="saveEdit('nameField1')">done</span>
+                                <span class="material-icons-sharp edit-icon" onclick="toggleEditMode('nameField1')">edit</span>
+                                <span class="material-icons-sharp save-icon" onclick="saveEdit('nameField1')">done</span>
                             </div>
                         </div>
                         <br>
@@ -65,10 +65,10 @@
                             <div class="editable-field" id="nameField2">
                                 <span class="material-icons-sharp" style="margin-right: 10px;">work</span>
                                 <div class="field-content">
-                                    <input type="text" class="field-input" placeholder="Job Description:" disabled/>
+                                    <input type="text" class="field-input" maxlength="25" required placeholder="Job Description:" disabled/>
                                 </div>
-                                <span class="material-icons-sharp edit-icon" style="padding: 0.3rem; cursor: pointer;" onclick="toggleEditMode('nameField2')">edit</span>
-                                <span class="material-icons-sharp save-icon" style="padding: 0.3rem; cursor: pointer;" onclick="saveEdit('nameField2')">done</span>
+                                <span class="material-icons-sharp edit-icon" onclick="toggleEditMode('nameField2')">edit</span>
+                                <span class="material-icons-sharp save-icon" onclick="saveEdit('nameField2')">done</span>
                             </div>
                         </div>
                         <script>
@@ -131,7 +131,7 @@
                         <hr>
                         <br>
                         <div class="profile-input">
-                            <input type="text" id="businessName" name="businessName" class="input xy-input" required placeholder="Enter your Businessname">
+                            <input type="text" id="businessName" name="businessName" class="input xy-input" required placeholder="Enter your business name">
                             <label for="businessName" class="profile-input_label">Business Name:</label>
                         </div>
                         <br>
@@ -141,12 +141,12 @@
                         </div>
                         <br>
                         <div class="profile-input">
-                            <input type="email" id="email" name="email" class="input xy-input" required placeholder="Enter your Email">
+                            <input type="email" id="email" name="email" class="input xy-input" pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$" required placeholder="Enter your Email">
                             <label for="email" class="profile-input_label">Email:</label>
                         </div>
                         <br>
                         <div class="profile-input">
-                            <input type="number" id="phone" name="businessName" class="input xy-input" required placeholder="0800 000 0000">
+                            <input type="number" id="phone" name="businessName" class="input xy-input" placeholder="0800 000 0000" required="true" value="" maxlength="17" regexp="^[0-9\-\+\(\)\s]{0,17}$">
                             <label for="phone" class="profile-input_label">Phone:</label>
                         </div>
                         <br><br>
@@ -167,13 +167,22 @@
                             <hr>
                             <br>
                             <div class="profile-input">
-                                <span>Timezone</span>
+                                <div>
+                                    <label for="timezoneSelect">Timezones:</label>
+                                <select id="timezoneSelect"></select>
+                                </div>
+                                <div class="profile-toggle">
+                                    <label class="switch">
+                                        <input type="checkbox" id="timezoneToggle" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
                             </div>
                             <br>
                             <div class="profile-input">
                                 <div>
-                                    <label for="currencySelect">Currency:</label>
-                                <select id="currencySelect"></select>
+                                    <label for="currencySelect" style="margin-right: 10px;">Currency:</label>
+                                    <select id="currencySelect"></select>
                                 </div>
                                 <div class="profile-toggle">
                                     <label class="switch">
@@ -234,9 +243,14 @@
                     <span class="material-icons-sharp active">light_mode</span>
                     <span class="material-icons-sharp">dark_mode</span>
                 </div>
-                <div class="inventory">
-                    <span class="material-icons-sharp">inventory_2</span>
+                <div class="inventory" onclick="openInventory(); return false">
+                    <span class="material-icons-sharp" style="color: #1B9C85;">library_books</span>
                 </div>
+                <script>
+                    function openInventory(){
+                        window.location.href = 'inventory.html';
+                    }
+                </script>
                 <div class="profile">
                     <div class="about">
                         <p>Hey, <b>Lechi</b></p>
@@ -314,30 +328,17 @@
                 });
             });
         </script>
+        <script src="script.js"></script>
+        <script src="slide.js"></script>
+        <script src="dlMood.js"></script>
+        <script src="currency.js"></script>
+        <script src="others.js"></script>
 
-    </script>
-    <script>
-        "use strict";
-
-        const sideMenu = document.querySelector('left-side');
-        const menuBtn = document.getElementById('menu-btn');
-        menuBtn.addEventListener('click', () => {
-            sideMenu.style.display = 'block';
-        });
-        const closeBtn = document.getElementById('close-btn');
-        closeBtn.addEventListener('click', () => {
-            sideMenu.style.display = 'none';
-        });
-    </script>
-    <script src="script.js"></script>
-    <script src="slide.js"></script>
-    <script src="dlMood.js"></script>
-    <script src="currency.js"></script>
-    </div>
-    <div class="footer">
-        <div class="foot">
-            <nav class="footer-nav"> © 2024 Copyright: Lechi-Tech</a></nav>
-            <a href="#" class="footer-link"><img src="images/Lechi Logo.png" alt="logoImage"></a>
+        <div class="footer">
+            <div class="foot">
+                <nav class="footer-nav"> © 2024 Copyright: Lechi-Tech</a></nav>
+                <a href="#" class="footer-link"><img src="images/Lechi Logo.png" alt="logoImage"></a>
+            </div>
         </div>
     </div>
 </body>

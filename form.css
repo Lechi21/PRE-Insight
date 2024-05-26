@@ -115,10 +115,18 @@ b{
 
 .container{
     display: grid;
-    width: 98%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0;
     gap: 0.5rem;
     grid-template-columns: 10rem auto 20rem;
+    grid-template-areas:
+    'left-side center right-side'
+    'footer footer footer';
+    height: 100vh;
+}
+
+.left-side {
+    grid-area: left-side;
 }
 
 .left-side .corner{
@@ -263,113 +271,35 @@ b{
     width: 100%;
     border-radius: 2rem 2rem 1rem 1rem;
     color: var(--color-white);
+    flex-direction: column;
+    align-items: center;
 }
+
+.center{
+    grid-area: center;
+    margin-top: 1.4rem;
+    margin-bottom: 4rem;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.2rem;
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    margin-top: 5rem;
+    height: 100vh;
+}
+
 form{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
-}
-.input-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-    margin: 0 auto;
-    padding: 1rem;
-    background-color: var(--color-white);
-    box-shadow: var(--box-shadow);
-    border-radius: var(--card-border-radius);
-    margin-top: 5rem;
-}
-.input{
-    flex-basis: 100%;
-    border: none;
-    border-radius: 4px;
-    font: inherit;
-    padding: 10px;
-    color: var(--color-dark);
-    background-color: transparent;
-    outline: 2px solid var(--color-dark);
-}
-.input-place{
-    position: relative;
-    width: calc(100% - -13rem);
-}
-.input-place_label{
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(10px, 14px);
-    transition: transform .25s;
-}
-.input-place_date{
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(10px, 14px);
-    transition: transform .25s;
-}
-.input:not(:focus)+.input-place_date{
-    transform: translate(5px, -11px) scale(.9);
-    padding-inline: 5px;
-    color: var(--color-dark);
-    background-color: var(--color-white);
-}
-.input:focus+.input-place_date,
-.input:valid+.input-place_date{
-    transform: translate(5px, -11px) scale(.9);
-    padding-inline: 5px;
-    color: var(--color-success);
-    background-color: #fff;
-}
-
-.input:focus+.input-place_label,
-.input:valid+.input-place_label{
-    transform: translate(5px, -11px) scale(.9);
-    padding-inline: 5px;
-    color: var(--color-success);
-    background-color: #fff;
-}
-.input:is(:focus){
-    outline-color: var(--color-success);
-}
-.input:is(:valid){
-    outline-color: var(--color-dark);
-}
-input::placeholder{
-    opacity: 0;
-}
-input:focus::placeholder{
-    opacity: 1;
-}
-.input-container select {
-    display: block;
-    margin-bottom: 1rem;
-}
-textarea{
-    width: 90%;
-    background-color: var(--color-background);
-    color: var(--color-dark);
-    border: 2px solid var(--color-dark);
-}
-.input-container input[type="text"],
-.input-container input[type="number"],
-.input-container input[type="date"],
-.input-container select {
-    width: 100%;
-    padding: 0.8rem;
-    border-radius: var(--border-radius-1);
-    border: 1px solid var(--color-white);
-    font-size: 1rem;
-    color: var(--color-dark-variant);
-}
-.twoButtons{
-    width: calc(100% - 1.7rem);
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    margin: 0 0 10px 0;
 }
 
 .dark-mode{
@@ -388,8 +318,8 @@ textarea{
 
 .right-side .nav{
     display: flex;
-    justify-content: end;
-    gap: 2rem;
+    justify-content: flex-start;
+    gap: 1.5rem;
     align-items: center;
 }
 .right-side .right-corner{
@@ -442,8 +372,8 @@ textarea{
     border-radius: 50%;
     overflow: hidden;
 }
-.input-container input[type="submit"],
-.input-container input[type="button"] {
+.input-contained input[type="submit"],
+.input-contained input[type="button"] {
     margin: 8px;
     width: fit-content;
     padding: 0.8rem;
@@ -456,18 +386,18 @@ textarea{
     transition: background-color 0.3s ease;
 }
         
-.input-container input[type="submit"]:hover,
-.input-container input[type="button"]:hover{
+.input-contained input[type="submit"]:hover,
+.input-contained input[type="button"]:hover{
     background-color: var(--color-dark);
 }
 
-/* footer */
-footer{
-    bottom: 0;
+/* =========================footer==================================== */
+.footer{
+    grid-area: footer;
     background-color: var(--color-background);
-    left: 0;
     width: 100%;
 }
+
 .foot{
     padding: 0 28px;
     align-items: 
@@ -489,11 +419,233 @@ footer{
     max-width: 100%;
 }
 
+/*======================= PREFORM TO ADD ITEMS SOLD STARTS HERE =============================*/
+.preAdd {
+    display: flex;
+    position: relative;
+    width: 50%;
+    height: 55px;
+    border: 2px dotted var(--color-success);
+    border-radius: 15px;
+    cursor: pointer;
+}
+.addMoreItems {
+    cursor: pointer; 
+    width: 100%; 
+    height: 100%; 
+    position: relative;
+    background-color: var(--color-white);
+    border-radius: 15px;
+}
+.innerText{
+    display: flex;
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    align-items: center; 
+    text-align: center; 
+    flex-direction: row;
+}
+
+/*======================= PREFORM TO ADD ITEMS SOLD ENDS HERE =============================*/
+
+ /* ============================= INVENTORY POPUP SECTION STARTS============================= */
+.itemPop {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 50px;
+    width: 800px;
+    margin: 0 auto;
+    background: var(--color-white);
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    color: var(--color-dark);
+    z-index: 999;
+    /* border-radius: 3px; */
+    padding: 35px 35px 12px 35px;
+    font-size: 15px;
+    -moz-box-shadow: 0 0 5px;
+    -webkit-box-shadow: 0 0 5px;
+    box-shadow: 0 0 5px;
+}
+
+#itemClosed {
+    position: absolute;
+    right: 16px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    }
+
+#itemClosed i {
+    color: #1B9C85;
+    }
+
+.inventory-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.inventory-box .topBox {
+    color: #1B9C85;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.inputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 30px;
+    align-items: center;
+}
+.item-name1, .item-name2 {
+    flex-grow: 1;
+    flex-direction: column;
+    margin: 0 0.5rem;
+}
+.item-name1 h4, .item-name2 h4, .item-image h4 {
+    font-weight: 450;
+    font-size: 14px;
+}
+.item-name1 input {
+    margin: 1px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    padding: 6px;
+    width: 100%;
+}
+.item-name2 input, select{
+    margin: 1px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    padding: 6px;
+    width: 100%;
+}
+.unit-Expenses {
+    display: flex;
+    flex-direction: row;
+}
+
+input::placeholder {
+    opacity: 1;
+}
+
+input:focus {
+    outline: 1px solid green;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.item-image p {
+    margin: 5px 0 5px 0;
+    font-size: 12px;
+}
+
+.item-image input[type="file"] {
+    margin-top: 5px;
+    height: 100% !important;
+    width: 25%;
+    cursor: pointer;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    width: 100%;
+    margin-top: 20px;
+    color: #333;
+    background-color: #333;
+}
+
+.submit_item {
+    background-color: rgb(82, 179, 82);
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: 400ms ease-in;
+}
+.submit_item:hover {
+    background-color: var(--color-success);
+    transform: scale(1.1);
+}
+.inventory-box .bottom-logo{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+.inventory-box .bottom-logo img{
+    width: 6.5rem;
+    height: 4rem;
+    object-fit: contain;
+    }
+
+textarea{
+    width: 100%;
+    background-color: var(--color-background);
+    color: var(--color-dark);
+    border: 1px solid var(--color-dark);
+}
+
+.twoButtons{
+    width: calc(100% - 1.7rem);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 10px 0;
+}
+
+.itemPop input[type="submit"], .itemPop input[type="button"] {
+    margin: 8px;
+    width: fit-content;
+    padding: 0.8rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    left: 50%;
+    transition: background-color 0.3s ease;
+}
+
+@media screen and (max-width: 1200px) {
+    .itemPop {
+        display: none;
+        width: 650px;
+        padding: 30px 30px 10px 30px;
+    }
+}
+
+  /* ============================= INVENTORY POPUP SECTION ENDS============================= */
 @media screen and (max-width: 1200px) {
     .container{
-        width: 95%;
-        grid-template-columns: 7rem auto 7rem;
+        display: grid;
+        width: 100%;
+        margin: 0;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        'center'
+        'footer';
+        height: 100vh;
     }
+
+    .left-side {
+        grid-area: left-side;
+        display: none;
+    }
+
     .left-side .corner{
         display: none;
     }
@@ -504,31 +656,23 @@ footer{
         align-items: center;
     }
 
+    .center{
+        grid-area: center;
+        margin-top: 1.4rem;
+        margin-bottom: 4rem;
+    }
+
     .input-container {
-        display: block;
+        display: flex;
         width: 90%;
         margin: 0 auto;
-        padding: 2rem;
         background-color: var(--color-white);
         box-shadow: var(--box-shadow);
         border-radius: var(--card-border-radius);
         margin-top: 5rem;
+        height: 100vh;
     }
-    .input-place{
-        position: relative;
-        width: 100%;
-    }
-    .input-container input[type="text"],
-    .input-container input[type="number"],
-    .input-container input[type="date"],
-    .input-container select {
-        width: 100%;
-        padding: 0.8rem;
-        border-radius: var(--border-radius-1);
-        border: 1px solid var(--color-white);
-        font-size: 1rem;
-        color: var(--color-dark-variant);
-    }
+
     .twoButtons{
         width: calc(100% - 1.7rem);
         /* background-color: rgb(182, 182, 182); */
@@ -558,7 +702,7 @@ footer{
         display: block;
     }
     .right-side{
-        margin: 0 auto 4rem;
+        grid-area: right-side;
     }
 
     .right-side .nav{
@@ -573,6 +717,7 @@ footer{
         z-index: 2;
         box-shadow: 0 1rem 1rem var(--color-light);
         margin: 0;
+        justify-content: end;
     }
 
     .right-side .nav .right-corner{
@@ -650,10 +795,22 @@ footer{
 }
     @media screen and (max-width: 768px) {
         .container{
+            display: grid;
             width: 100%;
+            margin: 0;
             grid-template-columns: 1fr;
-            padding: 0 var(--padding-1);
+            /* padding: 0 var(--padding-1); */
+            grid-template-areas:
+            'center'
+            'footer';
+            height: 100vh;
         }
+
+        .left-side {
+            grid-area: left-side;
+            display: none;
+        }
+        
         .left-side .corner{
             display: none;
         }
@@ -665,39 +822,26 @@ footer{
             align-items: center;
         }
         .input-container {
-            display: block;
+            display: flex;
             width: 90%;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0.5rem;
             background-color: var(--color-white);
             box-shadow: var(--box-shadow);
             border-radius: var(--card-border-radius);
             margin-top: 5rem;
         }
-        .input-place{
-            position: relative;
-            width: 100%;
-        }
+
         textarea{
             columns: 20;
         }   
-        .input-container input[type="text"],
-        .input-container input[type="number"],
-        .input-container input[type="date"],
-        .input-container select {
-            width: 100%;
-            padding: 0.8rem;
-            border-radius: var(--border-radius-1);
-            border: 1px solid var(--color-white);
-            font-size: 1rem;
-            color: var(--color-dark-variant);
-        }
+    
         .twoButtons{
             width: calc(100% - 1.7rem);
             border-radius: 5px;
             display: flex;
             justify-content: center;
-            margin: 0 0 10px 0;
+            margin: 0 auto;
         }
 
         .details{
@@ -716,9 +860,9 @@ footer{
         .details.active {
             display: block;
         }
+
         .right-side{
-            width: 94%;
-            margin: 0 auto 4rem;
+            grid-area: right-side;
         }
     
         .right-side .nav{
@@ -733,6 +877,7 @@ footer{
             z-index: 2;
             box-shadow: 0 1rem 1rem var(--color-light);
             margin: 0;
+            justify-content: end;
         }
     
         .right-side .nav .dark-mode{
@@ -814,3 +959,123 @@ footer{
             margin-bottom: 30px;
         }
     }
+
+@media screen and (max-width: 768px) {
+    .preAdd {
+        display: flex;
+        position: relative;
+        width: 100%;
+        height: 55px;
+        border: 2px dotted var(--color-success);
+        border-radius: 15px;
+        cursor: pointer;
+        margin-top: -10px;
+    }
+    .innerText{
+        display: flex;
+        position: absolute; 
+        top: 50%; 
+        left: 35%; 
+        transform: translate(-50%, -50%);
+        align-items: center; 
+        text-align: center; 
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .itemPop {
+        display: none;
+        flex-direction: column;
+        font-size: 15px;
+        width: 90%;
+        padding: 20px 20px 8px 20px;
+        top: 30px;
+        margin: 0 auto;
+    }
+
+    .inventory-box .topBox {
+        color: #1B9C85;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .tops {
+        display: flex;
+        flex-direction: column;
+        width: 100%; 
+    }
+
+    .seconds {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .item-name2, .item-name1 {
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0;
+        flex: 1;
+    }
+
+    .inputs {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .inputs.tops {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .inputs.seconds {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .inputs.tops .item-name2, .inputs.tops .item-name1 {
+        width: 100%;
+    }
+
+    .inputs.tops .item-name2 {
+        margin-bottom: 5px;
+    }
+
+    .inputs.seconds .item-name1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .inputs.seconds .seconds input{
+        width: 100%;
+    }
+    .inputs.seconds .Unit-Ex input{
+        width: 85%;
+        justify-content: space-around;
+    }
+    .unit-Expenses {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .unit-Expenses .Unit-Ex {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .footer{
+        grid-area: footer;
+        background-color: var(--color-background);
+        width: 100%;
+    }
+}
