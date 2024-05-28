@@ -12,6 +12,7 @@ body {
     align-items: center;
     height: 100vh;
     background: url(images/Watermark.jpeg);
+    border-image: fill 0 linear-gradient(#0001, #000);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 50%;

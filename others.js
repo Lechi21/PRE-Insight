@@ -78,5 +78,71 @@ const currencies = [
     currencySelect.appendChild(option);
     });
 
-
+    // Timezones
+    const timezones = [
+        { id: 'auto', name: 'Automatic' },
+        { id: '-12', name: 'UTC -12:00' },
+        { id: '-11', name: 'UTC -11:00' },
+        { id: '-10', name: 'UTC -10:00' },
+        { id: '-9.5', name: 'UTC -09:30' },
+        { id: '-9', name: 'UTC -09:00' },
+        { id: '-8.5', name: 'UTC -08:30' },
+        { id: '-8', name: 'UTC -08:00' },
+        { id: '-7', name: 'UTC -07:00' },
+        { id: '-6', name: 'UTC -06:00' },
+        { id: '-5', name: 'UTC -05:00' },
+        { id: '-4.5', name: 'UTC -04:30' },
+        { id: '-4', name: 'UTC -04:00' },
+        { id: '-3.5', name: 'UTC -03:30' },
+        { id: '-3', name: 'UTC -03:00' },
+        { id: '-2.5', name: 'UTC -02:30' },
+        { id: '-2', name: 'UTC -02:00' },
+        { id: '-1', name: 'UTC -01:00' },
+        { id: '0', name: 'UTC +00:00' },
+        { id: '1', name: 'UTC +01:00' },
+        { id: '2', name: 'UTC +02:00' },
+        { id: '3', name: 'UTC +03:00' },
+        { id: '3.5', name: 'UTC +03:30' },
+        { id: '4', name: 'UTC +04:00' },
+        { id: '4.5', name: 'UTC +04:30' },
+        { id: '5', name: 'UTC +05:00' },
+        { id: '5.5', name: 'UTC +05:30' },
+        { id: '5.75', name: 'UTC +05:45' },
+        { id: '6', name: 'UTC +06:00' },
+        { id: '6.5', name: 'UTC +06:30' },
+        { id: '6.75', name: 'UTC +06:45' },
+        { id: '7', name: 'UTC +07:00' },
+        { id: '7.5', name: 'UTC +07:30' },
+        { id: '8', name: 'UTC +08:00' },
+        { id: '8.5', name: 'UTC +08:30' },
+        { id: '8.75', name: 'UTC +08:45' },
+        { id: '9', name: 'UTC +09:00' },
+        { id: '9.5', name: 'UTC +09:30' },
+        { id: '9.75', name: 'UTC +09:45' },
+        { id: '10', name: 'UTC +10:00' },
+        { id: '10.5', name: 'UTC +10:30' },
+        { id: '11', name: 'UTC +11:00' },
+        { id: '11.5', name: 'UTC +11:30' },
+        { id: '12', name: 'UTC +12:00' },
+        { id: '12.5', name: 'UTC +12:30' },
+        { id: '12.75', name: 'UTC +12:45' },
+        { id: '13', name: 'UTC +13:00' },
+        { id: '13.75', name: 'UTC +13:45' },
+        { id: '14', name: 'UTC +14:00' },
+    ];
+    const timezoneSelect = document.getElementById('timezoneSelect');
+      // Accessing timezone entries
+      console.log(timezones[0]); // { id: 'auto', name: 'Automatic' }
+      console.log(timezones[1]); // { id: '-12', name: 'UTC -12:00' }
+      // ...
+      console.log(timezones[timezones.length - 1]); // { id: '14', name: 'UTC +14:00' }
+    
+    // Populate the dropdown with currency options
+    timezones.forEach(time => {
+    const option = document.createElement('option');
+    option.value = time.id;
+    option.text = `${time.name}`;
+    timezoneSelect.appendChild(option);
+    });
+    
     
