@@ -8,149 +8,65 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" type="text/css">
     <link rel="icon" href="images/favicon.png" type="image/png">
     <link rel="stylesheet" href="form.css">
-    <title>Insanjo Sales Form</title>
+    <title>Sales Form</title>
 </head>
 <body>
-    <div class="container">
-        <!-- Sidebar Section -->
-        <div class="left-side">
-            <div class="corner">
-                <a onclick="goHome(); return false">
-                    <div class="logo">
-                        <img src="images/logoBox.png">
-                        <h2>In<b><span class="color2">sanjo</span></b></h2>
-                    </div>
-                </a>
-            </div>
-            <script>
-                function goHome(){
-                    window.location.href = "index.html";
-                }
-            </script>
-        </div>
-    
-        <div class="input-container">
-            <div class="formHead">
-                <h1>Sales Data</h1>
-            </div>
+        <div class="input-contained">
             <br><br>
-            <form id="inputForm">
-                <div class="input-place">
-                    <input type="date" id="salesDate" name="salesDate" class="input" required>
-                    <label for="salesDate" class="input-place_date">Sale Date</label>
-                </div>
-                <br><br>
-                <div class="input-place">
-                    <input type="number" id="startingAmount" name="startingAmount" class="input" required placeholder="Enter Starting Amount">
-                    <label for="startingAmount" class="input-place_label">Starting Amount:</label>
-                </div>
-                <br><br>
-                <div class="input-place">
-                    <input type="number" id="closingAmount" name="closingAmount" class="input" required placeholder="Enter Closing Amount">
-                    <label for="closingAmount" class="input-place_label">Closing Amount:</label>
-                </div>
-                <br><br>
-                <div class="input-place">
-                    <input type="number" id="expenses" name="expenses" class="input" required placeholder="Enter Total Expenses">
-                    <label for="expenses" class="input-place_label">Expenses:</label>
-                </div>
-                <br><br>
-                <div class="input-place">
-                    <textarea cols="25" rows="5" placeholder="leave a note" id="txArea" style="border-radius: 5px; resize: vertical; height: 97px;" required="true" maxlength="1000"></textarea>
-                </div>
-                <div class="input-place" style="display: flex;">
-                    <p style="margin-right: 10px;">Save Notes</p>
-                    <input type="radio" name="enableText" id="enableTxt" onclick="saveText()">
-                    <label for="enableTxt" style="margin-right: 5px;">Yes</label>
-                    <input type="radio" name="enableText" id="enableTxt" onclick="saveText()">
-                    <label for="disableTxt">No</label>
-                </div>
-                <br><br>
-                <div class="twoButtons">
-                    <input type="submit" value="Add" onclick="addForm();">
-                    <input type="button" value="Cancel" onclick="cancelForm();">
+            <form id="SalesItem" class="itemPop">
+                <div class="inventory-box" id="inventory-box">
+                    <button id="itemClose" type="button" onclick="cancelForm()" style="border-radius: 50%; background-color: var(background-color);"><i class="fa fa-times" aria-hidden="true"></i></button>
+                    <h3 class="topBox">NEW SALES</h3>
+                    <div class="inputs tops">
+                        <div class="item-name2" style="flex-basis: 50%;">
+                            <h4>Item  Name:</h4>
+                                <select id="itemDropdown" class="selector">
+                                    <option value="1" data-price="10.00">Item 1</option>
+                                    <option value="2" data-price="20.00">Item 2</option>
+                                    <option value="3" data-price="30.00">Item 3</option>
+                                </select>
+                            </div>
+                        <div class="item-name1" style="flex-basis: 16%;">
+                            <h4>Quantity:</h4>
+                            <input type="number" placeholder="100" required />
+                        </div>
+                    </div>
+                    <div class="inputs seconds">
+                        <div class="unit-Expenses">
+                            <div class="item-name1 Unit-Ex">
+                                <h4>Unit Price:</h4>
+                                <input type="number" placeholder="100" readonly />
+                            </div>
+                            <div class="item-name1 Unit-Ex">
+                                <h4>Expenses:</h4>
+                                <input type="number" placeholder="Optional (each)"/>
+                            </div>
+                        </div>
+                        <div class="item-name1 seconds">
+                            <h4>Total Price:</h4>
+                            <input type="number" placeholder="Total Cost" readonly />
+                        </div>
+                    </div>
+                    <br>
+                    <div class="input-place">
+                        <textarea cols="25" rows="5" placeholder="leave a note" id="txArea" style="border-radius: 5px; resize: vertical; height: 97px;" maxlength="1000"></textarea>
+                    </div>
+                    <div class="input-place" style="display: flex;">
+                        <p style="margin-right: 10px;">Save Notes</p>
+                        <input type="radio" name="enableText" id="enableTxt" onclick="saveText()">
+                        <label for="enableTxt" style="margin-right: 5px;">Yes</label>
+                        <input type="radio" name="enableText" id="enableTxt" onclick="saveText()">
+                        <label for="disableTxt">No</label>
+                    </div>
+                    <hr>
+                    <br><br>
+                    <div class="twoButtons">
+                        <input type="submit" value="Add" onclick="addForm();">
+                        <input type="button" value="Cancel" onclick="cancelForm();">
+                    </div>
                 </div>
             </form>
-            <br>
         </div>
-        <!-- Right Section -->
-        <div class="right-side">
-            <div class="nav">
-                <div class="right-corner">
-                    <a onclick="goHome(); return false">
-                        <div class="logo">
-                            <img src="images/logoBox.png">
-                            <h2>In<b><span class="color2">sanjo</span></b></h2>
-                        </div>
-                    </a>
-                </div>
-                <div class="dark-mode">
-                    <span class="material-icons-sharp active">light_mode</span>
-                    <span class="material-icons-sharp">dark_mode</span>
-                </div>
-                <div class="inventory">
-                    <span class="material-icons-sharp">inventory_2</span>
-                </div>
-                <div class="profile">
-                    <div class="about">
-                        <p>Hey, <b>Lechi</b></p>
-                        <small class="admin">Admin</small>
-                    </div>
-                    <div class="displayPic usersDetails">
-                        <img src="images/blank-person-icon-9.jpg">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="details usersDetails">
-                <div class="user-profile">
-                    <div class="profile_image" style="margin-left: 10px;">
-                        <input type="file" class="image_file">
-                    </div>
-                    <div class="profile_names" style="margin-top: 10px;">
-                        <h2>Administrator</h2>
-                        <p>Admin</p>
-                    </div>
-                </div>
-                <div class="sidebar">
-                    <a href="#" onclick="goHome(); return false">
-                        <span class="material-icons-sharp">home</span>
-                        <h3>Home</h3>
-                    </a>
-                    <a href="#" onclick="openProfile(); return false">
-                        <span class="material-icons-sharp">
-                            account_circle</span>
-                        <h3>Profile</h3>
-                    </a>
-                    <a href="#" class="" onclick="openProfile()">
-                        <span class="material-icons-sharp">business</span>
-                        <h3>Business Profile</h3>
-                    </a>
-                    <a href="#" onclick="openProfile(); return false">
-                        <span class="material-icons-sharp">manage_accounts</span>
-                        <h3>Account</h3>
-                    </a>
-                    <a href="#" onclick="openProfile(); return false">
-                        <span class="material-icons-sharp">notifications</span>
-                        <h3>Notifications</h3>
-                    </a>
-                    <a href="#">
-                        <span class="material-icons-sharp">logout</span>
-                        <h3>Logout</h3>
-                    </a>
-                    <script>
-                        function openProfile(){
-                            window.location.href = 'profile.html';
-                        }
-                        function goHome(){
-                            window.location.href = "index.html";
-                        }
-                    </script>
-                </div>
-            </div>
-            <!-- End of Nav -->
-        </div>
-    
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 const displayPic = document.querySelector('.displayPic.usersDetails');
@@ -169,60 +85,14 @@
                 });
             });
         </script>
-    </div>
-    <br>
-    <footer>
-        <div class="foot">
-            <nav class="footer-nav"> © 2024 Copyright: Lechi-Tech</a></nav>
-            <a href="#" class="footer-link"><img src="images/Lechi Logo.png" alt="logoImage"></a>
-        </div>
-    </footer>
 
-<script>
-    // To save NOTES in the note section
-    function saveText() {
-    var Disabled = document.getElementById("txArea").disabled;
-    document.getElementById("txArea").disabled = !Disabled;
-    }
-
-    // To Cancel the Form and take you to Dashboard Page
-    function cancelForm(){
-        window.location.href='index.html';
-    }
-</script>
-<script>
-        document.getElementById("inputForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            // Get user input values
-            const salesDate = document.getElementById("salesDate").value;
-            const startingAmount = document.getElementById("startingAmount").value;
-            const closingAmount = document.getElementById("closingAmount").value;
-            const status = document.getElementById("status").value;
-
-            // Create an object with the user input
-            const userInput = {
-                salesDate: salesDate,
-                startingAmount: startingAmount,
-                closingAmount: closingAmount,
-                status: status
-            };
-
-            // Perform actions with the userInput object (e.g., store it, use it in further logic)
-            console.log("User input:", userInput);
-            
-            // Optionally, you can send this data to a server or perform other actions here
-        });
-        const sideMenu = document.querySelector('left-side');
-        const menuBtn = document.getElementById('menu-btn');
-        menuBtn.addEventListener('click', () => {
-        sideMenu.style.display = 'block';
-        });
-        const closeBtn = document.getElementById('close-btn');
-        closeBtn.addEventListener('click', () => {
-        sideMenu.style.display = 'none';
-        });
-    </script>
-    <script src="dlMood.js"></script>
+        <script>
+            // To save NOTES in the note section
+            function saveText() {
+            var Disabled = document.getElementById("txArea").disabled;
+            document.getElementById("txArea").disabled = !Disabled;
+            }
+        </script>
+        <script src="dlMood.js"></script>
 </body>
 </html>
