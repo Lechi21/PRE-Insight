@@ -1333,7 +1333,7 @@ flex-direction: column;
         display: grid;
         width: 100%;
         margin: 0;
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%;
         grid-template-areas:
         'center'
         'footer';
@@ -1581,7 +1581,7 @@ flex-direction: column;
         display: grid;
         width: 100%;
         margin: 0;
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%;
         grid-template-areas:
         'center'
         'footer';
