@@ -1608,7 +1608,7 @@ flex-direction: column;
 
     .edit-icon,
     .save-icon {
-        margin-left: 5px;
+        margin-left: 3px;
         cursor: pointer;
         transform: scaleX(1) scaleY(1);
         opacity: 1;
@@ -1617,7 +1617,7 @@ flex-direction: column;
         display: flex;
         align-items: center;
         cursor: pointer;
-        margin-right: 14px;
+        margin-right: 18px;
     }
 
     .field-content input:focus {
