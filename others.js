@@ -1,5 +1,7 @@
 "use strict;"
 
+
+// =============================currency===================================//
 const currencies = [
         // African currencies
         { code: 'NGN', symbol: '₦', name: 'Nigerian Naira' },
@@ -69,16 +71,52 @@ const currencies = [
         { code: 'VUV', symbol: 'VT', name: 'Vanuatu Vatu' },    
     ];
     const currencySelect = document.getElementById('currencySelect');
+    const currencyToggle = document.getElementById('currencyToggle');
     
     // Populate the dropdown with currency options
     currencies.forEach(currency => {
-    const option = document.createElement('option');
-    option.value = currency.code;
-    option.text = `${currency.code} (${currency.symbol})`;
-    currencySelect.appendChild(option);
+      const option = document.createElement('option');
+      option.value = currency.code;
+      option.text = `${currency.code} (${currency.symbol})`;
+      currencySelect.appendChild(option);
     });
 
-    // Timezones
+    function saveCurrencySymbol() { 
+      const selectedCurrency = currencySelect.value;
+      if (currencyToggle.checked) {
+          localStorage.setItem('selectedCurrency', selectedCurrency);
+          alert('Currency symbol saved!');
+      } else {
+          localStorage.removeItem('selectedCurrency');
+          alert('Currency symbol removed!');
+      }
+  }
+
+  // Load saved currency symbol on page load
+  document.addEventListener('DOMContentLoaded', function() {
+      const savedCurrency = localStorage.getItem('selectedCurrency');
+      if (savedCurrency) {
+          currencySelect.value = savedCurrency;
+          currencyToggle.checked = true;
+      } else {
+          currencyToggle.checked = false;
+      }
+
+      // Add event listeners to the currency toggle and select elements
+      currencyToggle.addEventListener('change', saveCurrencySymbol);
+      currencySelect.addEventListener('change', function() {
+          if (currencyToggle.checked) {
+              saveCurrencySymbol();
+          }
+      });
+  });
+
+
+
+
+
+
+    // ==============================Timezones=======================================//
     const timezones = [
         { id: 'auto', name: 'Automatic' },
         { id: '-12', name: 'UTC -12:00' },

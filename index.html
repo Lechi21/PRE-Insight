@@ -91,38 +91,49 @@
                 </div>
             </div>
             <script>
-                var currencySymbol = "$";
-                var originalBalance = "--";
-                var hiddenBalance = "*****";
-                var isBalanceHidden = localStorage.getItem('isBalanceHidden') === 'true';
+            document.addEventListener('DOMContentLoaded', function() {
+                // Load saved currency symbol from localStorage
+                    var savedCurrencySymbol = localStorage.getItem('selectedCurrency') || "$";
+                    var originalBalance = "--";
+                    var hiddenBalance = "*****";
+                    var isBalanceHidden = localStorage.getItem('isBalanceHidden') === 'true';
 
-                var balanceText = isBalanceHidden ? hiddenBalance : originalBalance;
-                var iconText = isBalanceHidden ? " Show Record" : " Hide Record";
+                    var balanceText = isBalanceHidden ? hiddenBalance : originalBalance;
+                    var iconText = isBalanceHidden ? " Show Record" : " Hide Record";
 
-                var balanceElements = document.getElementsByClassName("balance");
-                var iconElements = document.getElementsByClassName("bx");
+                    var balanceElements = document.getElementsByClassName("balance");
+                    var iconElements = document.getElementsByClassName("bx");
 
-                for (var i = 0; i < balanceElements.length; i++) {
-                    balanceElements[i].textContent = currencySymbol + balanceText;
-                    iconElements[i].textContent = iconText;
-                }
-
-                function toggleBalance() {
+                    // Update the balance and icon elements with the currency symbol
                     for (var i = 0; i < balanceElements.length; i++) {
-                        if (isBalanceHidden) {
-                            balanceElements[i].textContent = currencySymbol + originalBalance;
-                            iconElements[i].textContent = " Hide Record";
-                        } else {
-                            balanceElements[i].textContent = currencySymbol + hiddenBalance;
-                            iconElements[i].textContent = " Show Record";
-                        }
+                        balanceElements[i].textContent = savedCurrencySymbol + balanceText;
+                        iconElements[i].textContent = iconText;
                     }
-                    isBalanceHidden = !isBalanceHidden;
-                    localStorage.setItem('isBalanceHidden', isBalanceHidden);
-                }
-                if (isBalanceHidden) {
-                    toggleBalance();
-                }
+
+                    function toggleBalance() {
+                        for (var i = 0; i < balanceElements.length; i++) {
+                            if (isBalanceHidden) {
+                                balanceElements[i].textContent = savedCurrencySymbol + originalBalance;
+                                iconElements[i].textContent = " Hide Record";
+                            } else {
+                                balanceElements[i].textContent = savedCurrencySymbol + hiddenBalance;
+                                iconElements[i].textContent = " Show Record";
+                            }
+                        }
+                        isBalanceHidden = !isBalanceHidden;
+                        localStorage.setItem('isBalanceHidden', isBalanceHidden);
+                    }
+
+                    // Add event listeners to all the toggle icons
+                    for (var i = 0; i < iconElements.length; i++) {
+                        iconElements[i].addEventListener('click', toggleBalance);
+                    }
+
+                    // Set initial state if balance is hidden
+                    if (isBalanceHidden) {
+                        toggleBalance();
+                    }
+                });
             </script>
             <br><br>
             <div class="allSwipe">
