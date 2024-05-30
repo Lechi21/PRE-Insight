@@ -93,7 +93,7 @@
             <script>
             document.addEventListener('DOMContentLoaded', function() {
                 // Load saved currency symbol from localStorage
-                    var savedCurrencySymbol = localStorage.getItem('selectedCurrency') || "$";
+                    var savedCurrencySymbol = localStorage.getItem('selectedCurrency') || "";
                     var originalBalance = "--";
                     var hiddenBalance = "*****";
                     var isBalanceHidden = localStorage.getItem('isBalanceHidden') === 'true';
