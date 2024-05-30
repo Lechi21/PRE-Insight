@@ -1709,7 +1709,7 @@ flex-direction: column;
         display: inline-block;
         width: 43px;
         height: 23px;
-        margin: 0 10px;
+        margin: 0;
     }
     
     .switch input {
