@@ -1648,7 +1648,7 @@ flex-direction: column;
         display: flex;
         align-items: center;
         cursor: pointer;
-        margin-right: 10px;
+        margin-right: 5px;
     }
 
     .field-content input:focus {
