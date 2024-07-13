@@ -3,7 +3,7 @@
 :root{
     --color-primary: #6C9BCF;
     --color-blue: #295be4;
-    --color-blues: #295be4;
+    --color-blues: #044395;
     --color-success: #1B9C85;
     --color-warning: #F7D060;
     --color-white: #fff;
@@ -26,7 +26,7 @@
 .dark-mode-variables{
     --color-background: #181a25;
     --background-color: #2d2d2d;
-    --color-blues: #6C9BCF;
+    --color-blues: #fff;
     --text-color: #fff;
     --link-color: #4a90e2;
     --color-white: #202630;
