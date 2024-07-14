@@ -141,6 +141,7 @@ b{
     display: flex;
     cursor: pointer;
     align-items: center;
+    margin-left: 10px;
 }
 
 .left-side .corner .logo img{
