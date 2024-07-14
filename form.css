@@ -3,7 +3,7 @@
 :root{
     --color-primary: #6C9BCF;
     --color-blue: #295be4;
-    --color-blues: #295be4;
+    --color-blues: #044395;
     --color-success: #1B9C85;
     --color-warning: #F7D060;
     --color-white: #fff;
@@ -25,7 +25,7 @@
     --color-background: #181a25;
     --color-white: #202630;
     --background-color: #2d2d2d;
-    --color-blues: #6C9BCF;
+    --color-blues: #fff;
     --color-dark: #edeffd;
     --color-dark-variant: #a3bdcc;
     --color-light: rgba(0, 0, 0, 0.4);
@@ -103,6 +103,7 @@ b{
 
 .color2{
     color: var(--color-blues);
+    margin-right: -5px;
 }
 
 .success{
@@ -138,17 +139,17 @@ b{
 
 .left-side .corner .logo{
     display: flex;
-    gap: 0.5rem;
     cursor: pointer;
     align-items: center;
 }
 
 .left-side .corner .logo img{
     flex: 1;
-    width: 3.5rem;
-    height: 3rem;
+    width: 2rem;
+    height: 2rem;
     object-fit: contain;
-    margin-right: -17px;
+    margin-right: -11px;
+    margin-top: 2px;
 }
 
 .details{

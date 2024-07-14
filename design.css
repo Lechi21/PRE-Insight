@@ -104,6 +104,7 @@ b{
 
 .color2{
     color: var(--color-blues);
+    margin-right: -4px;
 }
 
 .success{
@@ -147,10 +148,11 @@ b{
 
 .left-side .corner .logo img{
     flex: 1;
-    width: 3.5rem;
-    height: 3rem;
+    width: 2rem;
+    height: 2rem;
     object-fit: contain;
     margin-right: -11px;
+    margin-top: 2px;
 }
 
 .right-side{
@@ -1140,10 +1142,10 @@ margin-top: 20px;
     transform: scale(1.1);
 }
 .inventory-box .bottom-logo{
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .inventory-box .bottom-logo img{
