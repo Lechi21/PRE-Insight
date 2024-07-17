@@ -76,6 +76,7 @@ h1{
     margin-bottom: 10px;
     font-weight: 800;
     font-size: 1.8rem;
+    margin-top: 20px;
 }
 
 h2{
@@ -1752,6 +1753,10 @@ margin-top: 20px;
 
   /* ============================= INVENTORY POPUP SECTION STARTS============================= */
 @media only screen and (max-width: 768px) {
+    h1 {
+    margin-top: 0px;
+    }
+
     .itemPop {
         display: none;
     }
