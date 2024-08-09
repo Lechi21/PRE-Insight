@@ -97,20 +97,5 @@ $(document).ready(function() {
             }
         });
     });
-
-    // Function to toggle the popup visibility
-    function togglePopup() {
-        $('#itemPage').toggle(); // Toggles visibility
-        $('.formOverlay').toggle(); // Toggles visibility
-    }
-
-    // Event listeners for opening and closing the popup
-    $('#add').on('click', function(event) {
-        event.preventDefault(); // Prevent default behavior
-        togglePopup(); // Show the popup
-    });
-
-    $('#itemClose').on('click', function() {
-        togglePopup(); // Hide the popup
-    });
 });
+
