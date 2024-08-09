@@ -5,6 +5,40 @@ $(document).ready(function() {
     // Set the Stock Date using your existing getCurrentDate function
     $('#date').text(getCurrentDate());
 
+    // Function to load existing products from the server
+    function loadProducts() {
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:3000/product', // Server endpoint to fetch products
+            success: function(response) {
+                // Clear the current table contents
+                $('#inventory-list').empty();
+
+                // Populate the table with the existing products
+                response.products.forEach(product => {
+                    const newRow = `
+                        <tr>
+                            <td>${product._id}</td>
+                            <td>${product.name}</td>
+                            <td>${product.description}</td>
+                            <td>${product.availableStock}</td>
+                            <td>${product.stockDate}</td>
+                            <td>${product.purchasePrice}</td>
+                            <td>${product.sellingPrice}</td>
+                        </tr>
+                    `;
+                    $('#inventory-list').append(newRow);
+                });
+            },
+            error: function(error) {
+                console.log('Error fetching products:', error);
+            }
+        });
+    }
+
+    // Call loadProducts when the document is ready
+    loadProducts();
+
     $('#itemPage').on('submit', function(e) {
         e.preventDefault(); // Prevent default form submission
 
@@ -53,9 +87,9 @@ $(document).ready(function() {
                 $('#itemPage')[0].reset();
                 $('#date').text(getCurrentDate()); // Reset stock date
 
-                // Close the form (hide the form container)
-                $('#itemPage').hide(); // Hides the form
-                $('.formOverlay').remove(); // Hides the form
+                // Close the form and overlay
+                $('#itemPage').hide(); // Hide the form
+                $('.formOverlay').hide(); // Hide the overlay
             },
             error: function(error) {
                 alert('Error adding item');
@@ -63,9 +97,20 @@ $(document).ready(function() {
             }
         });
     });
+
     // Function to toggle the popup visibility
     function togglePopup() {
         $('#itemPage').toggle(); // Toggles visibility
-        $('.formOverlay').toggle();
+        $('.formOverlay').toggle(); // Toggles visibility
     }
+
+    // Event listeners for opening and closing the popup
+    $('#add').on('click', function(event) {
+        event.preventDefault(); // Prevent default behavior
+        togglePopup(); // Show the popup
+    });
+
+    $('#itemClose').on('click', function() {
+        togglePopup(); // Hide the popup
+    });
 });
