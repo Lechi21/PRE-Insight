@@ -1037,6 +1037,12 @@ input:checked + .slider:before{
 .inventory-table {
     margin-top: 40px;
     width: 100%;
+    background-color: var(--color-white);
+    padding: 10px;
+    text-align: center;
+    box-shadow: var(--box-shadow) !important;
+    border-radius: var(--card-border-radius) !important;
+    transition: all 0.3s ease;
 }
 
 #inventory-list {
