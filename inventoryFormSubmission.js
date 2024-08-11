@@ -39,17 +39,6 @@ $(document).ready(function() {
         });
     }
 
-    // Function to apply text color based on the mode
-    function applyRowTextColor() {
-        $('#inventory-list tr').each(function() {
-            if ($('body').hasClass('.dark-mode')) {
-                $(this).css('color', '#0066cc'); // White text for dark mode
-            } else {
-                $(this).css('color', '#4a90e2'); // Black text for light mode
-            }
-        });
-    }
-
     // Call loadProducts when the document is ready
     loadProducts();
 
@@ -96,12 +85,6 @@ $(document).ready(function() {
                     </tr>
                 `);
 
-                // Apply text color based on the mode
-                if ($('body').hasClass('.dark-mode')) {
-                    newRow.css('color', '#0066cc'); // White text for dark mode
-                } else {
-                    newRow.css('color', '#4a90e2'); // Black text for light mode
-                }
 
                 $('#inventory-list').append(newRow);
 

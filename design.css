@@ -1048,7 +1048,11 @@ input:checked + .slider:before{
 #inventory-list {
     table-layout: fixed;
     width: 100%;
-    color: var(--color-dark);
+}
+
+table #inventory-list tr td{
+    color: red;
+    --text-color: brown;
 }
 
 /* Set a fixed width for the description column */

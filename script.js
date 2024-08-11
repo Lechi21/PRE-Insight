@@ -1,39 +1,39 @@
 "use strict";
 
-const Orders = [
-    {
-        addItem: "",
-        salesDate: '06.01.2024',
-        startingAmount: '5700',
-        closingAmount: '85700',
-        // status: 'Pending'
-    },
-    {
-        addItem: "",
-        salesDate: '#',
-        startingAmount: '#',
-        closingAmount: '#',
-        // status: 'Declined'
-    },
-    {
-        addItem: "",
-        salesDate: '#',
-        startingAmount: '#',
-        closingAmount: '#',
-        // status: 'Active'
-    },
-]
-Orders.forEach(order => {
-    const tr = document.createElement('tr');
-    const trContent = `
-        <td>${order.addItem}</td>
-        <td>${order.salesDate}</td>
-        <td>${order.startingAmount}</td>
-        <td>${order.closingAmount}</td>
-    `;
-    tr.innerHTML = trContent;
-    document.querySelector('table tbod').appendChild(tr);
-});
+// const Orders = [
+//     {
+//         addItem: "",
+//         salesDate: '06.01.2024',
+//         startingAmount: '5700',
+//         closingAmount: '85700',
+//         // status: 'Pending'
+//     },
+//     {
+//         addItem: "",
+//         salesDate: '#',
+//         startingAmount: '#',
+//         closingAmount: '#',
+//         // status: 'Declined'
+//     },
+//     {
+//         addItem: "",
+//         salesDate: '#',
+//         startingAmount: '#',
+//         closingAmount: '#',
+//         // status: 'Active'
+//     },
+// ]
+// Orders.forEach(order => {
+//     const tr = document.createElement('tr');
+//     const trContent = `
+//         <td>${order.addItem}</td>
+//         <td>${order.salesDate}</td>
+//         <td>${order.startingAmount}</td>
+//         <td>${order.closingAmount}</td>
+//     `;
+//     tr.innerHTML = trContent;
+//     document.querySelector('table tbod').appendChild(tr);
+// });
 
 
 $(document).ready(function () {
