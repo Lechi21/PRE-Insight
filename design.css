@@ -1064,7 +1064,7 @@ input:checked + .slider:before{
     word-wrap: break-word;
     white-space: normal;
     width: 185px;
-    max-width: 185px;
+    max-width: 188px;
 }
 
 #inventory-list td:nth-child(2) {

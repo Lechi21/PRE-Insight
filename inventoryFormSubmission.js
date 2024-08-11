@@ -42,10 +42,10 @@ $(document).ready(function() {
     // Function to apply text color based on the mode
     function applyRowTextColor() {
         $('#inventory-list tr').each(function() {
-            if ($('body').hasClass('dark-mode')) {
-                $(this).css('color', '#fff'); // White text for dark mode
+            if ($('body').hasClass('.dark-mode')) {
+                $(this).css('color', '#0066cc'); // White text for dark mode
             } else {
-                $(this).css('color', '#000'); // Black text for light mode
+                $(this).css('color', '#4a90e2'); // Black text for light mode
             }
         });
     }
@@ -97,10 +97,10 @@ $(document).ready(function() {
                 `);
 
                 // Apply text color based on the mode
-                if ($('body').hasClass('dark-mode')) {
-                    newRow.css('color', '#fff'); // White text for dark mode
+                if ($('body').hasClass('.dark-mode')) {
+                    newRow.css('color', '#0066cc'); // White text for dark mode
                 } else {
-                    newRow.css('color', '#000'); // Black text for light mode
+                    newRow.css('color', '#4a90e2'); // Black text for light mode
                 }
 
                 $('#inventory-list').append(newRow);
