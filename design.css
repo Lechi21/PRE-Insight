@@ -392,8 +392,8 @@ b{
     width: 100%;
     padding: 10px;
     text-align: center;
-    box-shadow: var(--box-shadow);
-    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow) !important;
+    border-radius: var(--card-border-radius) !important;
     transition: all 0.3s ease;
 }
 
@@ -403,12 +403,12 @@ b{
 
 .center table tbody td{
     height: 2.8rem;
-    border-bottom: 1px solid var(--color-light);
-    color: var(--color-dark-variant);
+    border-bottom: 1px solid var(--color-light) !important;
+    color: var(--color-dark-variant) !important;
 }
 
-.center table tbody tr:last-child td{
-    border: none;
+.center table tbody tr td{
+    padding-right: 5px;
 }
 .icon-link .material-symbols-outlined {
     color: #fff;
@@ -500,6 +500,7 @@ b{
     background-color: #1B9C85;
     color: #fff;
     padding: 4px;
+    text-align: left;
 }
 
 /* Download section */
@@ -1036,6 +1037,48 @@ input:checked + .slider:before{
 .inventory-table {
     margin-top: 40px;
     width: 100%;
+}
+
+#inventory-list {
+    table-layout: fixed;
+    width: 100%;
+    color: var(--color-dark);
+}
+
+/* Set a fixed width for the description column */
+#inventory-list td:nth-child(3) {
+    word-wrap: break-word;
+    white-space: normal;
+    width: 190px; /* Adjust this width as per your need */
+    max-width: 190px;
+    padding-right: 7px;
+}
+
+#inventory-list td:nth-child(1) {
+    word-wrap: break-word;
+    white-space: normal;
+    width: 185px;
+    max-width: 185px;
+}
+
+#inventory-list td:nth-child(2) {
+    word-wrap: break-word;
+    white-space: normal;
+    width: 115px;
+    max-width: 115px;
+    font-weight: bold;
+}
+
+/* Bold text in specific columns */
+#inventory-list td:nth-child(4) {
+    font-weight: bold;
+    text-align: center;
+}
+
+#inventory-list td:nth-child(6),
+#inventory-list td:nth-child(7),
+#inventory-list td:nth-child(5) {
+    text-align: center;
 }
 
 /* ============================= INVENTORY POPUP SECTION STARTS============================= */

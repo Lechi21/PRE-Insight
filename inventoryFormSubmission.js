@@ -20,7 +20,7 @@ $(document).ready(function() {
                         <tr>
                             <td>${product._id}</td>
                             <td>${product.name}</td>
-                            <td>${product.description}</td>
+                            <td class="description-column">${product.description}</td>
                             <td>${product.availableStock}</td>
                             <td>${product.stockDate}</td>
                             <td>${product.purchasePrice}</td>
@@ -29,9 +29,23 @@ $(document).ready(function() {
                     `;
                     $('#inventory-list').append(newRow);
                 });
+
+                // Apply text color based on the current mode
+                applyRowTextColor();
             },
             error: function(error) {
                 console.log('Error fetching products:', error);
+            }
+        });
+    }
+
+    // Function to apply text color based on the mode
+    function applyRowTextColor() {
+        $('#inventory-list tr').each(function() {
+            if ($('body').hasClass('dark-mode')) {
+                $(this).css('color', '#fff'); // White text for dark mode
+            } else {
+                $(this).css('color', '#000'); // Black text for light mode
             }
         });
     }
@@ -70,17 +84,25 @@ $(document).ready(function() {
                 console.log(response);
 
                 // Add the new product to the table
-                const newRow = `
+                const newRow = $(`
                     <tr>
                         <td>${response.createdProduct._id}</td>
                         <td>${response.createdProduct.name}</td>
-                        <td>${response.createdProduct.description}</td>
+                        <td class="description-column">${response.createdProduct.description}</td>
                         <td>${response.createdProduct.availableStock}</td>
                         <td>${response.createdProduct.stockDate}</td>
                         <td>${response.createdProduct.purchasePrice}</td>
                         <td>${response.createdProduct.sellingPrice}</td>
                     </tr>
-                `;
+                `);
+
+                // Apply text color based on the mode
+                if ($('body').hasClass('dark-mode')) {
+                    newRow.css('color', '#fff'); // White text for dark mode
+                } else {
+                    newRow.css('color', '#000'); // Black text for light mode
+                }
+
                 $('#inventory-list').append(newRow);
 
                 // Clear the form fields
@@ -97,5 +119,11 @@ $(document).ready(function() {
             }
         });
     });
+
+    // Optional: Reapply text color when the mode is toggled
+    $('.mode-toggle-button').on('click', function() {
+        applyRowTextColor();
+    });
 });
+
 
