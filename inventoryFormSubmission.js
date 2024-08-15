@@ -29,9 +29,6 @@ $(document).ready(function() {
                     `;
                     $('#inventory-list').append(newRow);
                 });
-
-                // Apply text color based on the current mode
-                applyRowTextColor();
             },
             error: function(error) {
                 console.log('Error fetching products:', error);
@@ -85,7 +82,6 @@ $(document).ready(function() {
                     </tr>
                 `);
 
-
                 $('#inventory-list').append(newRow);
 
                 // Clear the form fields
@@ -102,11 +98,4 @@ $(document).ready(function() {
             }
         });
     });
-
-    // Optional: Reapply text color when the mode is toggled
-    $('.mode-toggle-button').on('click', function() {
-        applyRowTextColor();
-    });
 });
-
-

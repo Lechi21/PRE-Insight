@@ -41,6 +41,45 @@ document.addEventListener('DOMContentLoaded', function (){
 });
 
 
+
+
+// Search and Filter Function
+
+function filterTable() {
+    const searchInput = document.getElementById('search-input').value.toLowerCase();
+    const filterValue = document.getElementById('filter-select').value.toLowerCase();
+    const table = document.getElementById('inventory-table');
+    const rows = table.getElementsByTagName('tr');
+
+    for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName('td');
+        let match = true;
+
+        // Check search input
+        if (searchInput) {
+            match = false;
+            for (let j = 0; j < cells.length; j++) {
+                if (cells[j].innerText.toLowerCase().includes(searchInput)) {
+                    match = true;
+                    break;
+                }
+            }
+        }
+
+        // Check filter
+        if (filterValue) {
+            const itemCell = cells[1].innerText.toLowerCase();
+            const stockCell = cells[3].innerText.toLowerCase();
+
+            if (!(itemCell.includes(filterValue) || stockCell.includes(filterValue))) {
+                match = false;
+            }
+        }
+
+        rows[i].style.display = match ? '' : 'none';
+    }
+};
+
     // Function to get the current date and format it
     function getCurrentDate() {
         var today = new Date();

@@ -14,9 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Update the dark mode button state
         darkMode.querySelector('span:nth-child(1)').classList.toggle('active', isDarkMode);
         darkMode.querySelector('span:nth-child(2)').classList.toggle('active', !isDarkMode);
-
-        // // For the Inventory Table
-        // applyTextColor();
     }
 
     // Toggle dark mode function
@@ -29,9 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
         darkMode.querySelector('span:nth-child(2)').classList.toggle('active', isCurrentlyDarkMode);
 
         localStorage.setItem('darkMode', !isCurrentlyDarkMode);
-
-        // // For the Inventory Table
-        // applyTextColor();
     }
 
     // Set dark mode based on user preference on page load

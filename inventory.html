@@ -50,21 +50,15 @@
             <div class="inventor">
                 <form action="#">
                     <div class="form-input">
-                        <input type="search" placeholder="Search...">
+                        <input type="search" placeholder="Search..." id="search-input" onkeyup="filterTable()">
                         <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
                     </div>
                     <div class="form-filter">
                         <div class="filter-btn">
-                            <h3>Filter</h3>
-                        </div>
-                        <div class="filter-btn">
                             <i class='bx bx-filter'></i>
                             <div class="dropdown-content">
-                                <select>
-                                <option value="option1">Date</option>
-                                <option value="option2">Latest</option>
-                                <option value="option3">Oldest</option>
-                            </select>
+                                <select id="filter-select" onchange="applyFilter()">
+                                </select>
                             </div>
                         </div>
                     </div>

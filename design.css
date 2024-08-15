@@ -6,6 +6,7 @@
     --color-blues: #044395;
     --color-success: #1B9C85;
     --color-warning: #F7D060;
+    --table-color: #000000;
     --color-white: #fff;
     --color-about-dark: #7d8da1;
     --color-dark: #363949;
@@ -28,6 +29,7 @@
     --color-background: #181a25;
     --background-color: #2d2d2d;
     --color-blues: #fff;
+    --table-color: #ffffff;
     --text-color: #fff;
     --link-color: #4a90e2;
     --color-white: #202630;
@@ -51,32 +53,32 @@ html{
 }
 
 body{
-        width: 100vw;
-        font-family: 'Inter', sans-serif;
-        font-size: 0.88rem;
-        user-select: none;
-        overflow-x: hidden;
-        color: var(--text-color);
-        background-color: var(--background-color);
-        position: relative;
-    }
+    width: 100vw;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    user-select: none;
+    overflow-x: hidden;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    position: relative;
+}
 
-    body::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background:
-            linear-gradient(
-                rgba(var(--background-overlay-rgb), 0.1), 
-                rgba(var(--background-overlay-rgb), 0.1)
-            ),
-            url(images/Background.jpeg) no-repeat center center/cover;
-        filter: blur(3px);
-        z-index: -1;
-    }
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        linear-gradient(
+            rgba(var(--background-overlay-rgb), 0.1), 
+            rgba(var(--background-overlay-rgb), 0.1)
+        ),
+        url(images/Background.jpeg) no-repeat center center/cover;
+    filter: blur(3px);
+    z-index: -1;
+}
 
 a{
     color: var(--color-dark);
@@ -386,7 +388,8 @@ b{
     margin-bottom: 0.8rem;
 }
 
-.center .salesRecord table,
+/* DAILY SALES TABLE STARTS HERE */
+.center .stock-sales,
 .others{
     background-color: var(--color-white);
     width: 100%;
@@ -397,19 +400,31 @@ b{
     transition: all 0.3s ease;
 }
 
-.center .salesRecord table:hover{
+.center .stock-sales:hover{
     box-shadow: none;
 }
 
-.center table tbody td{
-    height: 2.8rem;
-    border-bottom: 1px solid var(--color-light) !important;
-    color: var(--color-dark-variant) !important;
+.center .stock-sales thead tr th{
+    max-width: 70px;
+    overflow: hidden !important;
+    /* white-space: nowrap !important; */
+    text-overflow: ellipsis !important;
+    border-radius: 5px;
+    background-color: #1B9C85;
+    color: #fff;
+    padding: 4px;
 }
 
-.center table tbody tr td{
+.center .stock-sales tbody td{
+    height: 2.8rem;
+    border-bottom: 1px solid var(--color-light) !important;
+    color: var(--table-color) !important;
+}
+
+.center .stock-sales tbody tr td{
     padding-right: 5px;
 }
+
 .icon-link .material-symbols-outlined {
     color: #fff;
 }
@@ -426,6 +441,8 @@ b{
     margin: 2rem auto;
     color: var(--color-primary);
 }
+
+/* DAILY SALES TABLE ENDS HERE */
 
 .right-side .nav{
     display: flex;
@@ -489,18 +506,6 @@ b{
     overflow: hidden;
     transition: opacity 0.1s ease 0.02s;
     margin-right: 10px;
-}
-
-.center table thead tr th{
-    max-width: 70px;
-    overflow: hidden !important;
-    /* white-space: nowrap !important; */
-    text-overflow: ellipsis !important;
-    border-radius: 5px;
-    background-color: #1B9C85;
-    color: #fff;
-    padding: 4px;
-    text-align: left;
 }
 
 /* Download section */
@@ -894,6 +899,7 @@ input:checked + .slider:before{
     left: -28px;
     bottom: 3px;
 }
+
 #currencySelect, #timezoneSelect{
     background-color: var(--color-blues);
     border-radius: 5px;
@@ -928,7 +934,7 @@ input:checked + .slider:before{
 }
 .inventor form {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
     flex-grow: 1;
 }
@@ -994,7 +1000,7 @@ input:checked + .slider:before{
 
 .dropdown-content select {
     cursor: pointer;
-    display: block;
+    display: none;
     width: 100%;
     padding: 3px;
     border: none;
@@ -1034,25 +1040,36 @@ input:checked + .slider:before{
     opacity: 1;
     color: var(--color-about-dark);
 }
+
+/* INVENTORY TABLE STARTS HERE */
 .inventory-table {
     margin-top: 40px;
     width: 100%;
     background-color: var(--color-white);
+    width: 100%;
     padding: 10px;
-    text-align: center;
     box-shadow: var(--box-shadow) !important;
     border-radius: var(--card-border-radius) !important;
     transition: all 0.3s ease;
+    border-spacing: 0;
+}
+
+.inventory-table thead tr th{
+    max-width: 70px;
+    overflow: hidden !important;
+    /* white-space: nowrap !important; */
+    text-overflow: ellipsis !important;
+    background-color: #1B9C85;
+    color: #fff;
+    padding: 6px;
+    text-align: left;
+    font-size: 0.9rem;
 }
 
 #inventory-list {
     table-layout: fixed;
     width: 100%;
-}
-
-table #inventory-list tr td{
-    color: red;
-    --text-color: brown;
+    cursor: pointer;
 }
 
 /* Set a fixed width for the description column */
@@ -1062,13 +1079,23 @@ table #inventory-list tr td{
     width: 190px; /* Adjust this width as per your need */
     max-width: 190px;
     padding-right: 7px;
+    padding-left: 4px;
+}
+
+.inventory-table thead tr th:nth-child(1) {
+    border-radius: 4px 0 0 4px;
+}
+
+.inventory-table thead tr th:nth-child(7) {
+    border-radius: 0 4px 4px 0;
 }
 
 #inventory-list td:nth-child(1) {
     word-wrap: break-word;
     white-space: normal;
-    width: 185px;
-    max-width: 188px;
+    width: 187px;
+    max-width: 187px;
+    padding-left: 4px;
 }
 
 #inventory-list td:nth-child(2) {
@@ -1077,19 +1104,44 @@ table #inventory-list tr td{
     width: 115px;
     max-width: 115px;
     font-weight: bold;
+    padding-left: 4px;
 }
 
 /* Bold text in specific columns */
+.inventory-table thead tr th:nth-child(4),
 #inventory-list td:nth-child(4) {
     font-weight: bold;
     text-align: center;
+    width: 95px;
+    max-width: 95px;
 }
 
+.inventory-table thead tr th:nth-child(5),
+.inventory-table thead tr th:nth-child(6),
+.inventory-table thead tr th:nth-child(7),
+#inventory-list td:nth-child(5),
 #inventory-list td:nth-child(6),
-#inventory-list td:nth-child(7),
-#inventory-list td:nth-child(5) {
+#inventory-list td:nth-child(7) {
     text-align: center;
 }
+
+.center .inventory-table tbody td{
+    height: 2.8rem;
+    border-bottom: 1px solid var(--color-light) !important;
+    /* color: var(--table-color); */
+}
+
+.center .inventory-table tbody tr td{
+    padding-right: 5px;
+}
+
+.inventory-table tbody tr:hover {
+    background-color: #f5f5f5;
+    color: #000000 !important;
+    width: 100%;
+}
+
+/* INVENTORY TABLE ENDS HERE */
 
 /* ============================= INVENTORY POPUP SECTION STARTS============================= */
 .itemPop {
@@ -1249,10 +1301,10 @@ margin-top: 20px;
         display: none;
     }
 
-    .left-side .corner{
+    .left-side .corner {
         display: none;
     }
-    .center{
+    .center {
         grid-area: center;
         margin-top: 3.6rem;
         margin-bottom: 4rem;
@@ -1262,9 +1314,9 @@ margin-top: 20px;
         grid-template-columns: 1fr;
         gap: 0;
     }
-    .center table thead tr th {
+    /* .center table thead tr th {
         max-width: none;
-    }
+    } */
 
     /* .center .salesRecord{
         width: 100%;
@@ -1472,6 +1524,55 @@ margin-top: 20px;
         background-color: var(--color-background);
         width: 100%;
     }
+
+        /* INVENTORY TABLE STARTS HERE */
+    .inventory-table {
+        margin-top: 30px;
+        padding: 8px;
+        background-color: var(--color-white);
+        box-shadow: var(--box-shadow) !important;
+        border-radius: var(--card-border-radius) !important;
+        transition: all 0.3s ease;
+        /* border-spacing: 0; */
+    }
+    
+    .inventory-table thead tr th {
+        padding: 6px;
+        font-size: 0.9rem; /* Slightly smaller font for header */
+    }
+    
+    #inventory-list td:nth-child(3) {
+        width: 175px; /* Reduce width for description */
+        max-width: 175px;
+    }
+    
+    .inventory-table thead tr th:nth-child(2) {
+        border-radius: 4px 0 0 4px;
+    }
+
+    #inventory-list td:nth-child(2) {
+        width: 150px; /* Adjust column widths */
+        max-width: 150px;
+    }
+
+    #inventory-list td:nth-child(6),
+    #inventory-list td:nth-child(7) {
+        width: 95px; /* Adjust column widths */
+        max-width: 95px;
+    }
+
+    /* Hide the first and fifth column */
+    #inventory-list td:nth-child(1),
+    #inventory-list td:nth-child(5),
+    .inventory-table thead tr th:nth-child(1),
+    .inventory-table thead tr th:nth-child(5) {
+        display: none;
+    }
+    
+    .center .inventory-table tbody td {
+        height: 2.5rem;
+    }
+/* INVENTORY TABLE ENDS HERE */
 }
 
 @media screen and (max-width: 768px) {
@@ -1509,7 +1610,7 @@ margin-top: 20px;
         margin: 10px 0 0 0;
     }
 
-    .center table thead tr th {
+    .center .stock-sales thead tr th {
         position: relative;
         max-width: 70px;
         overflow: hidden !important;
@@ -1521,7 +1622,7 @@ margin-top: 20px;
         padding: 6px;
     }
 
-    .center table thead tr th::after {
+    .center .stock-sales thead tr th::after {
         content: attr(data-label);
         position: absolute;
         top: 10px;
@@ -1535,6 +1636,7 @@ margin-top: 20px;
         text-align: center;
         z-index: 1;
     }
+
     .input{
         border: none;
         border-radius: 4px;
@@ -1556,7 +1658,7 @@ margin-top: 20px;
         padding-left: 16px;
     }
 
-    /* .center table thead tr th:hover::after {
+    /* .center .stock-sales thead tr th:hover::after {
         visibility: visible;
     } */
 
@@ -1783,6 +1885,59 @@ margin-top: 20px;
     .inventor form .form-product button {
         justify-content: center;
     }
+
+    /* INVENTORY TABLE STARTS HERE */
+    .inventory-table {
+        margin-top: 20px;
+        padding: 5px;
+        font-size: 0.85rem;
+    }
+
+    .inventory-table thead tr th {
+        padding: 6px;
+        font-size: 0.9rem;
+    }
+
+    #inventory-list td:nth-child(3) {
+        width: 120px; /* Further reduce description width */
+        max-width: 120px;
+    }
+
+    .inventory-table thead tr th:nth-child(4) {
+        border-radius: 0 4px 4px 0;
+    }
+
+    .inventory-table thead tr th:nth-child(4),
+    #inventory-list td:nth-child(4) {
+        width: 70px;
+        max-width: 70px;
+    }
+
+    #inventory-list td:nth-child(2) {
+        width: 120px; /* Adjust column widths */
+        max-width: 120px;
+    }
+
+    #inventory-list td:nth-child(1),
+    #inventory-list td:nth-child(5),
+    #inventory-list td:nth-child(6),
+    #inventory-list td:nth-child(7),
+    .inventory-table thead tr th:nth-child(1),
+    .inventory-table thead tr th:nth-child(5),
+    .inventory-table thead tr th:nth-child(6),
+    .inventory-table thead tr th:nth-child(7) {
+        display: none;
+    }
+
+    .center .inventory-table tbody td {
+        height: 2.2rem; /* Reduce row height */
+    }
+
+    .inventory-table tbody tr:hover {
+        background-color: #f9f9f9; /* Lighter hover effect */
+    }
+/* INVENTORY TABLE ENDS HERE */
+
     .switch{
         position: relative;
         display: inline-block;
@@ -1831,9 +1986,6 @@ margin-top: 20px;
         display: none;
     }
 
-    .inventory-table{
-        display: none;
-    }
     .top-ventory {
         margin: -60px 10px 3px 10px;
     }
