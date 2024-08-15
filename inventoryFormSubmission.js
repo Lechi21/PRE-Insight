@@ -25,6 +25,7 @@ $(document).ready(function() {
                             <td>${product.stockDate}</td>
                             <td>${product.purchasePrice}</td>
                             <td>${product.sellingPrice}</td>
+                            <td><img src="${product.productImage}" width="100"></td>
                         </tr>
                     `;
                     $('#inventory-list').append(newRow);
@@ -42,29 +43,19 @@ $(document).ready(function() {
     $('#itemPage').on('submit', function(e) {
         e.preventDefault(); // Prevent default form submission
 
-        // Collect the Form Data
-        const itemName = $('input[name="itemName"]').val();
-        const description = $('input[name="description"]').val();
-        const availableStock = $('input[name="availableStock"]').val();
-        const purchasePrice = $('input[name="purchasePrice"]').val();
-        const sellingPrice = $('input[name="sellingPrice"]').val();
-        const stockDate = $('#date').text(); // Getting the current date value from the Stock Date div
+        // Create FormData object to handle file and text data
+        const formData = new FormData(this); // 'this' refers to the form element
 
-        const formData = {
-            itemName: itemName,
-            description: description,
-            availableStock: availableStock,
-            purchasePrice: purchasePrice,
-            sellingPrice: sellingPrice,
-            stockDate: stockDate
-        };
+        // Add the current date manually to the form data
+        formData.append('stockDate', $('#date').text());
 
         // Send Data to the Server
         $.ajax({
             type: 'POST',
             url: 'http://localhost:3000/product', // Server endpoint
-            data: JSON.stringify(formData),
-            contentType: 'application/json',
+            data: formData,
+            processData: false, // Prevent jQuery from automatically transforming the data into a query string
+            contentType: false, // Needed to tell jQuery not to set content type header
             success: function(response) {
                 alert('Item added successfully!');
                 console.log(response);
@@ -79,6 +70,7 @@ $(document).ready(function() {
                         <td>${response.createdProduct.stockDate}</td>
                         <td>${response.createdProduct.purchasePrice}</td>
                         <td>${response.createdProduct.sellingPrice}</td>
+                        <td><img src="${response.createdProduct.productImage}" width="100"></td>
                     </tr>
                 `);
 
