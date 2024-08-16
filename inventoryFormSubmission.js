@@ -18,14 +18,20 @@ $(document).ready(function() {
                 response.products.forEach(product => {
                     const newRow = `
                         <tr>
-                            <td>${product._id}</td>
-                            <td>${product.name}</td>
+                            <td><img src="${product.productImage}" class="item-table-image" width="50"></td>
+                            <td class="item-name-column">
+                                <div class="item-table-name">
+                                    <strong>${product.name}</strong>
+                                </div>
+                                <div class="item-table-id">
+                                    ${product._id}
+                                </div>
+                            </td>
                             <td class="description-column">${product.description}</td>
                             <td>${product.availableStock}</td>
                             <td>${product.stockDate}</td>
                             <td>${product.purchasePrice}</td>
                             <td>${product.sellingPrice}</td>
-                            <td><img src="${product.productImage}" width="100"></td>
                         </tr>
                     `;
                     $('#inventory-list').append(newRow);
@@ -63,14 +69,20 @@ $(document).ready(function() {
                 // Add the new product to the table
                 const newRow = $(`
                     <tr>
-                        <td>${response.createdProduct._id}</td>
-                        <td>${response.createdProduct.name}</td>
+                    <td><img src="${response.createdProduct.productImage}" class="item-table-image" width="50"></td>
+                        <td class="item-name-column">
+                            <div class="item-table-name">
+                                <strong>${response.createdProduct.name}</strong>
+                            </div>
+                            <div class="item-table-id">
+                                ${response.createdProduct._id}
+                            </div>
+                        </td>
                         <td class="description-column">${response.createdProduct.description}</td>
                         <td>${response.createdProduct.availableStock}</td>
                         <td>${response.createdProduct.stockDate}</td>
                         <td>${response.createdProduct.purchasePrice}</td>
                         <td>${response.createdProduct.sellingPrice}</td>
-                        <td><img src="${response.createdProduct.productImage}" width="100"></td>
                     </tr>
                 `);
 

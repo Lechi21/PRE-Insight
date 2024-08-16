@@ -1076,14 +1076,17 @@ input:checked + .slider:before{
 #inventory-list td:nth-child(3) {
     word-wrap: break-word;
     white-space: normal;
-    width: 190px; /* Adjust this width as per your need */
-    max-width: 190px;
+    width: 195px; /* Adjust this width as per your need */
+    max-width: 195px;
     padding-right: 7px;
     padding-left: 4px;
 }
 
 .inventory-table thead tr th:nth-child(1) {
     border-radius: 4px 0 0 4px;
+    align-items: center;
+    align-content: center;
+    margin: 0 auto;
 }
 
 .inventory-table thead tr th:nth-child(7) {
@@ -1091,19 +1094,18 @@ input:checked + .slider:before{
 }
 
 #inventory-list td:nth-child(1) {
-    word-wrap: break-word;
-    white-space: normal;
-    width: 187px;
-    max-width: 187px;
+    width: 70px;
+    max-width: 70px;
     padding-left: 4px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 #inventory-list td:nth-child(2) {
     word-wrap: break-word;
     white-space: normal;
-    width: 115px;
-    max-width: 115px;
-    font-weight: bold;
+    width: 195px;
+    max-width: 195px;
     padding-left: 4px;
 }
 
@@ -1112,8 +1114,8 @@ input:checked + .slider:before{
 #inventory-list td:nth-child(4) {
     font-weight: bold;
     text-align: center;
-    width: 95px;
-    max-width: 95px;
+    width: 80px;
+    max-width: 80px;
 }
 
 .inventory-table thead tr th:nth-child(5),
@@ -1139,6 +1141,36 @@ input:checked + .slider:before{
     background-color: #f5f5f5;
     color: #000000 !important;
     width: 100%;
+}
+
+.item-name-column {
+    padding: 10px;
+    text-align: left;
+}
+
+#inventory-list td:nth-child(4),
+.item-table-name {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.item-table-id {
+    font-size: 11px;
+}
+
+.item-table-id:hover {
+    background-color: #f5f5f5;
+    color: #000000 !important;
+    width: 100%;
+}
+
+.item-table-image {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ddd;
 }
 
 /* INVENTORY TABLE ENDS HERE */
@@ -1546,12 +1578,17 @@ margin-top: 20px;
         max-width: 175px;
     }
     
-    .inventory-table thead tr th:nth-child(2) {
+    .inventory-table thead tr th:nth-child(1) {
         border-radius: 4px 0 0 4px;
     }
 
+    #inventory-list td:nth-child(1) {
+        width: 45px; /* Adjust column widths */
+        max-width: 45px;
+    }
+
     #inventory-list td:nth-child(2) {
-        width: 150px; /* Adjust column widths */
+        width: 150px;
         max-width: 150px;
     }
 
@@ -1562,9 +1599,7 @@ margin-top: 20px;
     }
 
     /* Hide the first and fifth column */
-    #inventory-list td:nth-child(1),
     #inventory-list td:nth-child(5),
-    .inventory-table thead tr th:nth-child(1),
     .inventory-table thead tr th:nth-child(5) {
         display: none;
     }
@@ -1898,11 +1933,6 @@ margin-top: 20px;
         font-size: 0.9rem;
     }
 
-    #inventory-list td:nth-child(3) {
-        width: 120px; /* Further reduce description width */
-        max-width: 120px;
-    }
-
     .inventory-table thead tr th:nth-child(4) {
         border-radius: 0 4px 4px 0;
     }
@@ -1913,17 +1943,22 @@ margin-top: 20px;
         max-width: 70px;
     }
 
+    #inventory-list td:nth-child(1) {
+        width: 40px;
+        max-width: 40px;
+    }
+
     #inventory-list td:nth-child(2) {
-        width: 120px; /* Adjust column widths */
+        width: 120px;
         max-width: 120px;
     }
 
-    #inventory-list td:nth-child(1),
     #inventory-list td:nth-child(5),
+    #inventory-list td:nth-child(3),
     #inventory-list td:nth-child(6),
     #inventory-list td:nth-child(7),
-    .inventory-table thead tr th:nth-child(1),
     .inventory-table thead tr th:nth-child(5),
+    .inventory-table thead tr th:nth-child(3),
     .inventory-table thead tr th:nth-child(6),
     .inventory-table thead tr th:nth-child(7) {
         display: none;
