@@ -16,9 +16,10 @@ $(document).ready(function() {
 
                 // Populate the table with the existing products
                 response.products.forEach(product => {
+                    const imageUrl = `http://localhost:3000/${product.productImage}`;
                     const newRow = `
-                        <tr>
-                            <td><img src="${product.productImage}" class="item-table-image" width="50"></td>
+                        <tr data-id="${product._id}">
+                            <td><img src="${imageUrl}" class="item-table-image" width="50"></td>
                             <td class="item-name-column">
                                 <div class="item-table-name">
                                     <strong>${product.name}</strong>
@@ -35,6 +36,11 @@ $(document).ready(function() {
                         </tr>
                     `;
                     $('#inventory-list').append(newRow);
+                });
+
+                $('#inventory-list').on('click', 'tr', function() {
+                    const productId = $(this).data('id');
+                    window.location.href = `editProduct.html?id=${productId}`;
                 });
             },
             error: function(error) {

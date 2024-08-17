@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+    <link rel="stylesheet" href="design.css">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <title>Insanjo</title>
+</head>
+<body>
+    <noscript>
+        <p>This website requires JavaScript. Please enable JavaScript in your browser.</p>
+    </noscript>
+    <div class="container">
+        <!-- Sidebar Section -->
+        <div class="left-side">
+            <div class="corner">
+                <a onclick="goHome(); return false">
+                    <div class="logo">
+                        <h2><b class="color2">Insanj</b></h2>
+                        <img src="images/logoBox.png">
+                    </div>
+                </a>
+            </div>
+        <script>
+            function goHome(){
+                window.location.href = "index.html";
+            }
+        </script>
+        </div>
+
+        <div class="center">
+            <br><br><br><br>
+            <div class="top-ventory">
+                <h1>Inventory</h1>
+                <div class="top">
+                    <ul class="top-check">
+                        <li><a onclick="goHome(); return false">Home</a></li>
+                        /
+                        <li><a onclick="inventory(); return false">Inventory</a></li>
+                        /
+                        <li><a onclick="inventory(); return false" class="active">Edit</a></li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+            <div class="inventor">
+                <img src="" alt="">
+            </div>
+            <h1>Edit Product</h1>
+            <form id="editProductForm" class="patchForm">
+                <div class="editButtons">
+                    <input type="submit" class="edit" value="Edit Product" onclick="pdfForm();">
+                    <input type="submit" class="delete" value="Delete Product" onclick="csvForm();">
+                </div>
+
+                <input type="hidden" name="productId" id="productId">
+
+                <div class="editingItems">
+                    <label for="name"><strong>Item Name:</strong></label>
+                    <div>
+                        <input type="text" name="name" id="name" required><br>
+                    </div>
+                </div>
+                <div class="editingItems">
+                    <label for="description"><strong>Description:</strong></label>
+                    <div>
+                        <input type="text" name="description" id="description"><br>
+                    </div>
+                </div>
+                <div class="editingItems">
+                    <label for="availableStock"><strong>Available Stock:</strong></label>
+                    <input type="number" name="availableStock" id="availableStock" required><br>    
+                </div>
+                <div class="editingItems">
+                    <label for="purchasePrice"><strong>Purchase Price:</strong></label>
+                    <input type="number" name="purchasePrice" id="purchasePrice" required><br>
+                </div>
+                <div class="editingItems">
+                    <label for="sellingPrice"><strong>Selling Price:</strong></label>
+                    <input type="number" name="sellingPrice" id="sellingPrice" required><br>
+                </div>
+
+                
+
+                <label for="productImage">Image:</label>
+                <input type="file" name="productImage" id="productImage"><br>
+            </form>
+        </div> 
+
+        <!-- Right Section -->
+        <div class="right-side">
+            <div class="nav">
+                <div class="right-corner">
+                    <a onclick="goHome(); return false">
+                        <div class="logo">
+                            <h2><b class="color2">Insanj</b></h2>
+                            <img src="images/logoBox.png">
+                        </div>
+                    </a>
+                </div>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="inventory">
+                    <span class="material-icons-sharp" style="color: #1B9C85;">library_books</span>
+                </div>
+                <div class="profile">
+                    <div class="about">
+                        <p>Hey, <b>Lechi</b></p>
+                        <small class="admin">Admin</small>
+                    </div>
+                    <div class="displayPic usersDetails">
+                        <img src="images/blank-person-icon-9.jpg">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="details usersDetails">
+                <div class="user-profile">
+                    <div class="profile_image photo">
+                        <input type="file" class="image_file" id="uploadInput" onchange="updateImage()">
+                    </div>
+                    <div class="profile_names" style="margin-top: 10px;">
+                        <h2>Administrator</h2>
+                        <p>Admin</p>
+                    </div>
+                </div>
+                <div class="sidebar">
+                    <a href="#" onclick="openProfile(); return false">
+                        <span class="material-icons-sharp">
+                            account_circle</span>
+                        <h3>Profile</h3>
+                    </a>
+                    <a href="#" class="" onclick="openProfile()">
+                        <span class="material-icons-sharp">business</span>
+                        <h3>Business Profile</h3>
+                    </a>
+                    <a href="#account" onclick="openProfile();">
+                        <span class="material-icons-sharp">manage_accounts</span>
+                        <h3>Account</h3>
+                    </a>
+                    <a href="#" onclick="openProfile(); return false">
+                        <span class="material-icons-sharp">notifications</span>
+                        <h3>Notifications</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-icons-sharp">logout</span>
+                        <h3>Logout</h3>
+                    </a>
+                    <script>
+                        function openProfile(){
+                            window.location.href = 'profile.html';
+                        }
+                        function goHome(){
+                            window.location.href = "index.html";
+                        }
+                        function inventory(){
+                            window.location.href = "inventory.html";
+                        }
+
+                        // JAVASCRIPT FOR PROFILE PHOTO
+                        function updateImage() {
+                                var input = document.getElementById('uploadInput');
+                                var profileImage = document.querySelector('.profile_image');
+
+                                if (input.files && input.files[0]) {
+                                    var reader = new FileReader();
+
+                                    reader.onload = function (e) {
+                                        profileImage.style.backgroundImage = 'url(' + e.target.result + ')';
+                                    };
+
+                                    reader.readAsDataURL(input.files[0]);
+                                }
+                            }
+                    </script>
+                </div>
+            </div>
+            <!-- End of Nav -->
+        </div>
+    </div>
+        <div class="footer">
+            <div class="foot">
+                <nav class="footer-nav"> © 2024 Copyright: Lechi-Tech</a></nav>
+                <a href="#" class="footer-link"><img src="images/Lechi Logo.png" alt="logoImage"></a>
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const displayPic = document.querySelector('.displayPic.usersDetails');
+                const details = document.querySelector('.details');
+    
+                displayPic.addEventListener('click', function (event) {
+                    details.classList.toggle('active');
+                    event.stopPropagation(); // Prevents the click event from propagating to document
+                });
+    
+                // Close details when clicking outside of it
+                document.addEventListener('click', function (event) {
+                    if (!details.contains(event.target) && !displayPic.contains(event.target)) {
+                        details.classList.remove('active');
+                    }
+                });
+            });
+        </script>
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="dlMood.js"></script>
+    <script src="currency.js"></script>
+</body>
+</html>
