@@ -198,7 +198,7 @@ b{
     transition: opacity 0.2s;
 }
 
-.details .active {
+.details.active {
     opacity: 1;
     transition: opacity 0.2s;
 }
@@ -276,7 +276,7 @@ b{
 .swipeTab button:hover {
     background-color: var(--color-dark);
 }
-.swipeTab button .active {
+.swipeTab button.active {
     background-color: var(--color-dark);
 }
 .arrowLeft-Right{
@@ -478,7 +478,7 @@ b{
     justify-content: center;
 }
 
-.right-side .dark-mode span .active{
+.right-side .dark-mode span.active{
     background-color: var(--color-primary);
     color: white;
     border-radius: var(--border-radius-1);
@@ -657,6 +657,8 @@ b{
     grid-area: footer;
     background-color: var(--color-background);
     width: 100%;
+    position: fixed;
+    bottom: 0;
 }
 .foot{
     padding: 0 28px;

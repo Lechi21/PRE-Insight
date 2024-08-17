@@ -11,14 +11,12 @@ $(document).ready(function() {
             type: 'GET',
             url: 'http://localhost:3000/product', // Server endpoint to fetch products
             success: function(response) {
-                // Clear the current table contents
                 $('#inventory-list').empty();
-
-                // Populate the table with the existing products
+    
                 response.products.forEach(product => {
                     const imageUrl = `http://localhost:3000/${product.productImage}`;
                     const newRow = `
-                        <tr data-id="${product._id}">
+                        <tr data-id="${product._id}" data-image="${imageUrl}" data-name="${product.name}" data-description="${product.description}" data-availableStock="${product.availableStock}" data-purchasePrice="${product.purchasePrice}" data-sellingPrice="${product.sellingPrice}">
                             <td><img src="${imageUrl}" class="item-table-image" width="50"></td>
                             <td class="item-name-column">
                                 <div class="item-table-name">
@@ -37,10 +35,18 @@ $(document).ready(function() {
                     `;
                     $('#inventory-list').append(newRow);
                 });
-
+    
                 $('#inventory-list').on('click', 'tr', function() {
                     const productId = $(this).data('id');
-                    window.location.href = `editProduct.html?id=${productId}`;
+                    const imageUrl = $(this).data('image');
+                    const name = $(this).data('name');
+                    const description = $(this).data('description');
+                    const availableStock = $(this).data('availableStock');
+                    const purchasePrice = $(this).data('purchasePrice');
+                    const sellingPrice = $(this).data('sellingPrice');
+                    
+                    window.location.href = `editProduct.html?id=${productId}&imageUrl=${encodeURIComponent(imageUrl)}&name=${encodeURIComponent(name)}&description=${encodeURIComponent(description)}&availableStock=${encodeURIComponent(availableStock)}&purchasePrice=${purchasePrice}&sellingPrice=${sellingPrice}`;
+
                 });
             },
             error: function(error) {
@@ -48,7 +54,7 @@ $(document).ready(function() {
             }
         });
     }
-
+    
     // Call loadProducts when the document is ready
     loadProducts();
 
