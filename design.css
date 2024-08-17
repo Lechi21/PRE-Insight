@@ -1384,7 +1384,7 @@ margin: 10px 0;
 }
 
 .productInfo strong {
-color: #333;
+color: var(--text-color);
 }
 
 /* ============================= EDIT INVENTORY ENDS HERE============================= */
