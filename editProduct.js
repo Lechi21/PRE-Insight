@@ -1,4 +1,30 @@
 
+$(document).ready(function() {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const imageUrl = urlParams.get('imageUrl');
+    const name = urlParams.get('name');
+    const description = urlParams.get('description');
+    const availableStock = urlParams.get('availableStock');
+    const purchasePrice = urlParams.get('purchasePrice');
+    const sellingPrice = urlParams.get('sellingPrice');
+    const productId = urlParams.get('id');
+    
+    // Set the product image
+    $('#productCoverImage').attr('src', decodeURIComponent(imageUrl));
+    
+    // Set the product name in the heading
+    $('h1').text(decodeURIComponent(name));
+    
+    // Set the product details
+    $('#productId').text(productId);
+    $('#productDescription').text(decodeURIComponent(description));
+    $('.availableStock').text(decodeURIComponent(availableStock));
+    $('#purchasePrice').text(`NGN${decodeURIComponent(purchasePrice)}`);
+    $('#sellingPrice').text(`NGN${decodeURIComponent(sellingPrice)}`);
+});
+
+
 function editForm() {
     // Get the product details
     const productId = $('#productId').text();
