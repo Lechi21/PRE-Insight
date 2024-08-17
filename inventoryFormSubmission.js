@@ -45,8 +45,7 @@ $(document).ready(function() {
                     const purchasePrice = $(this).data('purchasePrice');
                     const sellingPrice = $(this).data('sellingPrice');
                     
-                    window.location.href = `editProduct.html?id=${productId}&imageUrl=${encodeURIComponent(imageUrl)}&name=${encodeURIComponent(name)}&description=${encodeURIComponent(description)}&availableStock=${encodeURIComponent(availableStock)}&purchasePrice=${purchasePrice}&sellingPrice=${sellingPrice}`;
-
+                    window.location.href = `editProduct.html?id=${productId}&imageUrl=${encodeURIComponent(imageUrl)}&name=${encodeURIComponent(name)}&description=${encodeURIComponent(description)}&availableStock=${encodeURIComponent(availableStock)}&purchasePrice=${encodeURIComponent(purchasePrice)}&sellingPrice=${encodeURIComponent(sellingPrice)}`;
                 });
             },
             error: function(error) {

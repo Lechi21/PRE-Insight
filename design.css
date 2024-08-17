@@ -1320,6 +1320,75 @@ margin-top: 20px;
 
 /* ============================= INVENTORY POPUP SECTION ENDS HERE============================= */
 
+/* ============================= EDIT INVENTORY STARTS HERE============================= */
+
+.productCoverImage img {
+    max-width: 50rem;
+    max-height: 22rem;
+}
+
+.productDetails {
+padding: 20px 0 0 0;
+max-width: 800px;
+}
+
+h1 {
+font-size: 24px;
+margin-bottom: 20px;
+}
+
+.editButtons {
+display: flex;
+gap: 20px;
+margin-bottom: 20px;
+}
+
+.editButtons .edit,
+.editButtons .delete {
+flex: 1;
+padding: 10px;
+font-size: 16px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.editButtons .edit {
+background-color: #4CAF50;
+color: white;
+}
+
+.editButtons .delete {
+background-color: #f44336;
+color: white;
+}
+
+.stockInfo {
+display: flex;
+align-items: center;
+margin-bottom: 20px;
+}
+
+.availableStock {
+font-size: 24px;
+background-color: #000;
+color: #fff;
+padding: 5px 10px;
+border-radius: 5px;
+margin-right: 10px;
+}
+
+.productInfo p {
+font-size: 18px;
+margin: 10px 0;
+}
+
+.productInfo strong {
+color: #333;
+}
+
+/* ============================= EDIT INVENTORY ENDS HERE============================= */
+
 .editingItems {
     display: flex;
     font-size: 400;

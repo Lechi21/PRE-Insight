@@ -11,73 +11,6 @@
     <link rel="stylesheet" href="design.css">
     <link rel="icon" href="images/favicon.png" type="image/png">
     <title>Insanjo</title>
-
-    <style>
-        .productCoverImage img {
-            max-width: 50rem;
-            max-height: 22rem;
-}
-
-.productDetails {
-    padding: 20px 0 0 0;
-    max-width: 800px;
-}
-
-h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.editButtons {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.editButtons .edit,
-.editButtons .delete {
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.editButtons .edit {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.editButtons .delete {
-    background-color: #f44336;
-    color: white;
-}
-
-.stockInfo {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.availableStock {
-    font-size: 24px;
-    background-color: #000;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin-right: 10px;
-}
-
-.productInfo p {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-.productInfo strong {
-    color: #333;
-}
-    </style>
 </head>
 <body>
     <noscript>
@@ -111,7 +44,7 @@ h1 {
                         /
                         <li><a onclick="inventory(); return false">Inventory</a></li>
                         /
-                        <li><a onclick="inventory(); return false" class="active">Edit</a></li>
+                        <li><a class="active">Edit</a></li>
                     </ul>
                 </div>
             </div>
@@ -124,8 +57,8 @@ h1 {
                 
                 <div class="productDetails">
                     <div class="editButtons">
-                        <input type="button" class="edit" value="Edit Product" onclick="pdfForm();">
-                        <input type="button" class="delete" value="Delete Product" onclick="csvForm();">
+                        <input type="button" class="edit" value="Edit Product" onclick="editForm();">
+                        <input type="button" class="delete" value="Delete Product" onclick="deleteForm();">
                     </div>
                     <h1></h1>
                 
@@ -168,8 +101,8 @@ h1 {
                 $('#productId').text(productId);
                 $('#productDescription').text(decodeURIComponent(description));
                 $('.availableStock').text(decodeURIComponent(availableStock));
-                $('#purchasePrice').text(`NGN${purchasePrice}`);
-                $('#sellingPrice').text(decodeURIComponent(`NGN${sellingPrice}`));
+                $('#purchasePrice').text(`NGN${decodeURIComponent(purchasePrice)}`);
+                $('#sellingPrice').text(`NGN${decodeURIComponent(sellingPrice)}`);
             });
 
         </script>
@@ -296,6 +229,6 @@ h1 {
     <script src="inventoryFormSubmission.js"></script>
     <script src="dlMood.js"></script>
     <script src="inventoryForm.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="editProduct.js"></script>
 </body>
 </html>
