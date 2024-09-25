@@ -1,85 +1,123 @@
-
-$(document).ready(function() {
+$(document).ready(function () {
+    // Get the productId from the URL query string
     const urlParams = new URLSearchParams(window.location.search);
-
-    const imageUrl = urlParams.get('imageUrl');
-    const name = urlParams.get('name');
-    const description = urlParams.get('description');
-    const availableStock = urlParams.get('availableStock');
-    const purchasePrice = urlParams.get('purchasePrice');
-    const sellingPrice = urlParams.get('sellingPrice');
     const productId = urlParams.get('id');
-    
-    // Set the product image
-    $('#productCoverImage').attr('src', decodeURIComponent(imageUrl));
-    
-    // Set the product name in the heading
-    $('h1').text(decodeURIComponent(name));
-    
-    // Set the product details
-    $('#productId').text(productId);
-    $('#productDescription').text(decodeURIComponent(description));
-    $('.availableStock').text(decodeURIComponent(availableStock));
-    $('#purchasePrice').text(`NGN${decodeURIComponent(purchasePrice)}`);
-    $('#sellingPrice').text(`NGN${decodeURIComponent(sellingPrice)}`);
+
+    if (productId) {
+        // Fetch the product details from the server using the product ID
+        $.ajax({
+            type: 'GET',
+            url: `http://localhost:3000/product/${productId}`, // Server endpoint to fetch the product by ID
+            success: function (response) {
+                const product = response.product; // Assuming response.product contains the product details
+
+                // Populate the page with product details
+                $('#productCoverImage').attr('src', `http://localhost:3000/${product.productImage}`);
+                $('h1').text(product.name);
+                $('#productId').text(product._id);
+                $('#productName').val(product.name); // Populate form input fields
+                $('#productDescription').val(product.description);
+                $('#availableStock').val(product.availableStock);
+                $('#purchasePrice').val(product.purchasePrice ? product.purchasePrice.toFixed(2) : '0.00');
+                $('#sellingPrice').val(product.sellingPrice ? product.sellingPrice.toFixed(2) : '0.00');
+            },
+            error: function (error) {
+                console.log('Error fetching product details:', error);
+            }
+        });
+    } else {
+        alert('No product ID found in the URL');
+    }
+
+    // Attach click event handler for the edit button
+    $('#editBtn').click(function () {
+        const productId = $('#productId').text(); // Get the product ID from the populated field
+        editForm(productId); // Call the edit form function with the product ID
+    });
+
+    // Handle form submission inside the modal
+    $('#modalForm').on('submit', function (e) {
+        e.preventDefault(); // Prevent default form submission behavior
+
+        const productId = $('#productId').text().trim(); // Get and trim the product ID
+
+        // Capture updated form data
+        const updatedProduct = {
+            name: $('#productName').val(),
+            description: $('#productDescription').val(),
+            availableStock: $('#availableStock').val(),
+            purchasePrice: $('#purchasePrice').val(),
+            sellingPrice: $('#sellingPrice').val()
+        };
+
+        // Use FormData to handle file upload along with other form data
+        const formData = new FormData();
+        Object.keys(updatedProduct).forEach(key => {
+            formData.append(key, updatedProduct[key]); // Append all fields to FormData
+        });
+
+        // If there's an image being uploaded, append it to FormData
+        if ($('#productImageUrl')[0].files[0]) {
+            formData.append('productImage', $('#productImageUrl')[0].files[0]);
+        }
+
+        // Send PATCH request to update the product
+        $.ajax({
+            url: `http://localhost:3000/product/${productId}`, // Use productId correctly
+            type: 'PATCH',
+            data: formData,
+            processData: false, // Required for FormData
+            contentType: false, // Required for FormData
+            success: function (response) {
+                alert('Product updated successfully!');
+                window.location.href = 'inventory.html'; // Optionally redirect to inventory
+            },
+            error: function (error) {
+                alert('Error updating product');
+                console.error('Update Error:', error);
+            }
+        });
+    });
 });
 
+// Function to show the edit form modal
+function editForm(productId) {
+    console.log('Editing product with ID:', productId); // Debugging
+    // Show the edit product modal
+    $('#editProductModal').css('display', 'block');
 
-function editForm() {
-    // Get the product details
-    const productId = $('#productId').text();
-    const name = $('h1').text();
-    const description = $('#productDescription').text();
-    const availableStock = $('.availableStock').text();
-    const purchasePrice = $('#purchasePrice').text().replace('NGN', '').trim();
-    const sellingPrice = $('#sellingPrice').text().replace('NGN', '').trim();
-    const imageUrl = $('#productCoverImage').attr('src');
-
-    // Prepare data to be sent for updating
-    const updatedProduct = {
-        name: name,
-        description: description,
-        availableStock: availableStock,
-        purchasePrice: parseFloat(purchasePrice), // Ensure price is a number
-        sellingPrice: parseFloat(sellingPrice),   // Ensure price is a number
-        imageUrl: imageUrl
-    };
-
-    // Sending data to server (update endpoint)
-    $.ajax({
-        url: `http://localhost:3000/product/${productId}`,
-        type: 'PATCH',
-        data: JSON.stringify(updatedProduct),
-        contentType: 'application/json',
-        success: function(response) {
-            alert('Product updated successfully');
-            // Optionally redirect or update the UI
-        },
-        error: function(error) {
-            alert('Error updating product');
-            console.error(error);
-        }
+    // Close the modal when the close button is clicked
+    $('.close').click(function () {
+        $('#editProductModal').css('display', 'none');
     });
 }
-
-
 
 function deleteForm() {
-     // Get the product ID
-    const productId = $('#productId').text();
+    // Show the pop-up
+    $('#deleteConfirmationPopup').css('display', 'flex');
 
-    $.ajax({
-        url: `http://localhost:3000/product/${productId}`,
-        type: 'DELETE',
-        success: function(response) {
-            alert('Product deleted successfully');
-            // Redirect to the products list or homepage
-            window.location.href = 'inventory.html'; // Adjust the URL as needed
-        },
-        error: function(error) {
-            alert('Error deleting product');
-            console.error(error);
-        }
+    // Get the product ID
+    const productId = $('#productId').text();
+    // When the delete button in the pop-up is clicked
+    $('#confirmDelete').on('click', function () {
+        $.ajax({
+            url: `http://localhost:3000/product/${productId}`,
+            type: 'DELETE',
+            success: function (response) {
+                // Redirect to the products list or homepage
+                window.location.href = 'inventory.html'; // Adjust the URL as needed
+            },
+            error: function (error) {
+                alert('Error deleting product');
+                console.error('Delete Error:', error);
+            }
+        });
+        // Hide the pop-up after deletion
+        $('#deleteConfirmationPopup').css('display', 'none');
+    });
+    // When the cancel button in the pop-up is clicked
+    $('#cancelDelete').on('click', function () {
+        // Hide the pop-up
+        $('#deleteConfirmationPopup').css('display', 'none');
     });
 }
-

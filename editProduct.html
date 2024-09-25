@@ -50,7 +50,7 @@
             </div>
             <br>
 
-            <form id="editProductForm" class="patchForm"> 
+            <form id="PreviewForm" class="pageForm"> 
                 <div class="productCoverImage">
                     <img src="" alt="Product Image" id="productCoverImage">
                 </div>
@@ -63,22 +63,106 @@
                     <h1></h1>
                 
                     <div class="stockInfo">
-                        <span class="availableStock"></span>
+                        <p><span class="availableStock" id="availableStock"></span></p>
                         <span class="stockText">Items Available</span>
                     </div>
                 
                     <div class="productInfo">
-                        <p><strong>ID:</strong> <span id="productId"></span></p>
-                        <p><strong>Description:</strong> <span id="productDescription"></span></p>
-                        <p><strong>Stock Date:</strong> <span id="date"></span></p>
-                        <p><strong>Purchase Price:</strong> <span id="purchasePrice"></span></p>
-                        <p><strong>Selling Price:</strong> <span id="sellingPrice"></span></p>
+                        <p style="margin-bottom: 30px;">
+                            <strong style="margin-right: 10px;">ID:</strong>
+                            <span id="productId"></span>
+                        </p>
+                        <div class="father">
+                            <div class="firstSon">
+                                <p><strong>Description:</strong></p>
+                            </div>
+                            <div class="secSon">
+                                <p><span id="productDescription"></span></p>
+                            </div>
+                        </div>
+                        <div class="father">
+                            <div class="firstSon">
+                                <p><strong>Stock Date:</strong></p>
+                            </div>
+                            <div class="secSon">
+                                <p><span id="date"></span></p>
+                            </div>
+                        </div>
+                        <div class="father">
+                            <div class="firstSon">
+                                <p><strong>Purchase Price:</strong></p>
+                            </div>
+                            <div class="secSon">
+                                <p><span id="purchasePrice"></span></p>
+                            </div>
+                        </div>
+                        <div class="father">
+                            <div class="firstSon">
+                                <p><strong>Selling Price:</strong></p>
+                            </div>
+                            <div class="secSon">
+                                <p><span id="sellingPrice"></span></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
-            
-            <br><br><br>  <br><br><br>
-        </div> 
+            <a href="inventory.html" class="back-button">Back to Inventory</a>
+            <br><br><br>  <br>
+        </div>
+
+        <!-- Edit Product Pop-up -->
+        <div id="editProductModal" class="modal">
+            <div class="modal-content">
+                <h2 class="pre-edit">Edit Product</h2>
+                <form id="modalForm">
+                    <button class="close" type="button" style="border-radius: 50%; background-color: var(background-color);">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                    <div class="inputs">
+                        <div class="item-name1">
+                            <h4>Item Name:</h4>
+                            <input type="text" class="names" id="productName" name="productName" placeholder="Enter product name" required /><br>
+                        </div>
+                        <div class="item-name2">
+                            <h4>Description:</h4>
+                            <input type="text" class="names" id="productDescription" name="productDescription" placeholder="Details about the product" /><br>
+                        </div>
+                    </div>
+                    <div class="inputs">
+                        <div class="item-name1">
+                            <h4>Available Stock:</h4>
+                            <input type="number" id="availableStock" name="availableStock" placeholder="100" required /><br>
+                        </div>
+                        <div class="item-name1">
+                            <h4>Purchase Price:</h4>
+                            <input type="number" id="purchasePrice" name="purchasePrice" placeholder="Price (each)" required /><br>
+                        </div>
+                        <div class="item-name1">
+                            <h4>Selling Price:</h4>
+                            <input type="number" id="sellingPrice" name="sellingPrice" placeholder="Price (each)" required /><br>
+                        </div>
+                    </div>
+                    <input type="file" id="productImageUrl" name="productImageUrl" placeholder="Product Image URL"><br><br>
+                    <div class="changes-btn">
+                        <button id="confirmEdit" class="btn btn-success submit_item">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>        
+
+        <!-- DELETE POPUP SECTION -->
+        <div id="deleteConfirmationPopup" style="display: none;">
+            <div class="popup-content">
+                <img src="images/trash-preview.png" alt="Delete Icon" class="delete-icon">
+                <p class="delete-text">You are about to delete a product in your inventory</p>
+                <div class="delete-buttons">
+                    <button id="confirmDelete" class="delete-button">Delete</button>
+                    <button id="cancelDelete" class="cancel-button">Cancel</button>
+                </div>
+            </div>
+        </div>
+        
 
         <!-- Right Section -->
         <div class="right-side">
@@ -95,9 +179,14 @@
                     <span class="material-icons-sharp active">light_mode</span>
                     <span class="material-icons-sharp">dark_mode</span>
                 </div>
-                <div class="inventory">
+                <div class="inventory" onclick="openInventory(); return false">
                     <span class="material-icons-sharp" style="color: #1B9C85;">library_books</span>
                 </div>
+                <script>
+                    function openInventory(){
+                        window.location.href = 'inventory.html';
+                    }
+                </script>
                 <div class="profile">
                     <div class="about">
                         <p>Hey, <b>Lechi</b></p>
@@ -172,7 +261,6 @@
             </div>
             <!-- End of Nav -->
         </div>
-    </div>
         <div class="footer">
             <div class="foot">
                 <nav class="footer-nav"> © 2024 Copyright: Lechi-Tech</a></nav>
@@ -198,10 +286,12 @@
             });
         </script>
 
-    </script>
-    <script src="inventoryFormSubmission.js"></script>
-    <script src="dlMood.js"></script>
-    <script src="inventoryForm.js"></script>
-    <script src="editProduct.js"></script>
+        </script>
+        <script src="inventoryFormSubmission.js"></script>
+        <script src="dlMood.js"></script>
+        <!-- <script src="inventoryForm.js"></script> -->
+        <script src="editProduct.js"></script>
+        <script src="date.js"></script>
+    </div>
 </body>
 </html>

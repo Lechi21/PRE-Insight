@@ -7,6 +7,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="design.css">
     <link rel="icon" href="images/favicon.png" type="image/png">
     <title>Insanjo</title>
@@ -51,39 +52,40 @@
                     <div class="inputs1">
                         <div class="item-name12">
                             <h4>Item  Name:</h4>
-                            <input type="text" name="itemName" placeholder="Enter product name" required /><br>
+                            <input type="text" name="name" placeholder="Enter product name" required /><br>
                         </div>
                         <div class="item-name12">
                             <h4>Description:</h4>
-                            <input type="text" name="itemName" placeholder="Details about the product" required /><br>
+                            <input type="text" name="description" placeholder="Details about the product" /><br>
                         </div>
                     </div>
                     <div class="inputs2">
                         <div class="item-name22" style="display: flex; flex-direction: column; flex: 1;">
                             <h4>Available Stock:</h4>
-                            <input type="number" name="itemName" placeholder="100" required /><br>
+                            <input type="number" name="availableStock" placeholder="100" required /><br>
                         </div>
                         <div class="item-name22" style="display: flex; flex-direction: column; flex: 1;">
                             <h4>Stock Date:</h4>
-                            <div id="date" style="margin-top: 12px; border: 1px solid #d2d2d2; border-radius: 2px; width: 100%; height: 35px; align-content: center; font-size: 13px; background: white; color: #201e1e; font-weight: 500; text-align: center;"></div>
+                            <div id="date" style="margin-top: 11px; border: 1px solid #d2d2d2; border-radius: 2px; width: 90%; height: 37px; align-content: center; font-size: 14px; background: white; color: #201e1e; font-weight: 500; text-align: center;">
+                            </div>
                         </div>
                     </div>
                     <div class="inputs2">
                         <div class="item-name22">
                             <h4>Purchase Price:</h4>
-                            <input type="number" name="itemName" placeholder="Price (each)" required /><br>
+                            <input type="number" id="purchasePrice" name="purchasePrice" placeholder="Price (each)" required /><br>
                         </div>
                         <div class="item-name22">
                             <h4>Selling Price:</h4>
-                            <input type="number" name="itemName" placeholder="Price (each)" required /><br>
+                            <input type="number" name="sellingPrice" placeholder="Price (each)" required /><br>
                         </div>
                     </div>
                     <div class="item-image22" style="position: relative;">
-                        <input type="file" style="opacity: 0; cursor: pointer; width: 100%; height: 100%; position: absolute;">
+                        <input type="file" name="productImage" accept="image/*" required style="opacity: 0; cursor: pointer; width: 100%; height: 100%; position: absolute;">
                         <span style="font-size: 10px; margin: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; position: relative; top: 23px;">Upload an Image of the Package</span>
                     </div>
                     <div class="insanjo2 bottom2">
-                        <button onclick="addProduct()" class="submit_item2">Add Product</button>
+                        <button type="submit" class="submit_item2">Add Product</button>
                         <input type="button" class="cancel" value="Cancel" onclick="cancelForm();">
                     </div>
                 </div>
@@ -189,28 +191,6 @@
             <!-- End of Nav -->
         </div>
     
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const displayPic = document.querySelector('.displayPic.usersDetails');
-                const details = document.querySelector('.details');
-    
-                displayPic.addEventListener('click', function (event) {
-                    details.classList.toggle('active');
-                    event.stopPropagation(); // Prevents the click event from propagating to document
-                });
-    
-                // Close details when clicking outside of it
-                document.addEventListener('click', function (event) {
-                    if (!details.contains(event.target) && !displayPic.contains(event.target)) {
-                        details.classList.remove('active');
-                    }
-                });
-            });
-        </script>
-        <script src="script.js"></script>
-        <script src="slide.js"></script>
-        <script src="dlMood.js"></script>
-        <script src="currency.js"></script>
         <div class="footer">
             <div class="foot">
                 <nav class="footer-nav"> © 2024 Copyright: Lechi-Tech</a></nav>
@@ -218,5 +198,27 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const displayPic = document.querySelector('.displayPic.usersDetails');
+            const details = document.querySelector('.details');
+
+            displayPic.addEventListener('click', function (event) {
+                details.classList.toggle('active');
+                event.stopPropagation(); // Prevents the click event from propagating to document
+            });
+
+            // Close details when clicking outside of it
+            document.addEventListener('click', function (event) {
+                if (!details.contains(event.target) && !displayPic.contains(event.target)) {
+                    details.classList.remove('active');
+                }
+            });
+        });
+    </script>
+    <script src="date.js"></script>
+    <script src="script.js"></script>
+    <script src="dlMood.js"></script>
+    <script src="inventoryFormSubmission.js"></script>
 </body>
 </html>
