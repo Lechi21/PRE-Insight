@@ -99,12 +99,10 @@ $(document).ready(function () {
                 $('#inventory-list').append(newRow);
 
                 // Conditional behavior based on form ID
-                if (formId === 'itemPage') {
-                    // For #itemPage, hide the form and the overlay
-                    $('#itemPage').hide();
+                if ($(this).attr('id') === 'itemPage') {
+                    $(this).hide();
                     $('.formOverlay').hide();
-                } else if (formId === 'itemPage2') {
-                    // For #itemPage2, redirect to /inventory.html
+                } else {
                     window.location.href = 'inventory.html';
                 }
 

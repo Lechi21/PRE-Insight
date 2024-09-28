@@ -16,10 +16,13 @@ $(document).ready(function () {
                 $('h1').text(product.name);
                 $('#productId').text(product._id);
                 $('#productName').val(product.name); // Populate form input fields
-                $('#productDescription').val(product.description);
-                $('#availableStock').val(product.availableStock);
-                $('#purchasePrice').val(product.purchasePrice ? product.purchasePrice.toFixed(2) : '0.00');
-                $('#sellingPrice').val(product.sellingPrice ? product.sellingPrice.toFixed(2) : '0.00');
+
+                // Set fields to handle missing or undefined data
+                $('#productDescription').text(product.description || 'No description available');
+                $('#availableStock').text(product.availableStock);
+                $('#stockDate').text(product.stockDate ? new Date(product.stockDate).toLocaleDateString() : 'No stock date'); // Assuming there's a stockDate field
+                $('#purchasePrice').text(product.purchasePrice ? product.purchasePrice.toFixed(2) : '0.00');
+                $('#sellingPrice').text(product.sellingPrice ? product.sellingPrice.toFixed(2) : '0.00');
             },
             error: function (error) {
                 console.log('Error fetching product details:', error);
@@ -43,11 +46,11 @@ $(document).ready(function () {
 
         // Capture updated form data
         const updatedProduct = {
-            name: $('#productName').val(),
-            description: $('#productDescription').val(),
-            availableStock: $('#availableStock').val(),
-            purchasePrice: $('#purchasePrice').val(),
-            sellingPrice: $('#sellingPrice').val()
+            name: $('#modalProductName').val(),
+            description: $('#modalProductDescription').val(),
+            availableStock: $('#modalAvailableStock').val(),
+            purchasePrice: $('#modalPurchasePrice').val(),
+            sellingPrice: $('#modalSellingPrice').val()
         };
 
         // Use FormData to handle file upload along with other form data
@@ -57,9 +60,13 @@ $(document).ready(function () {
         });
 
         // If there's an image being uploaded, append it to FormData
-        if ($('#productImageUrl')[0].files[0]) {
-            formData.append('productImage', $('#productImageUrl')[0].files[0]);
+        const file = $('#productImageUrl')[0].files[0];
+        if (file && (file.size > 1048576 || !['image/jpeg', 'image/png'].includes(file.type))) {
+            alert('Please upload a valid image file (JPEG or PNG) under 1MB.');
+            return;
         }
+        formData.append('productImage', file);
+
 
         // Send PATCH request to update the product
         $.ajax({
@@ -70,7 +77,7 @@ $(document).ready(function () {
             contentType: false, // Required for FormData
             success: function (response) {
                 alert('Product updated successfully!');
-                window.location.href = 'inventory.html'; // Optionally redirect to inventory
+                window.location.reload(); // Reload the page to reflect changes
             },
             error: function (error) {
                 alert('Error updating product');
@@ -80,14 +87,13 @@ $(document).ready(function () {
     });
 });
 
-// Function to show the edit form modal
 function editForm(productId) {
-    console.log('Editing product with ID:', productId); // Debugging
     // Show the edit product modal
     $('#editProductModal').css('display', 'block');
 
     // Close the modal when the close button is clicked
     $('.close').click(function () {
+        $('#modalForm')[0].reset();
         $('#editProductModal').css('display', 'none');
     });
 }

@@ -831,17 +831,20 @@ b{
 
 /* ===================footer ==========================*/
 .footer{
+    display: flex;
     grid-area: footer;
     background-color: var(--color-background);
     width: 100%;
     position: relative;
     bottom: 0;
 }
+
 .foot{
     padding: 0 28px;
     align-items: 
     center; display: flex; 
     justify-content: space-between;
+    width: 100%;
 }
 .footer-nav{
     padding: 16px 0;
@@ -1390,7 +1393,7 @@ input:checked + .slider:before{
     right: 0;
     top: 100px;
     width: 900px;
-    margin: 0 auto;
+    margin: 65px auto;
     background: var(--color-white);
     color: var(--color-dark);
     z-index: 1005;
