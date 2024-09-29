@@ -430,7 +430,9 @@ form{
     border: 2px dotted var(--color-success);
     border-radius: 15px;
     cursor: pointer;
+    margin-bottom: 10px;
 }
+
 .addMoreItems {
     cursor: pointer; 
     width: 100%; 
@@ -439,6 +441,7 @@ form{
     background-color: var(--color-white);
     border-radius: 15px;
 }
+
 .innerText{
     display: flex;
     position: absolute; 
@@ -644,7 +647,110 @@ textarea{
     transition: background-color 0.3s ease;
 }
 
+
+/* General container for each preview item */
+.preview-container {
+    width: 70%;
+}
+
+.preview-item {
+    display: flex;
+    border: 1px solid #7b7b7b;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: var(--color-white);
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Flex container for the item details */
+.checker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 5rem;
+}
+
+/* Item name and notes container */
+.name-note h4 {
+    font-size: 18px;
+    margin: 0;
+    color: var(--color-dark);
+}
+
+.name-note p {
+    font-size: 14px;
+    color: var(--color-dark);
+    margin: 5px 0 0 0;
+}
+
+/* Price and quantity */
+.price-quantity .tos {
+    font-size: 16px;
+    color: var(--color-dark);
+    font-weight: bold;
+    margin: 0;
+    text-align: right;
+}
+
+.price-quantity p {
+    font-size: 16px;
+    color: var(--color-dark);
+    margin: 0;
+    text-align: right;
+}
+
+/* Button container */
+.edit-delete-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.edit-delete-buttons button {
+    padding: 5px 10px;
+    font-size: 14px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Styling for edit button */
+.edit-delete-buttons .edit-item {
+    background-color: #4caf50;
+    color: white;
+}
+
+.edit-delete-buttons .edit-item:hover {
+    background-color: #45a049;
+}
+
+/* Styling for delete button */
+.edit-delete-buttons .delete-item {
+    background-color: #f44336;
+    color: white;
+}
+
+.edit-delete-buttons .delete-item:hover {
+    background-color: #e41f2d;
+}
+
+/* Horizontal rule styling */
+.preview-item hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+
 @media screen and (max-width: 1200px) {
+    .preview-container {
+        width: 80%;
+    }
+
     .itemPop {
         display: none;
         width: 650px;
@@ -822,6 +928,7 @@ textarea{
     .sidebar:last-child{
         margin-bottom: 30px;
     }
+
 }
     @media screen and (max-width: 768px) {
         .container{
@@ -908,6 +1015,10 @@ textarea{
             box-shadow: 0 1rem 1rem var(--color-light);
             margin: 0;
             justify-content: end;
+        }
+
+        .preview-container {
+            width: 100%;
         }
     
         .right-side .nav .dark-mode{
