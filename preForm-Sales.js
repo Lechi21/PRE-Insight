@@ -181,7 +181,7 @@ function displayPreviewItem(item) {
 }
 
 function editItem(button) {
-    const itemDiv = $(button).closest(".preview-item");
+    const itemDiv = $(button).closest(".preview-container");
 
     // Get values from the preview item
     const itemName = itemDiv.find("h4").text();
@@ -201,6 +201,6 @@ function editItem(button) {
 }
 
 function deleteItem(button) {
-    $(button).closest(".preview-item").remove();
+    $(button).closest(".preview-container").remove();
 }
 
