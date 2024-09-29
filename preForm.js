@@ -34,16 +34,9 @@ function closePopup(){
 
 //JavaScript to ensure popup opens and stays open on first click
 document.addEventListener('DOMContentLoaded', function (){
-    const addProductButton = document.getElementById('add');
     const SalesItem = document.getElementById('SalesItem');
     var overlay = document.querySelector('.formOverlay');
     const itemCloseButton = document.getElementById('itemClosed');
-
-    addProductButton.addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent default form submission behavior
-        SalesItem.style.display = 'block';
-        overlay.style.display = 'block';
-    });
 
     itemCloseButton.addEventListener('click', function (){
         SalesItem.style.display = 'none';
@@ -83,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function (){
 
     // =================To save NOTES in the note section=====================//
     function saveText() {
-    var Disabled = document.getElementById("txArea").disabled;
-    document.getElementById("txArea").disabled = !Disabled;
+        var Disabled = document.getElementById("txArea").disabled;
+        document.getElementById("txArea").disabled = !Disabled;
     }
+    

@@ -75,41 +75,41 @@ const currencies = [
     
     // Populate the dropdown with currency options
     currencies.forEach(currency => {
-      const option = document.createElement('option');
-      option.value = currency.code;
-      option.text = `${currency.code} (${currency.symbol})`;
-      currencySelect.appendChild(option);
+        const option = document.createElement('option');
+        option.value = currency.code;
+        option.text = `${currency.code} (${currency.symbol})`;
+        currencySelect.appendChild(option);
     });
 
     function saveCurrencySymbol() { 
-      const selectedCurrency = currencySelect.value;
-      if (currencyToggle.checked) {
-          localStorage.setItem('selectedCurrency', selectedCurrency);
-          alert('Currency symbol saved!');
-      } else {
-          localStorage.removeItem('selectedCurrency');
-          alert('Currency symbol removed!');
-      }
-  }
+        const selectedCurrency = currencySelect.value;
+        if (currencyToggle.checked) {
+            localStorage.setItem('selectedCurrency', selectedCurrency);
+            alert('Currency symbol saved!');
+        } else {
+            localStorage.removeItem('selectedCurrency');
+            alert('Currency symbol removed!');
+        }
+    }
 
   // Load saved currency symbol on page load
-  document.addEventListener('DOMContentLoaded', function() {
-      const savedCurrency = localStorage.getItem('selectedCurrency');
-      if (savedCurrency) {
-          currencySelect.value = savedCurrency;
-          currencyToggle.checked = true;
-      } else {
-          currencyToggle.checked = false;
-      }
+    document.addEventListener('DOMContentLoaded', function() {
+        const savedCurrency = localStorage.getItem('selectedCurrency');
+        if (savedCurrency) {
+            currencySelect.value = savedCurrency;
+            currencyToggle.checked = true;
+        } else {
+            currencyToggle.checked = false;
+        }
 
       // Add event listeners to the currency toggle and select elements
-      currencyToggle.addEventListener('change', saveCurrencySymbol);
-      currencySelect.addEventListener('change', function() {
-          if (currencyToggle.checked) {
-              saveCurrencySymbol();
-          }
-      });
-  });
+        currencyToggle.addEventListener('change', saveCurrencySymbol);
+        currencySelect.addEventListener('change', function() {
+            if (currencyToggle.checked) {
+                saveCurrencySymbol();
+            }
+        });
+    });
 
 
 
@@ -169,18 +169,13 @@ const currencies = [
         { id: '14', name: 'UTC +14:00' },
     ];
     const timezoneSelect = document.getElementById('timezoneSelect');
-      // Accessing timezone entries
-      console.log(timezones[0]); // { id: 'auto', name: 'Automatic' }
-      console.log(timezones[1]); // { id: '-12', name: 'UTC -12:00' }
-      // ...
-      console.log(timezones[timezones.length - 1]); // { id: '14', name: 'UTC +14:00' }
     
     // Populate the dropdown with currency options
-    timezones.forEach(time => {
-    const option = document.createElement('option');
-    option.value = time.id;
-    option.text = `${time.name}`;
-    timezoneSelect.appendChild(option);
+        timezones.forEach(time => {
+        const option = document.createElement('option');
+        option.value = time.id;
+        option.text = `${time.name}`;
+        timezoneSelect.appendChild(option);
     });
     
     

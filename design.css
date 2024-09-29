@@ -1882,6 +1882,7 @@ h1 {
     }
     .details.active {
         display: block;
+        z-index: 1;
     }
 
     .right-side .nav{
