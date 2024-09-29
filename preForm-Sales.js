@@ -98,3 +98,109 @@ function calculateTotalPrice() {
         $totalPriceInput.val(""); // Clear total price if invalid inputs
     }
 }
+
+function addForm() {
+    const selectedOption = $("#itemDropdown option:selected");
+    const itemName = selectedOption.text();
+    const quantity = $("input[name='quantity']").val();
+    const unitPrice = $("input[name='unitPrice']").val();
+    const expenses = $("input[name='expenses']").val();
+    const totalPrice = $("input[name='totalPrice']").val();
+    const note = $("#txArea").val();
+    const saveNotes = $('input[name="enableText"]').is(":checked");
+
+    // Check if quantity is a valid number
+    if (!quantity || isNaN(quantity) || quantity <= 0) {
+        alert("Please enter a valid quantity.");
+        return false;
+    }
+
+    // Check if required fields are filled
+    if (!itemName || !quantity || !unitPrice || !totalPrice) {
+        alert("Please complete all the required fields.");
+        return false;
+    }
+
+    // Create a new item object
+    const newItem = {
+        name: itemName,
+        quantity: quantity,
+        unitPrice: unitPrice,
+        totalPrice: totalPrice,
+        expenses: expenses || 0,
+        note: saveNotes ? note : "", // Save note if user selected yes
+    };
+
+    // Append the new item to the preview section
+    displayPreviewItem(newItem);
+
+    // Clear the form after adding
+    resetForm();
+
+    // Close the popup after adding the item
+    closePopup();
+}
+
+function closePopup() {
+    $(".formOverlay").hide();  // Assuming `.formOverlay` is the popup background.
+    $(".inventory-box").hide(); // Assuming `.inventory-box` is the popup form container.
+}
+
+
+function resetForm() {
+    $("select#itemDropdown").prop('selectedIndex', 0);
+    $("input[name='quantity']").val('');
+    $("input[name='unitPrice']").val('');
+    $("input[name='expenses']").val('');
+    $("input[name='totalPrice']").val('');
+    $("#txArea").val('');
+    $("input[name='enableText']").prop("checked", false);
+}
+
+function displayPreviewItem(item) {
+    const itemHtml = `
+        <div class="preview-item">
+            <div class="checker">
+                <div class="name-note">
+                    <h4>${item.name}</h4>
+                    <p class="note-text">${item.note ? item.note : "No notes added"}</p>
+                </div>
+                <div class="price-quantity">
+                    <p class="tos">${item.totalPrice}</p>
+                    <p>${item.quantity} Pieces</p>
+                </div>
+            </div>
+            <div class="edit-delete-buttons">
+                <button class="edit-item" onclick="editItem(this)">Edit</button>
+                <button class="delete-item" onclick="deleteItem(this)">Delete</button>
+            </div>
+        </div>
+    `;
+
+    $(".preview-container").append(itemHtml);
+}
+
+function editItem(button) {
+    const itemDiv = $(button).closest(".preview-item");
+
+    // Get values from the preview item
+    const itemName = itemDiv.find("h4").text();
+    const quantity = parseInt(itemDiv.find("p").eq(1).text().split(" ")[0]);
+    const totalPrice = parseFloat(itemDiv.find("p").eq(0).text().replace('₦', ''));
+
+    // Populate the form with these values
+    $("#itemDropdown option").filter(function() {
+        return $(this).text() === itemName;
+    }).prop('selected', true);
+    
+    $("input[name='quantity']").val(quantity);
+    $("input[name='totalPrice']").val(totalPrice);
+
+    // Remove the item from preview
+    itemDiv.remove();
+}
+
+function deleteItem(button) {
+    $(button).closest(".preview-item").remove();
+}
+
