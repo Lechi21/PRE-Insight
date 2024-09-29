@@ -538,6 +538,16 @@ form{
     padding: 6px;
     width: 100%;
 }
+
+.item-name1 input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.item-name1 input[type="number"]::-webkit-outer-spin-button,
+.item-name1 input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
 .item-name2 input, select{
     margin: 1px;
     border: 1px solid lightgrey;
