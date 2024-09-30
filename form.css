@@ -654,6 +654,12 @@ textarea{
 /* General container for each preview item */
 .preview-container {
     width: 70%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.preview-container::-webkit-scrollbar {
+    display: none;
 }
 
 .preview-item {
