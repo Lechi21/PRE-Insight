@@ -120,6 +120,7 @@ b{
     margin: 0;
     gap: 0.5rem;
     grid-template-columns: 10rem auto 20rem;
+    grid-templete-rows: 1fr 0;
     grid-template-areas:
     'left-side center right-side'
     'footer footer footer';
@@ -314,7 +315,9 @@ form{
     cursor: pointer;
     border-radius: var(--border-radius-1);
 }
+
 .right-side{
+    grid-area: right-side;
     margin-top: 1.4rem;
 }
 
