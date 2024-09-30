@@ -50,6 +50,11 @@
                 <div class="preview-container">
                     <!-- Items added will be displayed here -->
                 </div>
+                <div class="twoButts">
+                    <input type="submit" value="Add" onclick="addForm(event);">
+                    <input type="button" value="Cancel" onclick="closePopup();">
+                </div>
+
 
                 <form id="SalesItem" class="itemPop">
                     <div class="inventory-box" id="inventory-box">
@@ -64,7 +69,7 @@
                             </div>
                             <div class="item-name1" style="flex-basis: 16%;">
                                 <h4>Quantity:</h4>
-                                <input type="number" name="quantity" placeholder="Enter quantity" required />
+                                <input type="number" name="quantity" placeholder="Enter quantity" required>
                             </div>
                         </div>
                         <div class="inputs seconds">

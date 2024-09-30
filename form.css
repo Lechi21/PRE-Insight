@@ -458,6 +458,27 @@ form{
     border-radius: 15px;
 }
 
+.twoButts{
+    width: calc(100% - 1.7rem);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    margin: auto 0 0 0;
+}
+
+.input-container input[type="submit"], .input-container input[type="button"] {
+    margin: 8px;
+    width: fit-content;
+    padding: 0.8rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    left: 50%;
+    transition: background-color 0.3s ease;
+}
+
 .innerText{
     display: flex;
     position: absolute; 
