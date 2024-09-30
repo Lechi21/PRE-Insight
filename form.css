@@ -706,7 +706,7 @@ textarea{
 .preview-item {
     display: flex;
     border: 1px solid #7b7b7b;
-    border-radius: 8px;
+    border-radius: 3px;
     padding: 15px;
     background-color: var(--color-white);
     flex-direction: column;
