@@ -99,7 +99,10 @@ function calculateTotalPrice() {
     }
 }
 
-function addForm() {
+function addForm(event) {
+    // Prevent form submission
+    event.preventDefault();
+
     const selectedOption = $("#itemDropdown option:selected");
     const itemName = selectedOption.text();
     const quantity = $("input[name='quantity']").val();
@@ -180,6 +183,6 @@ function displayPreviewItem(item) {
 }
 
 function deleteItem(button) {
-    $(button).closest(".preview-container").remove();
+    $(button).closest(".preview-item").remove();
 }
 
