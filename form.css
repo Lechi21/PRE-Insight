@@ -466,7 +466,7 @@ form{
     right: 0;
     top: 50px;
     width: 800px;
-    margin: 90px auto;
+    margin: 0px auto;
     background: var(--color-white);
     background-color: var(--color-white);
     box-shadow: var(--box-shadow);
