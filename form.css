@@ -85,7 +85,7 @@ small{
     font-size: 0.76rem;
 }
 
-p{
+p {
     color: var(--color-dark-variant);
 }
 
@@ -120,7 +120,7 @@ b{
     margin: 0;
     gap: 0.5rem;
     grid-template-columns: 10rem auto 20rem;
-    grid-templete-rows: 1fr 0;
+    grid-template-rows: 1fr 0;
     grid-template-areas:
     'left-side center right-side'
     'footer footer footer';
@@ -209,9 +209,11 @@ b{
     background: rgba(0,0,0,0.5);
     opacity: 0;
 }
+
 .image_file::-webkit-file-upload-button{
     visibility: hidden;
 }
+
 .image_file::before{
     content: '\f030';
     font-family: fontAwesome;
@@ -221,6 +223,7 @@ b{
     display: inline-block;
     -webkit-user-select: none;
 }
+
 .image_file::after{
     content: 'update';
     margin-left: 5px;
@@ -229,6 +232,7 @@ b{
     position: absolute;
     display: block;
 }
+
 .image_file:hover{
     opacity: 1;
 }
@@ -264,9 +268,11 @@ b{
 .sidebar a:hover{
     color: var(--color-success);
 }
+
 .sidebar:last-child {
     margin-bottom: 20px;
 }
+
 .formHead{
     display: flex;
     justify-content: center;
@@ -327,6 +333,7 @@ form{
     gap: 1.5rem;
     align-items: center;
 }
+
 .right-side .right-corner{
     display: none;
 }
@@ -356,6 +363,7 @@ form{
     color: white;
     border-radius: var(--border-radius-1);
 }
+
 .right-side .inventory{
     color: var(--color-blues);
     display: flex;
@@ -363,6 +371,7 @@ form{
     align-items: center;
     cursor: pointer;
 }
+
 .right-side .nav .profile{
     display: flex;
     gap: 2rem;
@@ -377,6 +386,7 @@ form{
     border-radius: 50%;
     overflow: hidden;
 }
+
 .input-contained input[type="submit"],
 .input-contained input[type="button"] {
     margin: 8px;
@@ -410,15 +420,18 @@ form{
     justify-content: space-between;
     background-color: var(--color-background);
 }
+
 .footer-nav{
     padding: 16px 0;
 }
+
 .footer-link{
     align-items: center; 
     display: inline-flex; 
     height: 30px; 
     width: 66px;
 }
+
 .footer-link img{
     max-height: 100%; 
     max-width: 100%;
@@ -500,11 +513,11 @@ form{
     width: 20px;
     height: 20px;
     cursor: pointer;
-    }
+}
 
 #itemClosed i {
     color: #1B9C85;
-    }
+}
 
 .inventory-box {
     display: flex;
@@ -520,6 +533,7 @@ form{
     margin-bottom: 40px;
     text-align: center;
 }
+
 .inputs {
     display: flex;
     flex-direction: row;
@@ -528,15 +542,18 @@ form{
     margin-bottom: 30px;
     align-items: center;
 }
+
 .item-name1, .item-name2 {
     flex-grow: 1;
     flex-direction: column;
     margin: 0 0.5rem;
 }
+
 .item-name1 h4, .item-name2 h4, .item-image h4 {
     font-weight: 450;
     font-size: 14px;
 }
+
 .item-name1 input {
     margin: 1px;
     border: 1px solid lightgrey;
@@ -561,6 +578,7 @@ form{
     padding: 6px;
     width: 100%;
 }
+
 .unit-Expenses {
     display: flex;
     flex-direction: row;
@@ -605,22 +623,24 @@ hr {
     cursor: pointer;
     transition: 400ms ease-in;
 }
+
 .submit_item:hover {
     background-color: var(--color-success);
     transform: scale(1.1);
 }
+
 .inventory-box .bottom-logo{
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .inventory-box .bottom-logo img{
     width: 6.5rem;
     height: 4rem;
     object-fit: contain;
-    }
+}
 
 textarea{
     width: 100%;
@@ -651,7 +671,7 @@ textarea{
 }
 
 
-/* General container for each preview item */
+/* General container for each preview item starts here*/
 .preview-container {
     width: 70%;
     overflow-y: scroll;
@@ -672,7 +692,7 @@ textarea{
     justify-content: center;
 }
 
-/* Flex container for the item details */
+
 .checker {
     display: flex;
     justify-content: space-between;
@@ -681,7 +701,7 @@ textarea{
     gap: 5rem;
 }
 
-/* Item name and notes container */
+
 .name-note h4 {
     font-size: 18px;
     margin: 0;
@@ -694,7 +714,7 @@ textarea{
     margin: 5px 0 0 0;
 }
 
-/* Price and quantity */
+
 .price-quantity .tos {
     font-size: 16px;
     color: var(--color-dark);
@@ -710,7 +730,6 @@ textarea{
     text-align: right;
 }
 
-/* Button container */
 .edit-delete-buttons {
     display: flex;
     justify-content: center;
@@ -727,7 +746,7 @@ textarea{
     transition: background-color 0.3s ease;
 }
 
-/* Styling for edit button */
+
 .edit-delete-buttons .edit-item {
     background-color: #4caf50;
     color: white;
@@ -737,7 +756,6 @@ textarea{
     background-color: #45a049;
 }
 
-/* Styling for delete button */
 .edit-delete-buttons .delete-item {
     background-color: #f44336;
     color: white;
@@ -747,13 +765,14 @@ textarea{
     background-color: #e41f2d;
 }
 
-/* Horizontal rule styling */
+
 .preview-item hr {
     border: 0;
     border-top: 1px solid #ccc;
     margin-top: 10px;
 }
 
+/* General container for each preview item ends here*/
 
 @media screen and (max-width: 1200px) {
     .preview-container {

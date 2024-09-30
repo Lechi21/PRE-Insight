@@ -171,33 +171,12 @@ function displayPreviewItem(item) {
                 </div>
             </div>
             <div class="edit-delete-buttons">
-                <button class="edit-item" onclick="editItem(this)">Edit</button>
-                <button class="delete-item" onclick="deleteItem(this)">Delete</button>
+                <button class="delete-item" onclick="deleteItem(this)">Remove</button>
             </div>
         </div>
     `;
 
     $(".preview-container").append(itemHtml);
-}
-
-function editItem(button) {
-    const itemDiv = $(button).closest(".preview-container");
-
-    // Get values from the preview item
-    const itemName = itemDiv.find("h4").text();
-    const quantity = parseInt(itemDiv.find("p").eq(1).text().split(" ")[0]);
-    const totalPrice = parseFloat(itemDiv.find("p").eq(0).text().replace('₦', ''));
-
-    // Populate the form with these values
-    $("#itemDropdown option").filter(function() {
-        return $(this).text() === itemName;
-    }).prop('selected', true);
-    
-    $("input[name='quantity']").val(quantity);
-    $("input[name='totalPrice']").val(totalPrice);
-
-    // Remove the item from preview
-    itemDiv.remove();
 }
 
 function deleteItem(button) {
