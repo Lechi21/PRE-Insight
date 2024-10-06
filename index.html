@@ -139,7 +139,9 @@
                 <br><br>
                 <div class="allSwipe">
                     <div class="swipeTab">
-                        <label class="arrowLeft-Right" for="Tab3" onclick="goLeft()"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></label>
+                        <label class="arrowLeft-Right" onclick="goLeft()">
+                            <i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i>
+                        </label>
                     </div>
                     <div class="swipeTab">
                         <button class="tablinks" onclick="openTab(event, 'Tab1')"></button>
@@ -147,34 +149,36 @@
                         <button class="tablinks" onclick="openTab(event, 'Tab3')"></button>
                     </div>
                     <div class="swipeTab">
-                        <label class="arrowLeft-Right" for="Tab3" onclick="goRight()"><i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i></label>
+                        <label class="arrowLeft-Right" onclick="goRight()">
+                            <i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i>
+                        </label>
                     </div>
                 </div>
                 <br>
                 <div class="swipe-container">
                 <!-- Daily Sales Table -->
-                <div style="cursor: pointer;" class="salesRecord tabcontent hidden" id="Tab2">
-                    <h2>Daily Stock Sales</h2>
-                    <p style="margin-bottom: 10px;" class="predicting">Select add to input todays record.</p>
-                    <table class="stock-sales">
-                        <thead>
-                            <tr>
-                                <th onclick="addItems(); return false">
-                                    <a class="icon-link">
-                                        <span style="cursor: pointer;">Add</span>
-                                    </a>
-                                </th>
-                                <!-- <th data-label="Column 1">Date</th> -->
-                                <th>Items Sold</th>
-                                <th>Qty</th>
-                                <th>Amount</th>
-                                <!-- <th>Status</th> -->
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                <!-- <a onclick="showMore();" class="showmore"style="cursor: pointer;">Show All</a> -->
-                </div>
+                    <div style="cursor: pointer;" class="salesRecord tabcontent hidden" id="Tab2">
+                        <h2>Daily Stock Sales</h2>
+                        <p style="margin-bottom: 10px;" class="predicting">Select add to input todays record.</p>
+                        <table class="stock-sales">
+                            <thead>
+                                <tr>
+                                    <th onclick="addItems(); return false">
+                                        <a class="icon-link">
+                                            <span style="cursor: pointer;">Add</span>
+                                        </a>
+                                    </th>
+                                    <!-- <th data-label="Column 1">Date</th> -->
+                                    <th>Items Sold</th>
+                                    <th>Qty</th>
+                                    <th>Amount</th>
+                                    <!-- <th>Status</th> -->
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    <!-- <a onclick="showMore();" class="showmore"style="cursor: pointer;">Show All</a> -->
+                    </div>
                 <script>
                     function addItems(){
                         window.location.href = 'preForm.html';
@@ -417,10 +421,7 @@
                     });
                 });
             </script>
-            </script>
-            <script src="script.js"></script>
-            <script src="slide.js"></script>
-            <script src="dlMood.js"></script>
+            
             <div class="footer">
                 <div class="foot">
                     <nav class="footer-nav"> © 2024 Copyright: Lechi-Tech</a></nav>
@@ -428,5 +429,10 @@
                 </div>
             </div>
         </div>
+
+        <script src="script.js"></script>
+        <script src="slide.js"></script>
+        <script src="dlMood.js"></script>
+        <script src="pre-Form-Submission.js"></script>
     </body>
 </html>

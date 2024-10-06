@@ -691,12 +691,22 @@ textarea{
     transition: background-color 0.3s ease;
 }
 
-
 /* General container for each preview item starts here*/
+.inbetween {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
 .preview-container {
     width: 70%;
     overflow-y: scroll;
-    scrollbar-width: none;
+    scrollbar-width: thin;
 }
 
 .preview-container::-webkit-scrollbar {
@@ -791,6 +801,22 @@ textarea{
     border: 0;
     border-top: 1px solid #ccc;
     margin-top: 10px;
+}
+
+.select2-container {
+    color: #000000;
+}
+
+.hover-option {
+    transition: color 0.001s;
+}
+
+.red-text {
+    color: red;
+}
+
+.hover-option:hover {
+    color: white !important;
 }
 
 /* General container for each preview item ends here*/

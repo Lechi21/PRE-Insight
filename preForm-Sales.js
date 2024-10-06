@@ -1,166 +1,279 @@
 $(document).ready(function () {
+    $('#itemDropdown').select2({
+        placeholder: 'Search for items...',
+        allowClear: true,
+        width: '100%',
+        templateResult: formatOption, // Custom function for option rendering
+        templateSelection: formatOption // Custom function for selected option rendering
+    });
+
     fetchInventoryData();
 });
 
+// Custom format function
+function formatOption(item) {
+    // If the item has no id, return the item as plain text (used for placeholders)
+    if (!item.id) {
+        return item.text; 
+    }
+
+    const $option = $(
+        `<span class="hover-option ${item.text === 'Add new item...' ? 'red-text' : ''}">
+            ${item.text}
+        </span>`
+    );
+
+    return $option; // Return the jQuery object
+}
+
 function fetchInventoryData() {
-    // Fetch inventory data from the backend
+    // AJAX request to fetch inventory data from the backend
     $.ajax({
-        url: "http://localhost:3000/product", // Ensure this is your actual endpoint
-        method: "GET",
+        url: "http://localhost:3000/product", // URL of the API endpoint for fetching products
+        method: "GET", // Using GET method to retrieve data
         success: function (data) {
-            populateDropdown(data.products); // Assuming the response contains an array of products
+            // On success, populate the dropdown with the retrieved product data
+            populateDropdown(data.products);
         },
-        error: function (error) {
-            console.error("Error fetching inventory data:", error);
+        error: function () {
+            // Handle errors and notify the user if the request fails
+            alert("Failed to fetch inventory data. Please try again later.");
         }
     });
 }
 
+$("#itemDropdown").on('select2:select', function (e) {
+    const selectedValue = e.params.data.id;
+    const unitPriceInput = $("input[name='unitPrice']");
+    const expensesInput = $("input[name='expenses']");
+
+    if (selectedValue === "manual-entry") {
+        // Show the manual entry input and allow manual unit price entry
+        $("#manualItem").show();
+        unitPriceInput.prop('readonly', false); // Allow manual unit price entry
+        unitPriceInput.val(''); // Clear any existing value
+        expensesInput.prop('disabled', false); // Disable the expenses input for manual items
+        expensesInput.val(0);
+    } else {
+        // Hide the manual entry input and use the predefined unit price
+        $("#manualItem").hide();
+        const selectedOption = $(this).find("option:selected");
+        const selectedPrice = parseFloat(selectedOption.data("price"));
+        unitPriceInput.prop('readonly', true); // Prevent manual unit price changes
+        unitPriceInput.val(selectedPrice ? selectedPrice.toFixed(2) : ''); // Set the selected item's price
+        expensesInput.prop('disabled', false); // Enable the expenses input for pre-defined items
+    }
+});
+
+
 function populateDropdown(products) {
     const $itemDropdown = $("#itemDropdown");
-
-    // Clear existing options
     $itemDropdown.empty();
 
-    // Add default "Select Item" option
-    const defaultOption = $("<option>", {
-        text: "Select Item",
-        disabled: true,
-        selected: true
-    });
-    $itemDropdown.append(defaultOption);
+    // Default "Select Item" option
+    $itemDropdown.append('<option></option>'); // For Select2's placeholder
 
-    // Populate dropdown with product names
+    // Loop through products and add options
     products.forEach(product => {
-        const option = $("<option>", {
-            value: product._id, // Use product ID as value
-            text: product.name, // Display product name
-            "data-price": product.sellingPrice, // Attach price as a data attribute for later use
-            "data-stock": product.availableStock // Store available stock
-        });
-        $itemDropdown.append(option);
+        $itemDropdown.append(`<option value="${product._id}" data-price="${product.sellingPrice}">${product.name}</option>`);
     });
 
-    // Event listener to update unit price when an item is selected
+    // Add manual entry option
+    $itemDropdown.append('<option class="manual-entry" value="manual-entry">Add new item...</option>');
+
+    // Event listener: when a user selects an item from the dropdown
     $itemDropdown.change(function () {
         const selectedOption = $(this).find("option:selected");
         const unitPriceInput = $("input[name='unitPrice']");
         const quantityInput = $("input[name='quantity']");
         const totalPriceInput = $("input[name='totalPrice']");
 
-        // Set unit price from the selected item's selling price
+        // Get the price of the selected item and set it in the unit price field
         const selectedPrice = parseFloat(selectedOption.data("price"));
-        unitPriceInput.val(selectedPrice.toFixed(2));
+        unitPriceInput.val(selectedPrice.toFixed(2)); // Display price as a formatted number
 
-        // Calculate total price if quantity is already entered
+        // Recalculate the total price based on the new selection
         calculateTotalPrice();
     });
 
-    // Event listeners for quantity and expenses changes
+    // Event listeners for the quantity and expenses fields to update total price
     const $quantityInput = $("input[name='quantity']");
     const $expensesInput = $("input[name='expenses']");
 
-    // Event listener to calculate total price when quantity is entered or changed
-    $quantityInput.on("input", calculateTotalPrice);
-    $expensesInput.on("input", calculateTotalPrice);
+    $quantityInput.on("input", function () {
+        // Validate quantity input before recalculating total price
+        validateNumericInput($(this), 'quantity');
+        calculateTotalPrice();
+    });
+    
+    $expensesInput.on("input", function () {
+        // Validate expenses input before recalculating total price
+        validateNumericInput($(this), 'expenses');
+        calculateTotalPrice();
+    });
+}
+
+function validateNumericInput($input, fieldName) {
+    // Validate that the input is a valid number and not negative
+    const value = $input.val();
+    if (isNaN(value) || value < 0) {
+        alert(`Please enter a valid number for ${fieldName}.`); // Show an alert if input is invalid
+        $input.val(''); // Clear the input field if the value is invalid
+    }
 }
 
 function calculateTotalPrice() {
     const $itemDropdown = $("#itemDropdown");
     const selectedOption = $itemDropdown.find("option:selected");
-    const unitPrice = parseFloat(selectedOption.data("price"));
-    const availableStock = parseInt(selectedOption.data("stock")); // Get available stock
     const $quantityInput = $("input[name='quantity']");
+    const $unitPriceInput = $("input[name='unitPrice']");
     const $expensesInput = $("input[name='expenses']");
     const $totalPriceInput = $("input[name='totalPrice']");
 
-    const quantity = parseFloat($quantityInput.val());
-    const expenses = parseFloat($expensesInput.val());
+    let unitPrice;
+    let availableStock;
 
-    // Validate quantity against available stock
-    if (quantity > availableStock) {
-        alert(`You cannot enter a quantity greater than the available stock (${availableStock}).`);
-        $quantityInput.val(availableStock); // Optionally set quantity to available stock
-        return; // Exit the function if quantity is invalid
-    }
+    // Check if manual entry is selected
+    if (selectedOption.val() === "manual-entry") {
+        // Get manually entered unit price
+        unitPrice = parseFloat($unitPriceInput.val());
+        availableStock = Infinity; // No stock limit for manual entry
 
-    // Ensure the selected item, quantity, and optional expenses are valid numbers
-    if (!isNaN(unitPrice) && !isNaN(quantity)) {
-        let total = unitPrice * quantity;
+        const quantity = parseFloat($quantityInput.val()); // Get entered quantity
 
-        // If expenses are provided, add them to the total calculation
-        if (!isNaN(expenses)) {
-            total += expenses; // Assuming expense is per item, hence multiply by quantity
+        // Ensure that both unit price and quantity are valid
+        if (!isNaN(unitPrice) && !isNaN(quantity)) {
+            let total = unitPrice * quantity; // Calculate total WITHOUT expenses for manual entries
+            $totalPriceInput.val(total.toFixed(2)); // Update total price input field
+        } else {
+            $totalPriceInput.val(""); // Clear total price if input is invalid
+        }
+    } else {
+        // For predefined items, get unit price from selected dropdown item
+        unitPrice = parseFloat(selectedOption.data("price"));
+        availableStock = parseInt(selectedOption.data("stock")); // Get available stock from the selected item
+        $unitPriceInput.val(unitPrice.toFixed(2)); // Update unit price input with selected item's price
+
+        const quantity = parseFloat($quantityInput.val()); // Get entered quantity
+        const expenses = parseFloat($expensesInput.val()) || 0; // Get expenses or default to 0
+
+        // Check if the entered quantity exceeds available stock
+        if (quantity > availableStock) {
+            alert(`You cannot enter a quantity greater than the available stock (${availableStock}).`);
+            $quantityInput.val(availableStock); // Adjust quantity to the max available stock
+            return;
         }
 
-        $totalPriceInput.val(total.toFixed(2));
-    } else {
-        $totalPriceInput.val(""); // Clear total price if invalid inputs
+        // Calculate the total price if the unit price and quantity are valid numbers
+        if (!isNaN(unitPrice) && !isNaN(quantity)) {
+            let total = unitPrice * quantity + expenses; // Calculate total with expenses for predefined items
+            $totalPriceInput.val(total.toFixed(2)); // Update total price input field
+        } else {
+            $totalPriceInput.val(""); // Clear total price if input is invalid
+        }
     }
 }
 
 function addForm(event) {
-    // Prevent form submission
-    event.preventDefault();
+    event.preventDefault(); // Prevent form submission
 
     const selectedOption = $("#itemDropdown option:selected");
-    const itemName = selectedOption.text();
-    const quantity = $("input[name='quantity']").val();
-    const unitPrice = $("input[name='unitPrice']").val();
-    const expenses = $("input[name='expenses']").val();
-    const totalPrice = $("input[name='totalPrice']").val();
-    const note = $("#txArea").val();
-    const saveNotes = $('input[name="enableText"]').is(":checked");
+    const productId = selectedOption.val();
 
-    // Check if quantity is a valid number
+    let itemName;
+    if (productId === "manual-entry") {
+        const manualInput = $("#manualItemName"); // Select the manual entry input
+        
+        // Check if the manual input field exists and has a value
+        if (manualInput.length > 0 && manualInput.val().trim()) {
+            itemName = manualInput.val().trim(); // Get name from the input field and trim whitespace
+        } else {
+            alert("Please enter a valid item name.");
+            return false;
+        }
+    } else {
+        itemName = selectedOption.text(); // Use selected item name for non-manual entries
+    }
+
+    
+    const quantity = parseFloat($("input[name='quantity']").val()); // Get the entered quantity
+    const unitPrice = parseFloat($("input[name='unitPrice']").val()); // Get the unit price
+    const expenses = parseFloat($("input[name='expenses']").val()); // Get the entered expenses
+    const totalPrice = parseFloat($("input[name='totalPrice']").val()); // Get the calculated total price
+    const note = $("#txArea").val(); // Get the note entered in the textarea
+    const saveNotes = $('input[name="enableText"]').is(":checked"); // Check if user enabled saving notes
+
+    // Validate the quantity to ensure it's a positive number
     if (!quantity || isNaN(quantity) || quantity <= 0) {
         alert("Please enter a valid quantity.");
         return false;
     }
 
-    // Check if required fields are filled
-    if (!itemName || !quantity || !unitPrice || !totalPrice) {
+    // Ensure that required fields are not empty
+    if (!unitPrice || !totalPrice) {
         alert("Please complete all the required fields.");
         return false;
     }
+    
 
-    // Create a new item object
+    // Create an object representing the new item
     const newItem = {
+        productId: productId !== "manual-entry" ? productId : null, // Exclude productId for manual entries
         name: itemName,
         quantity: quantity,
         unitPrice: unitPrice,
         totalPrice: totalPrice,
         expenses: expenses || 0,
-        note: saveNotes ? note : "", // Save note if user selected yes
+        note: saveNotes ? note : "", // Save the note only if the user selected the option
     };
 
-    // Append the new item to the preview section
+    // Display the new item in the preview section
     displayPreviewItem(newItem);
 
-    // Clear the form after adding
+    // Reset the form fields after adding the item
     resetForm();
 
     // Close the popup after adding the item
     closePopup();
 }
 
-function closePopup() {
-    $(".formOverlay").hide();  // Assuming `.formOverlay` is the popup background.
-    $(".inventory-box").hide(); // Assuming `.inventory-box` is the popup form container.
+function handleDropdownChange() {
+    const dropdown = document.getElementById('itemDropdown');
+    const manualInput = document.getElementById('manualItemName');
+    
+    if (dropdown.value === 'manual-entry') {
+        manualInput.style.display = 'block'; // Show manual input field
+    } else {
+        manualInput.style.display = 'none'; // Hide manual input field
+    }
 }
 
+function closePopup() {
+    // Hide the form overlay and the inventory form container
+    $(".formOverlay").fadeOut();
+    $(".inventory-box").fadeOut();
+}
 
 function resetForm() {
-    $("select#itemDropdown").prop('selectedIndex', 0);
+    // Reset the Select2 dropdown and clear selected value
+    $("#itemDropdown").val(null).trigger('change'); // Reset Select2 dropdown to its placeholder
+
+    // Reset manual entry fields if they are visible
+    $("#manualItem").hide(); // Hide manual item input
+    $("#manualItemName").val(''); // Clear manual item name input
+
+    // Clear all input fields in the form
     $("input[name='quantity']").val('');
     $("input[name='unitPrice']").val('');
     $("input[name='expenses']").val('');
     $("input[name='totalPrice']").val('');
     $("#txArea").val('');
-    $("input[name='enableText']").prop("checked", false);
+    $("input[name='enableText']").prop("checked", false); // Uncheck the "save notes" checkbox
 }
 
+
 function displayPreviewItem(item) {
+    // Build the HTML structure for the preview item
     const itemHtml = `
         <div class="preview-item">
             <div class="checker">
@@ -179,10 +292,15 @@ function displayPreviewItem(item) {
         </div>
     `;
 
+    // Append the preview item to the preview container
     $(".preview-container").append(itemHtml);
 }
 
 function deleteItem(button) {
-    $(button).closest(".preview-item").remove();
+    $(button).closest(".preview-item").remove(); // Remove the item
 }
 
+function closeSales() {
+    // Clear all preview items when closing sales
+    $(".preview-container").empty();
+}

@@ -20,7 +20,7 @@ $(document).ready(function () {
                 // Set fields to handle missing or undefined data
                 $('#productDescription').text(product.description || 'No description available');
                 $('#availableStock').text(product.availableStock);
-                $('#stockDate').text(product.stockDate ? new Date(product.stockDate).toLocaleDateString() : 'No stock date'); // Assuming there's a stockDate field
+                $('#stockDate').text(product.stockDate ? formatDate(product.stockDate) : 'No stock date'); //custom format
                 $('#purchasePrice').text(product.purchasePrice ? product.purchasePrice.toFixed(2) : '0.00');
                 $('#sellingPrice').text(product.sellingPrice ? product.sellingPrice.toFixed(2) : '0.00');
             },
@@ -30,6 +30,14 @@ $(document).ready(function () {
         });
     } else {
         alert('No product ID found in the URL');
+    }
+
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+        const year = date.getFullYear();
+        return `${day}-${month}-${year}`; // Format: DD-MM-YYYY
     }
 
     // Attach click event handler for the edit button
@@ -67,6 +75,13 @@ $(document).ready(function () {
         }
         formData.append('productImage', file);
 
+        // Compare the current available stock with the new one and update the stockDate if the stock has increased
+        const previousStock = parseInt($('#availableStock').text(), 10); // Previous stock from product details
+        const newStock = parseInt($('#modalAvailableStock').val(), 10); // New stock from the form input
+
+        if (newStock > previousStock) {
+            formData.append('stockDate', new Date().toISOString()); // Update stock date if the stock has increased
+        }
 
         // Send PATCH request to update the product
         $.ajax({

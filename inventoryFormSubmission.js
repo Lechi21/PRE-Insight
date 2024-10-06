@@ -13,7 +13,8 @@ $(document).ready(function () {
 
                 response.products.forEach(product => {
                     const imageUrl = `http://localhost:3000/${product.productImage}`;
-
+                    const formattedStockDate = product.stockDate ? formatDate(product.stockDate) : 'No stock date';
+                
                     const newRow = `
                         <tr data-id="${product._id}">
                             <td><img src="${imageUrl}" class="item-table-image" width="50"></td>
@@ -27,13 +28,21 @@ $(document).ready(function () {
                             </td>
                             <td class="description-column">${product.description}</td>
                             <td>${product.availableStock}</td>
-                            <td>${product.stockDate}</td>
+                            <td>${formattedStockDate}</td>
                             <td>${product.purchasePrice}</td>
                             <td>${product.sellingPrice}</td>
                         </tr>
                     `;
                     $('#inventory-list').append(newRow);
                 });
+                
+                function formatDate(dateString) {
+                    const date = new Date(dateString);
+                    const day = String(date.getDate()).padStart(2, '0');
+                    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+                    const year = date.getFullYear();
+                    return `${day}-${month}-${year}`; // Format: DD-MM-YYYY
+                }                
 
                  // Handle row click to redirect to preview.html with the product ID
                 $('#inventory-list').on('click', 'tr', function() {
