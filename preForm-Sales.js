@@ -13,6 +13,7 @@ $(document).ready(function () {
 });
 
 let cartItems = []; // Declare cartItems in the global scope
+let currentSerialNumber = 1;
 
 // Custom format function
 function formatOption(item) {
@@ -241,19 +242,21 @@ function addSales(event) {
             cartItems = [];
             $(".preview-container").empty();
 
-            // Append new rows to the sales table
-            const $tableBody = $(".stock-sales tbody");
-            response.createdSales.forEach(item => {  // Updated to 'createdSales'
+             // Summarize all the items into a single table row
+            const totalQuantity = response.createdSales.reduce((sum, item) => sum + item.quantity, 0);
+            const totalAmount = response.createdSales.reduce((sum, item) => sum + item.totalAmount, 0);
+            const itemNames = response.createdSales.map(item => item.name).join(', ');
                 const newRow = `
                     <tr>
-                        <td><i class="bx bx-show"></i></td>
-                        <td>${item.name}</td>
-                        <td>${item.quantity}</td>
-                        <td>${item.totalAmount.toFixed(2)}</td>
+                        <td>${currentSerialNumber++}</td>
+                        <td>${itemNames}</td>
+                        <td>${totalQuantity}</td>
+                        <td>${totalAmount.toFixed(2)}</td>
                     </tr>
                 `;
-                $tableBody.append(newRow);
-            });
+            // Append the new consolidated row to the sales table
+            const $tableBody = $(".stock-sales tbody");
+            $tableBody.append(newRow);
 
             // Optionally, clear any previously entered sales data in the form
             resetForm();
@@ -290,7 +293,7 @@ function populateSalesTable(sales) {
     sales.forEach(item => {
         const newRow = `
             <tr>
-                <td><i class="bx bx-show"></i></td>
+                <td>${currentSerialNumber++}</td>
                 <td>${item.name}</td>
                 <td>${item.quantity}</td>
                 <td>${item.totalAmount.toFixed(2)}</td>
