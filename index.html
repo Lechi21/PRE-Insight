@@ -161,13 +161,16 @@
                 <!-- Daily Sales Table -->
                     <div style="cursor: pointer;" class="salesRecord tabcontent hidden" id="Tab2">
                         <h2>Daily Stock Sales</h2>
-                        <p style="margin-bottom: 10px;" class="predicting">Select add to input todays record.</p>
+                        <div class="side">
+                            <p style="margin-bottom: 10px;" class="predicting">Select add to input todays record.</p>
+                            <button onclick="addItems(); return false">Add Sales</button>
+                        </div>
                         <table class="stock-sales">
                             <thead>
                                 <tr>
-                                    <th onclick="addItems(); return false">
+                                    <th>
                                         <a class="icon-link">
-                                            <span style="cursor: pointer;">Add</span>
+                                            <span style="cursor: pointer;">S/N</span>
                                         </a>
                                     </th>
                                     <!-- <th data-label="Column 1">Date</th> -->

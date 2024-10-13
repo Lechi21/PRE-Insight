@@ -402,6 +402,25 @@ b{
 }
 
 /* DAILY SALES TABLE STARTS HERE */
+.side {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.side button {
+    background-color: #1B9C85;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 0.9rem;
+    width: 85px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
 .center .stock-sales,
 .others{
     background-color: var(--color-white);
@@ -411,6 +430,7 @@ b{
     box-shadow: var(--box-shadow) !important;
     border-radius: var(--card-border-radius) !important;
     transition: all 0.3s ease;
+    border-spacing: 0;
 }
 
 .center .stock-sales:hover{
@@ -422,10 +442,22 @@ b{
     overflow: hidden !important;
     /* white-space: nowrap !important; */
     text-overflow: ellipsis !important;
-    border-radius: 5px;
     background-color: #1B9C85;
     color: #fff;
-    padding: 4px;
+    padding: 6px;
+    font-size: 0.9rem;
+}
+
+.center .stock-sales thead tr th:nth-child(1) {
+    border-radius: 4px 0 0 4px;
+    align-items: center;
+    align-content: center;
+    margin: 0 auto;
+    max-width: 20px;
+}
+
+.center .stock-sales thead tr th:nth-child(4) {
+    border-radius: 0 4px 4px 0;
 }
 
 .center .stock-sales tbody td{
@@ -441,6 +473,7 @@ b{
 .icon-link .material-symbols-outlined {
     color: #fff;
 }
+
 .icon-link {
     display: inline-block;
     text-decoration: none;
@@ -2229,7 +2262,6 @@ h1 {
         text-overflow: ellipsis !important;
         background-color: #1B9C85;
         color: #fff;
-        border-radius: 5px;
         padding: 6px;
     }
 
