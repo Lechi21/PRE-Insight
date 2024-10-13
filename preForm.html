@@ -58,7 +58,7 @@
                         <input type="submit" value="Add" onclick="addSales(event);">
                         <input type="button" value="Cancel" onclick="closeSales();">
                     </div>
-                </form>
+                </form>                
 
                 <form id="SalesItem" class="itemPop">
                     <div class="inventory-box" id="inventory-box">
@@ -70,7 +70,7 @@
                         <div class="inputs tops">
                             <div class="item-name2" style="flex-basis: 50%;">
                                 <h4>Item Name:</h4>
-                                <select id="itemDropdown" class="selector" onchange="handleDropdownChange()">
+                                <select id="itemDropdown" class="selector" >
                                     <option value="">Select Item</option> <!-- Default option -->
                                     <option value="manual-entry">Add new item manually</option>
                                     <!-- Other options will be dynamically populated here -->
@@ -217,7 +217,6 @@
     </div>
 
         <script src="preForm-Sales.js"></script>
-        <script src="pre-Form-Submission.js"></script>
         <script src="preForm.js"></script>
         <script src="dlMood.js"></script>
 </body>
